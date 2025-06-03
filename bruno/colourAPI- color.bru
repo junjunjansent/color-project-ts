@@ -1,0 +1,15 @@
+meta {
+  name: colourAPI: color
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://www.thecolorapi.com/id?rgb=(0,0,0)
+  body: none
+  auth: inherit
+}
+
+params:query {
+  rgb: (0,0,0)
+}

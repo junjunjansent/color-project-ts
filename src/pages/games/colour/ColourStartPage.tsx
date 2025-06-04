@@ -19,7 +19,17 @@ const ColourStartPage = () => {
     <>
       <h1>Colour Game</h1>
       <h3>Background</h3>
-      <p></p>
+      <p>
+        I chose this little project because I found it fascinating that
+        theoretically, all colours on the colour wheel can be generated with the
+        base primary colours. In order to test my CSS and advance my knowledge
+        on colour theory, I built this lil game :) Note the emotions were
+        derived from{" "}
+        <a href="https://www.empower-yourself-with-color-psychology.com/meaning-of-colors.html">
+          this website
+        </a>
+        .
+      </p>
 
       <h3>Just a lil Colour Theory 🎨</h3>
       <p>
@@ -73,11 +83,15 @@ const ColourStartPage = () => {
           closely linked to, and some of their colour schemes you could try out
           in designs :)
         </p>
+        <Link to={PATHS.GAME.COLOUR.COLOUR_ID("")}>
+          <button>Input</button>
+        </Link>
+        <Link to={PATHS.GAME.COLOUR.COLOUR_ID("")}>
+          <button>Randomise</button>
+        </Link>
         <button>
-          <Link to={PATHS.GAME.COLOUR.COLOUR_ID("")}>Input</Link>
-        </button>
-        <button>
-          <Link to={PATHS.GAME.COLOUR.COLOUR_ID("")}>Randomise</Link>
+          {/* TODO Explore this feature */}
+          Search Emotion (Not Built)
         </button>
       </section>
 
@@ -106,11 +120,15 @@ const ColourStartPage = () => {
           absorb light as it bounces off the objects and entering our eyes, so
           mixing (i.e. RYB and CMY) all gives black or dark brown.
         </p>
+        <Link to={PATHS.GAME.COLOUR.MATCH_RANDOM}>
+          <button>Randomise</button>
+        </Link>
+        <Link to={PATHS.GAME.COLOUR.MATCH_LEVELLED}>
+          <button>Level (Not Built)</button>
+        </Link>
         <button>
-          <Link to={PATHS.GAME.COLOUR.MATCH_RANDOM}>Randomise</Link>
-        </button>
-        <button>
-          <Link to={PATHS.GAME.COLOUR.MATCH_LEVELLED}>Level (Not Built)</Link>
+          {/* TODO Explore this feature */}
+          Create Own Colour (Not Built)
         </button>
       </section>
       <Outlet />

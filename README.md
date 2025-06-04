@@ -28,7 +28,7 @@ HomePage
 
 - Colour Game Start Page (/game/colour/)
 
-  - [ ] As a user, I will see a Colour Game Start Page, with information on colour theory and brief information on the fe`atures available
+  - [x] As a user, I will see a Colour Game Start Page, with information on colour theory and brief information on the fe`atures available
     - Basic intro on Colour Theory
     - Potentially via Pop up boxes:
       - Colour & how their meaning is derived

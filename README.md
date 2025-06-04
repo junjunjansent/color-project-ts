@@ -1,12 +1,30 @@
 # Color Project
 
+- [Overall](#overall)
+- [Pages of the Game](#pages-of-the-game)
+- [User Stories](#user-stories)
+- [Credits](#credits)
+
+## Overall
+
+### Page Structure
+
+HomePage
+
+- ColourGameStartPage
+  - ColourAnalysis
+  - ColourMatchLevelled
+  - ColourMatchRandom
+
+## Pages of the Game
+
 ## User Stories
 
 - Home Page
 
-  - [ ] As a user, I will see a Home Page that indicates the beginning of the web app
+  - [x] As a user, I will see a Home Page that indicates the beginning of the web app
   - [ ] As a user, i would see a loading page to indicate when components are still being rendered
-  - [ ] As a user, i would see an error page to indicate when a component is not found
+  - [x] As a user, i would see an error page to indicate when a component is not found
 
 - Colour Game Start Page (/game/colour/)
 

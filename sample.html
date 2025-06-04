@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toothpaste Tube Button</title>
+    <style>
+      body {
+        background: #f0f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: sans-serif;
+      }
+
+      .toothpaste-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(90deg, #c0e2ff, #ffffff);
+        border-radius: 50px;
+        padding: 15px 60px 15px 70px;
+        border: 2px solid #a0c4de;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+        overflow: hidden;
+      }
+
+      .toothpaste-btn:hover {
+        transform: scale(0.97);
+      }
+
+      .cap {
+        position: absolute;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+        background: #999;
+        border-radius: 10px;
+        box-shadow: inset 0 0 5px #666;
+      }
+
+      .label {
+        color: #1d3557;
+        font-weight: bold;
+        font-size: 18px;
+        z-index: 2;
+      }
+
+      .toothpaste {
+        position: absolute;
+        right: 10px;
+        width: 0;
+        height: 20px;
+        background: linear-gradient(to right, #00c6ff, #0072ff);
+        border-radius: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: width 0.4s ease;
+        z-index: 1;
+      }
+
+      .toothpaste-btn:hover .toothpaste {
+        width: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toothpaste-btn">
+      <div class="cap"></div>
+      <div class="label">Squeeze</div>
+      <div class="toothpaste"></div>
+    </div>
+  </body>
+</html>

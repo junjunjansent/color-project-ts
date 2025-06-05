@@ -38,6 +38,8 @@ const convertRGBtoHEX = (rgb: RGB): string => {
     console.log("invalid RGB value");
   }
 
+  return "TODO";
+
   //   let hexCode = "#";
   //   hexCode += decToHexa(R);
   //   hexCode += decToHexa(G);

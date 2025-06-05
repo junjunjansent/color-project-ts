@@ -48,6 +48,7 @@ const colourGameReducer = (
     case "SET_MODE":
       break;
     default:
+      state = state; //TODO to remove
       break;
   }
 };

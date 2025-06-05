@@ -22,7 +22,7 @@ const show = async (rgb: RGB) => {
     });
 };
 
-const result = await show({ R: 21, G: 5, B: 0 });
-console.log(result);
+// const result = await show({ R: 21, G: 5, B: 0 });
+// console.log(result);
 
 export { show };

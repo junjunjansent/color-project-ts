@@ -1,4 +1,4 @@
-import type { RGB, ColourScheme } from "./colourConstants";
+import type { RGB, ColourScheme, ColourData } from "./colourConstants";
 import { stringifyRGB } from "./colourRGBHandler";
 
 const BASE_COLOUR_URL = "https://www.thecolorapi.com/";
@@ -11,7 +11,10 @@ const fetchJson = async (url: string) => {
   return res.json();
 };
 
-const show = async (rgb: RGB, colourSchemes: readonly ColourScheme[]) => {
+const show = async (
+  rgb: RGB,
+  colourSchemes: readonly ColourScheme[]
+): Promise<ColourData | undefined> => {
   //rgbString must be in the format "(xx,xx,xx)"
   const RGBstring = stringifyRGB(rgb);
   const schemeColourCount = 6;

@@ -1,0 +1,22 @@
+meta {
+  name: destroy record
+  type: http
+  seq: 8
+}
+
+delete {
+  url: https://api.airtable.com/v0/appbkUvuOT2Hs1VEv/Table%201
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{process.env.BRUNO_AIRTABLE_API_KEY}}
+}
+
+body:json {
+  {
+      "id": "recAqs20OP06EDiFN",
+      "deleted": true
+  }
+}

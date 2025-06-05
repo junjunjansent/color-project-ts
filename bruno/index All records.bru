@@ -1,0 +1,19 @@
+meta {
+  name: index All records
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://api.airtable.com/v0/appbkUvuOT2Hs1VEv/Table%201?view=Grid view
+  body: none
+  auth: inherit
+}
+
+params:query {
+  view: Grid view
+}
+
+headers {
+  Authorization: Bearer {{process.env.BRUNO_AIRTABLE_API_KEY}}
+}

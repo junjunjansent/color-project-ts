@@ -7,6 +7,17 @@
 
 ## Overall
 
+### Background
+
+### Challenges
+
+- !!!! Typing Fetched Data :(
+- Understanding Colour Theory
+- Styling of pages on theme selection
+- Inter navigation of colours
+- Loading Page & Error page pop ups
+- Leaderboard Forms & Time Management
+
 ### Page Structure
 
 HomePage
@@ -23,7 +34,7 @@ HomePage
 - Home Page
 
   - [x] As a user, I will see a Home Page that indicates the beginning of the web app
-  - [ ] As a user, i would see a loading page to indicate when components are still being rendered
+  - [x] As a user, i would see a loading page to indicate when components are still being rendered
   - [x] As a user, i would see an error page to indicate when a component is not found
 
 - Colour Game Start Page (/game/colour/)

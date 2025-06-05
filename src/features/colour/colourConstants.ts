@@ -9,6 +9,8 @@ export const colourSchemes = [
   { name: "quad", label: "Quad" },
 ] as const;
 
+export const RGBUrlRegex = /^\d{1,3}-\d{1,3}-\d{1,3}$/;
+
 export type RGB = { R: number; G: number; B: number };
 
 export type ColourScheme = (typeof colourSchemes)[number];

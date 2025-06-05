@@ -10,20 +10,8 @@ import {
 import debug from "debug";
 const log = debug("colours:pages/game/colour/ColourStartPage");
 
-// - [ ] As a user, I will see a Colour Game Start Page, with information on colour theory and brief information on the fe`atures available
-// - Basic intro on Colour Theory
-// - Potentially via Pop up boxes:
-//   - Colour & how their meaning is derived
-//   - Importance of Colour Schemes
-// - [ ] As a user, I will be able to to choose between two options on the start page
-// - Choosing Colour Analysis
-//   - Colour of choice via input
-//   - Random generated colour
-// - Playing Colour Game
-//   - Random Colour
-//   - Levelled one (future)
-
 const ColourStartPage = () => {
+  // define state
   const navigate = useNavigate();
 
   const handleInputColourAnalysis = (
@@ -115,6 +103,14 @@ const ColourStartPage = () => {
           closely linked to, and some of their colour schemes you could try out
           in designs :)
         </p>
+        <button onClick={handleRandomiseColourAnalysis}>Randomise</button>
+        <Link to={PATHS.GAME.COLOUR.LIST}>
+          <button>See Saved Colours</button>
+        </Link>
+        <button>
+          {/* TODO Explore this feature */}
+          Search Emotion (Not Built)
+        </button>
         <form onSubmit={handleInputColourAnalysis}>
           <label>
             <input
@@ -127,12 +123,6 @@ const ColourStartPage = () => {
           </label>
           <button type="submit">Let's go</button>
         </form>
-
-        <button onClick={handleRandomiseColourAnalysis}>Randomise</button>
-        <button>
-          {/* TODO Explore this feature */}
-          Search Emotion (Not Built)
-        </button>
       </section>
 
       <section>

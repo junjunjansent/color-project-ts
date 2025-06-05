@@ -4,6 +4,7 @@ const log = debug("colours:ColourAnalysis");
 import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import {
+  RGBUrlRegex,
   colourSchemes,
   type ColourData,
 } from "../../../features/colour/colourConstants";
@@ -13,20 +14,22 @@ import {
   urlifyRGB,
 } from "../../../features/colour/colourRGBHandler";
 import * as api_colour from "../../../features/colour/api_colour";
+import * as api_airtableColour from "../../../features/colour/api_airtableColour";
 import { PATHS } from "../../../routes/paths";
 import ErrorPage from "../../../components/ErrorPage";
-import Loading from "../../../components/Loader";
+import Loader from "../../../components/Loader";
 
 const ColourAnalysis = () => {
   // get details of site
   const { id } = useParams();
-  if (!id) {
+  if (!id || !RGBUrlRegex.test(id)) {
     return <ErrorPage />;
   }
   const rgb = RGBifyUrl(id);
 
   // define states
   const [colourData, setColourData] = useState<ColourData>();
+  const [isSavedColour, setIsSavedColour] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
@@ -36,28 +39,75 @@ const ColourAnalysis = () => {
     navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
   };
 
+  const handleSaveToList = async () => {
+    //TODO: explore react-toastify
+    // saved - navigate function & ignore
+    // show a notification
+    log("Saving Colour");
+
+    const cleanedColourData = {
+      fields: {
+        colourId: id,
+        hex: colourData?.hex.value ?? "",
+        name: colourData?.name?.exact_match_name ? colourData.name.value : "",
+      },
+    };
+
+    await api_airtableColour.create(cleanedColourData);
+    setIsSavedColour(true);
+  };
+
   useEffect(() => {
     const fetchColourDatas = async () => {
-      setLoading(true);
       const newColourData = await api_colour.show(rgb, colourSchemes);
       setColourData(newColourData);
+    };
+
+    const checkSavedColour = async () => {
+      const savedColourList = await api_airtableColour.index();
+      setIsSavedColour(
+        savedColourList.some(
+          (savedColour: api_airtableColour.AirtableColourListField) =>
+            savedColour.colourId === id
+        )
+      );
+    };
+
+    const renderPromises = async () => {
+      setLoading(true);
+      await Promise.all([fetchColourDatas(), checkSavedColour()]);
       setLoading(false);
     };
-    fetchColourDatas();
-    log(colourData);
+
+    renderPromises();
+    // log(colourData);
   }, [id]);
 
-  const closeMatchName = (
+  const colourNameSection = (
     <>
+      <img
+        src={
+          colourData?.name?.exact_match_name
+            ? colourData?.image?.named
+            : colourData?.image?.bare
+        }
+        alt=""
+      />
       <h3>
         <strong>Name: </strong>
+
         {colourData?.name?.exact_match_name
           ? colourData?.name?.value
           : "Unnamed"}
       </h3>
-      {colourData?.name?.exact_match_name ? (
-        <></>
+
+      {isSavedColour ? (
+        <button>Saved</button>
       ) : (
+        <button onClick={handleSaveToList}>Save Colour :)</button>
+      )}
+
+      {colourData?.name?.exact_match_name || (
         <div>
           <p>
             Not all colours are named! but you can find the closest named colour
@@ -77,17 +127,13 @@ const ColourAnalysis = () => {
 
   // Loader
   if (loading) {
-    return <Loading />;
+    return <Loader />;
   }
 
   return (
     <>
       <h1>Colour Analysis</h1>
-      <section>
-        <img src={colourData?.image?.named} alt="" />
-        {/* <h2>{stringifyRGB(rgb)}</h2> */}
-        {closeMatchName}
-      </section>
+      <section>{colourNameSection}</section>
 
       <section>
         <h4>Categorisation</h4>
@@ -124,8 +170,9 @@ const ColourAnalysis = () => {
                       handleSelectedColourAnalysis(color.hex.value)
                     }
                   >
-                    {color.hex.value} <br />
                     {color.rgb.value}
+                    <br />
+                    {color.hex.value}
                   </button>
                 );
               })}

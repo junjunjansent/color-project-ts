@@ -1,10 +1,13 @@
+import type { RGB } from "./colourData";
+import { stringifyRGB } from "./colourData";
+
 const BASE_COLOUR_URL = "https://www.thecolorapi.com/";
 
-const show = (rgb: string) => {
-  //rgb must be in the format "(xx,xx,xx)"
-
+const show = async (rgb: RGB) => {
+  //rgbString must be in the format "(xx,xx,xx)"
+  const RGBstring = stringifyRGB(rgb);
   const schemeColourCount = 6;
-  const url = `${BASE_COLOUR_URL}scheme?rgb=${rgb}&format=json&count=${schemeColourCount}`;
+  const url = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}`;
 
   fetch(url)
     .then((response) => {
@@ -19,5 +22,7 @@ const show = (rgb: string) => {
       return null;
     });
 };
+
+console.log(show({ R: 0, G: 0, B: 0 }));
 
 export { show };

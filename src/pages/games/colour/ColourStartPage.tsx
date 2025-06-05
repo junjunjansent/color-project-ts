@@ -1,6 +1,14 @@
-import { Outlet, Link } from "react-router";
+import { Outlet, Link, useNavigate } from "react-router";
 import { PATHS } from "../../../routes/paths";
-import { useState } from "react";
+
+import {
+  randomiseRGB,
+  urlifyRGB,
+  convertHEXtoRGB,
+} from "../../../features/colour/colourData";
+
+import debug from "debug";
+const log = debug("colours:pages/game/colour/ColourStartPage");
 
 // - [ ] As a user, I will see a Colour Game Start Page, with information on colour theory and brief information on the fe`atures available
 // - Basic intro on Colour Theory
@@ -15,10 +23,29 @@ import { useState } from "react";
 //   - Random Colour
 //   - Levelled one (future)
 
-const randomiseRGBInput = () => {};
-
 const ColourStartPage = () => {
-  const [colourToAnalyse, setColourToAnalyse] = useState<String>("");
+  const navigate = useNavigate();
+
+  const handleInputColourAnalysis = (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
+    // get form Data
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData);
+
+    console.log(data.colourToAnalyse);
+    const rgb = convertHEXtoRGB(data.colourToAnalyse as string); //TODO type guard
+    const rgbUrl = urlifyRGB(rgb);
+    navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
+  };
+
+  const handleRandomiseColourAnalysis = () => {
+    log("randomising");
+    const rgb = randomiseRGB();
+    const rgbUrl = urlifyRGB(rgb);
+    navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
+  };
 
   return (
     <>
@@ -88,17 +115,19 @@ const ColourStartPage = () => {
           closely linked to, and some of their colour schemes you could try out
           in designs :)
         </p>
-        <Link to={PATHS.GAME.COLOUR.COLOUR_ID("")}>
-          <form action="">
-            <label>
-              <input type="color" name="colourToAnalyse" value="" />
-            </label>
-            <button>Let's go</button>
-          </form>
-        </Link>
-        <Link to={PATHS.GAME.COLOUR.COLOUR_ID("")}>
-          <button onClick={randomiseRGBInput}>Randomise</button>
-        </Link>
+        <form onSubmit={handleInputColourAnalysis}>
+          <label>
+            <input
+              type="color"
+              name="colourToAnalyse"
+              defaultValue="#000000"
+              // ={colourHexToAnalyse}
+              // onChange={handleColourInput}
+            />
+          </label>
+          <button>Let's go</button>
+        </form>
+        <button onClick={handleRandomiseColourAnalysis}>Randomise</button>
         <button>
           {/* TODO Explore this feature */}
           Search Emotion (Not Built)
@@ -109,22 +138,24 @@ const ColourStartPage = () => {
         <h4>Colour Match</h4>
         <p>
           Colours are created by combining a few basic, base colours. By mixing
-          your primary colours, you get your secondary and tertiary colours.
-          <ul>
-            <li>
-              In traditional art, the primary colours are Red, Yellow, and Blue
-              (RYB). Colours are mixed subtractively.
-            </li>
-            <li>
-              In printers, colours used are Cyan, Magenta, Yellow, and Black
-              (CMYK) inks. Colours are mixed subtractively too!
-            </li>
-            <li>
-              In digital screens, colours are created from Red, Green, and Blue
-              (RGB) light. These colours mix additively, meaning adding light
-              creates white.
-            </li>
-          </ul>
+          your primary colours, you get your secondary and tertiary colours.{" "}
+        </p>
+        <ul>
+          <li>
+            In traditional art, the primary colours are Red, Yellow, and Blue
+            (RYB). Colours are mixed subtractively.
+          </li>
+          <li>
+            In printers, colours used are Cyan, Magenta, Yellow, and Black
+            (CMYK) inks. Colours are mixed subtractively too!
+          </li>
+          <li>
+            In digital screens, colours are created from Red, Green, and Blue
+            (RGB) light. These colours mix additively, meaning adding light
+            creates white.
+          </li>
+        </ul>
+        <p>
           Notice that additive colour mixing combines light (e.g. digital), so
           adding all gives white. Subtractive mixing combines pigments, which
           absorb light as it bounces off the objects and entering our eyes, so

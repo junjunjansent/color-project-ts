@@ -45,7 +45,7 @@
           "A dark bluish red, denotes controlled and more thoughtful action",
           "Softer than burgundy and less dramatic than true red"
         ],
-        "rgb": [128, 0, 0]
+        "rgb": { "R": 128, "G": 0, "B": 0 }
       },
       "burgundy": {
         "description": [
@@ -53,7 +53,7 @@
           "Indicates controlled power, determined ambition, dignified action",
           "Favored by the wealthy"
         ],
-        "rgb": [128, 0, 32]
+        "rgb": { "R": 128, "G": 0, "B": 32 }
       },
       "crimson": {
         "description": [
@@ -61,7 +61,7 @@
           "Indicates determination to succeed without upsetting others",
           "Emits sensuality rather than sexuality"
         ],
-        "rgb": [220, 20, 60]
+        "rgb": { "R": 220, "G": 20, "B": 60 }
       },
       "scarlet": {
         "description": [
@@ -69,7 +69,7 @@
           "Indicates enthusiasm and love of life",
           "Less intense and more fun-loving than true red, tempered with defiance"
         ],
-        "rgb": [255, 36, 0]
+        "rgb": { "R": 255, "G": 36, "B": 0 }
       }
     }
   },
@@ -106,26 +106,26 @@
           "It inspires good manners and puts people at ease",
           "It has all the attributes of orange but in a much softer, gentler and more cautious form"
         ],
-        "rgb": [255, 218, 185]
+        "rgb": { "R": 255, "G": 218, "B": 185 }
       },
       "golden_orange": {
         "description": [
           "This version of orange encourages vitality and self-control"
         ],
-        "rgb": [255, 165, 0]
+        "rgb": { "R": 255, "G": 165, "B": 0 }
       },
       "amber": {
         "description": [
           "Amber helps to inspire greater confidence and better self esteem",
           "It can promote a degree of arrogance"
         ],
-        "rgb": [255, 191, 0]
+        "rgb": { "R": 255, "G": 191, "B": 0 }
       },
       "burnt_orange": {
         "description": [
           "This color emits a negative vibration indicating pride, tension and aggressive self-assertion"
         ],
-        "rgb": [204, 85, 0]
+        "rgb": { "R": 204, "G": 85, "B": 0 }
       },
       "dark_orange": {
         "description": [
@@ -133,7 +133,7 @@
           "It tries too hard to prove its worth and to boost its self-esteem, but when it fails, which is often, it develops a chip on its shoulder",
           "It is the color of the opportunist, taking selfish advantage of every situation"
         ],
-        "rgb": [255, 140, 0]
+        "rgb": { "R": 255, "G": 140, "B": 0 }
       }
     }
   },
@@ -183,14 +183,14 @@
           "This color helps to clear the mind",
           "Making it open and alert"
         ],
-        "rgb": [255, 255, 224]
+        "rgb": { "R": 255, "G": 255, "B": 224 }
       },
       "lemon_yellow": {
         "description": [
           "Lemon yellow promotes self-reliance and a need for an orderly life",
           "This yellow increases our sensitivity to criticism"
         ],
-        "rgb": [255, 247, 0]
+        "rgb": { "R": 255, "G": 247, "B": 0 }
       },
       "citrine_yellow": {
         "description": [
@@ -198,28 +198,28 @@
           "It encourages the serial relationship hopper, the teaser, with unstable emotions",
           "This yellow can be deceitful and retreats from responsibility"
         ],
-        "rgb": [228, 208, 10]
+        "rgb": { "R": 228, "G": 208, "B": 10 }
       },
       "golden_yellow": {
         "description": [
           "This yellow is the color of the loner with an intense curiosity and interest in investigating the finer details of its interests",
           "Golden yellow is sensitive to criticism"
         ],
-        "rgb": [255, 223, 0]
+        "rgb": { "R": 255, "G": 223, "B": 0 }
       },
       "cream": {
         "description": [
           "Cream, tinted with a hint of yellow, encourages new ideas",
           "However, this very pale color can also indicate a lack of confidence and a need for reassurance"
         ],
-        "rgb": [255, 253, 208]
+        "rgb": { "R": 255, "G": 253, "B": 208 }
       },
       "dark_yellow": {
         "description": [
           "The darker shades of yellow indicate an inclination toward depression and melancholy, lack of love and low self-worth",
           "Dark yellow relates to the constant complainer and the cynic"
         ],
-        "rgb": [204, 204, 0]
+        "rgb": { "R": 204, "G": 204, "B": 0 }
       }
     }
   },
@@ -272,13 +272,13 @@
           "As the color of new growth on plants, it indicates immaturity, youthfulness and inexperience",
           "It allows us to see things from a new perspective, to make a fresh start"
         ],
-        "rgb": [152, 251, 152]
+        "rgb": { "R": 152, "G": 251, "B": 152 }
       },
       "emerald_green": {
         "description": [
           "This is an inspiring and uplifting color suggesting abundance and wealth in all its forms, from material wellbeing, to emotional wellbeing to creative ideas"
         ],
-        "rgb": [80, 200, 120]
+        "rgb": { "R": 80, "G": 200, "B": 120 }
       },
       "jade_green": {
         "description": [
@@ -286,7 +286,7 @@
           "Jade green indicates a generosity of spirit, giving without expecting anything in return",
           "It increases worldly wisdom and understanding, assisting in the search for enlightenment"
         ],
-        "rgb": [0, 168, 107]
+        "rgb": { "R": 0, "G": 168, "B": 107 }
       },
       "lime_green": {
         "description": [
@@ -294,7 +294,7 @@
           "It is liked the most by younger people",
           "It creates a feeling of anticipation, and helps to clear the mind of negativity"
         ],
-        "rgb": [50, 205, 50]
+        "rgb": { "R": 50, "G": 205, "B": 50 }
       },
       "dark_green": {
         "description": [
@@ -302,33 +302,33 @@
           "Often used by wealthy businessmen, ambitious and always striving for more wealth",
           "Dark green signifies greed and selfish desire"
         ],
-        "rgb": [0, 100, 0]
+        "rgb": { "R": 0, "G": 100, "B": 0 }
       },
       "aqua": {
         "description": [
           "Aqua calms the spirit, offering protection and healing for the emotions"
         ],
-        "rgb": [127, 255, 212]
+        "rgb": { "R": 127, "G": 255, "B": 212 }
       },
       "olive_green": {
         "description": [
           "Although the traditional color for peace, 'offering an olive branch', the color olive suggests deceit and treachery, blaming others for its problems",
           "However there is also a strength of character with it that can overcome adversity to develop an understanding and caring of the feelings of others"
         ],
-        "rgb": [128, 128, 0]
+        "rgb": { "R": 128, "G": 128, "B": 0 }
       },
       "yellow_green": {
         "description": [
           "This color green suggests cowardice, conflict and fear"
         ],
-        "rgb": [154, 205, 50]
+        "rgb": { "R": 154, "G": 205, "B": 50 }
       },
       "grass_green": {
         "description": [
           "Grass green is the color of money",
           "It is self-confident and secure, natural and healthy, occurring in abundance in nature"
         ],
-        "rgb": [124, 252, 0]
+        "rgb": { "R": 124, "G": 252, "B": 0 }
       }
     }
   },
@@ -370,28 +370,28 @@
           "Sky blue suggests freedom, imagination and inspiration",
           "It is uplifting and serene"
         ],
-        "rgb": [135, 206, 235]
+        "rgb": { "R": 135, "G": 206, "B": 235 }
       },
       "navy_blue": {
         "description": [
           "Navy blue is strong and reliable",
           "It denotes authority and trust"
         ],
-        "rgb": [0, 0, 128]
+        "rgb": { "R": 0, "G": 0, "B": 128 }
       },
       "royal_blue": {
         "description": [
           "Royal blue conveys richness and importance",
           "It is elegant and sophisticated"
         ],
-        "rgb": [65, 105, 225]
+        "rgb": { "R": 65, "G": 105, "B": 225 }
       },
       "powder_blue": {
         "description": [
           "Powder blue is gentle and calming",
           "It can evoke nostalgia and softness"
         ],
-        "rgb": [176, 224, 230]
+        "rgb": { "R": 176, "G": 224, "B": 230 }
       }
     }
   },
@@ -424,14 +424,14 @@
           "Dark indigo suggests depth and sophistication",
           "It is mysterious and powerful"
         ],
-        "rgb": [75, 0, 130]
+        "rgb": { "R": 75, "G": 0, "B": 130 }
       },
       "indigo_blue": {
         "description": [
           "Indigo blue combines calm blue with mystical purple",
           "It is thoughtful and introspective"
         ],
-        "rgb": [54, 0, 115]
+        "rgb": { "R": 54, "G": 0, "B": 115 }
       }
     }
   },
@@ -469,21 +469,21 @@
           "Lavender is soft and soothing",
           "It suggests youthfulness and tranquility"
         ],
-        "rgb": [230, 230, 250]
+        "rgb": { "R": 230, "G": 230, "B": 250 }
       },
       "violet": {
         "description": [
           "Violet is deep and rich",
           "It conveys luxury and ambition"
         ],
-        "rgb": [138, 43, 226]
+        "rgb": { "R": 138, "G": 43, "B": 226 }
       },
       "plum": {
         "description": [
           "Plum is rich and sophisticated",
           "It suggests mystery and creativity"
         ],
-        "rgb": [142, 69, 133]
+        "rgb": { "R": 142, "G": 69, "B": 133 }
       }
     }
   },
@@ -513,14 +513,14 @@
           "Aqua is light and refreshing",
           "It promotes emotional healing and protection"
         ],
-        "rgb": [127, 255, 212]
+        "rgb": { "R": 127, "G": 255, "B": 212 }
       },
       "teal": {
         "description": [
           "Teal is deep and sophisticated",
           "It suggests balance and rejuvenation"
         ],
-        "rgb": [0, 128, 128]
+        "rgb": { "R": 0, "G": 128, "B": 128 }
       }
     }
   },
@@ -551,21 +551,21 @@
           "Baby pink is soft and gentle",
           "It suggests innocence and sweetness"
         ],
-        "rgb": [255, 182, 193]
+        "rgb": { "R": 255, "G": 182, "B": 193 }
       },
       "hot_pink": {
         "description": [
           "Hot pink is vibrant and energetic",
           "It conveys passion and playfulness"
         ],
-        "rgb": [255, 105, 180]
+        "rgb": { "R": 255, "G": 105, "B": 180 }
       },
       "rose": {
         "description": [
           "Rose is romantic and elegant",
           "It evokes warmth and comfort"
         ],
-        "rgb": [255, 0, 127]
+        "rgb": { "R": 255, "G": 0, "B": 127 }
       }
     }
   },
@@ -595,14 +595,14 @@
           "Fuchsia is bright and bold",
           "It conveys confidence and energy"
         ],
-        "rgb": [255, 0, 255]
+        "rgb": { "R": 255, "G": 0, "B": 255 }
       },
       "orchid": {
         "description": [
           "Orchid is soft and elegant",
           "It suggests charm and mystery"
         ],
-        "rgb": [218, 112, 214]
+        "rgb": { "R": 218, "G": 112, "B": 214 }
       }
     }
   },
@@ -638,21 +638,21 @@
           "Tan is light and natural",
           "It suggests simplicity and calmness"
         ],
-        "rgb": [210, 180, 140]
+        "rgb": { "R": 210, "G": 180, "B": 140 }
       },
       "chocolate": {
         "description": [
           "Chocolate is rich and warm",
           "It evokes comfort and security"
         ],
-        "rgb": [123, 63, 0]
+        "rgb": { "R": 123, "G": 63, "B": 0 }
       },
       "umber": {
         "description": [
           "Umber is dark and earthy",
           "It suggests strength and reliability"
         ],
-        "rgb": [99, 81, 71]
+        "rgb": { "R": 99, "G": 81, "B": 71 }
       }
     }
   },
@@ -682,21 +682,21 @@
           "Light gray is soft and neutral",
           "It suggests calmness and balance"
         ],
-        "rgb": [211, 211, 211]
+        "rgb": { "R": 211, "G": 211, "B": 211 }
       },
       "slate_gray": {
         "description": [
           "Slate gray is strong and serious",
           "It evokes professionalism and formality"
         ],
-        "rgb": [112, 128, 144]
+        "rgb": { "R": 112, "G": 128, "B": 144 }
       },
       "charcoal_gray": {
         "description": [
           "Charcoal gray is deep and sophisticated",
           "It suggests power and elegance"
         ],
-        "rgb": [54, 69, 79]
+        "rgb": { "R": 54, "G": 69, "B": 79 }
       }
     }
   },
@@ -726,14 +726,14 @@
           "Jet black is pure and intense",
           "It suggests strength and formality"
         ],
-        "rgb": [0, 0, 0]
+        "rgb": { "R": 0, "G": 0, "B": 0 }
       },
       "charcoal_black": {
         "description": [
           "Charcoal black is softer and muted",
           "It conveys seriousness and depth"
         ],
-        "rgb": [54, 69, 79]
+        "rgb": { "R": 54, "G": 69, "B": 79 }
       }
     }
   },
@@ -757,14 +757,14 @@
           "Ivory is warm and soft",
           "It suggests elegance and calmness"
         ],
-        "rgb": [255, 255, 240]
+        "rgb": { "R": 255, "G": 255, "B": 240 }
       },
       "snow_white": {
         "description": [
           "Snow white is bright and pure",
           "It evokes freshness and clarity"
         ],
-        "rgb": [255, 250, 250]
+        "rgb": { "R": 255, "G": 250, "B": 250 }
       }
     }
   },
@@ -794,14 +794,14 @@
           "Light silver is bright and reflective",
           "It suggests clarity and innovation"
         ],
-        "rgb": [192, 192, 192]
+        "rgb": { "R": 192, "G": 192, "B": 192 }
       },
       "dark_silver": {
         "description": [
           "Dark silver is rich and elegant",
           "It conveys sophistication and depth"
         ],
-        "rgb": [169, 169, 169]
+        "rgb": { "R": 169, "G": 169, "B": 169 }
       }
     }
   },
@@ -825,14 +825,14 @@
           "Light gold is bright and radiant",
           "It suggests positivity and wealth"
         ],
-        "rgb": [255, 215, 0]
+        "rgb": { "R": 255, "G": 215, "B": 0 }
       },
       "dark_gold": {
         "description": [
           "Dark gold is deep and rich",
           "It conveys luxury and sophistication"
         ],
-        "rgb": [184, 134, 11]
+        "rgb": { "R": 184, "G": 134, "B": 11 }
       }
     }
   }

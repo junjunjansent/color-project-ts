@@ -58,8 +58,11 @@ const ColourAnalysis = () => {
       {colourData?.name?.exact_match_name ? (
         <></>
       ) : (
-        <>
-          <p>Closest Named Colour: </p>
+        <div>
+          <p>
+            Not all colours are named! but you can find the closest named colour
+            here:{" "}
+          </p>
           <button
             onClick={() =>
               handleSelectedColourAnalysis(colourData?.name?.closest_named_hex)
@@ -67,7 +70,7 @@ const ColourAnalysis = () => {
           >
             {colourData?.name?.closest_named_hex}
           </button>
-        </>
+        </div>
       )}
     </>
   );

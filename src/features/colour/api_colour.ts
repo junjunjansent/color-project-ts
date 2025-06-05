@@ -38,61 +38,6 @@ const show = async (rgb: RGB, colourSchemes: readonly ColourScheme[]) => {
   }
 };
 
-//   const seedResult = fetch(seedUrl)
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error(`HTTP Status: ${response.status}`);
-//       }
-//       return response.json();
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//       return null;
-//     });
-
-//   fullResult.push({ Seed: seedResult });
-
-//   for (const colourScheme of colourSchemes) {
-//     const url = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}&mode=${colourScheme.name}`;
-
-//     const result = fetch(url)
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error(`HTTP Status: ${response.status}`);
-//         }
-//         return response.json();
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//         return null;
-//       });
-
-//     fullResult.push({ [colourScheme.label]: result });
-//   }
-
-//   return fullResult;
-// };
-
-// const show = async (rgb: RGB, colourSchemes: readonly ColourScheme[]) => {
-//     //rgbString must be in the format "(xx,xx,xx)"
-//     const RGBstring = stringifyRGB(rgb);
-//     const schemeColourCount = 6;
-
-//     const url = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}&mode=${colourSchemes[0].name}`;
-
-//     return fetch(url)
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error(`HTTP Status: ${response.status}`);
-//         }
-//         return response.json();
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//         return null;
-//       });
-//   };
-
 // const result = await show({ R: 21, G: 5, B: 0 });
 // console.log(result);
 

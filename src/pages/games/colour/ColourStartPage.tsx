@@ -125,8 +125,9 @@ const ColourStartPage = () => {
               // onChange={handleColourInput}
             />
           </label>
-          <button>Let's go</button>
+          <button type="submit">Let's go</button>
         </form>
+
         <button onClick={handleRandomiseColourAnalysis}>Randomise</button>
         <button>
           {/* TODO Explore this feature */}

@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router";
 import { PATHS } from "../../../routes/paths";
+import { useState } from "react";
 
 // - [ ] As a user, I will see a Colour Game Start Page, with information on colour theory and brief information on the fe`atures available
 // - Basic intro on Colour Theory
@@ -14,7 +15,11 @@ import { PATHS } from "../../../routes/paths";
 //   - Random Colour
 //   - Levelled one (future)
 
+const randomiseRGBInput = () => {};
+
 const ColourStartPage = () => {
+  const [colourToAnalyse, setColourToAnalyse] = useState<String>("");
+
   return (
     <>
       <h1>Colour Game</h1>
@@ -84,10 +89,15 @@ const ColourStartPage = () => {
           in designs :)
         </p>
         <Link to={PATHS.GAME.COLOUR.COLOUR_ID("")}>
-          <button>Input</button>
+          <form action="">
+            <label>
+              <input type="color" name="colourToAnalyse" value="" />
+            </label>
+            <button>Let's go</button>
+          </form>
         </Link>
         <Link to={PATHS.GAME.COLOUR.COLOUR_ID("")}>
-          <button>Randomise</button>
+          <button onClick={randomiseRGBInput}>Randomise</button>
         </Link>
         <button>
           {/* TODO Explore this feature */}

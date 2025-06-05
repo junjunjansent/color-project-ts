@@ -9,20 +9,20 @@ const show = async (rgb: RGB) => {
   const schemeColourCount = 6;
   const url = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}`;
 
-  fetch(url)
+  return fetch(url)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP Status: ${response.status}`);
       }
       return response.json();
     })
-    .then((data) => console.log(data))
     .catch((error) => {
       console.log(error);
       return null;
     });
 };
 
-console.log(show({ R: 0, G: 0, B: 0 }));
+const result = await show({ R: 21, G: 5, B: 0 });
+console.log(result);
 
 export { show };

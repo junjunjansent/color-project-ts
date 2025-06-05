@@ -15,6 +15,7 @@ interface ColourEmotionsCmpntProp {
 const ColourEmotionsCmpnt = ({ id, colourData }: ColourEmotionsCmpntProp) => {
   // define Hooks
   const [loading, setLoading] = useState<boolean>(true);
+  log(id);
 
   useEffect(() => {
     setLoading(false);

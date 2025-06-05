@@ -1,26 +1,97 @@
-import type { RGB } from "./colourData";
-import { stringifyRGB } from "./colourData";
+import type { RGB, ColourScheme } from "./colourConstants";
+import { stringifyRGB } from "./colourRGBHandler";
 
 const BASE_COLOUR_URL = "https://www.thecolorapi.com/";
 
-const show = async (rgb: RGB) => {
+const fetchJson = async (url: string) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`HTTP Status: ${res.status}`);
+  }
+  return res.json();
+};
+
+const show = async (rgb: RGB, colourSchemes: readonly ColourScheme[]) => {
   //rgbString must be in the format "(xx,xx,xx)"
   const RGBstring = stringifyRGB(rgb);
   const schemeColourCount = 6;
-  const url = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}`;
 
-  return fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      console.log(error);
-      return null;
-    });
+  // obtain seed Object as the Promise, start promise, handle errors later
+  const colourSeedUrl = `${BASE_COLOUR_URL}id?rgb=rgb${RGBstring}`;
+  const colourSeedPromise = fetchJson(colourSeedUrl);
+
+  // obtain list of colour scheme Objects as Promises
+  const colourSchemePromises = colourSchemes.map((colourScheme) => {
+    const colourSchemeUrl = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}&mode=${colourScheme.name}`;
+    return fetchJson(colourSchemeUrl);
+  });
+
+  // promise all clean up and error
+  try {
+    const [seedPromiseResult, ...promiseResults] = await Promise.all([
+      colourSeedPromise,
+      ...colourSchemePromises,
+    ]);
+    return { ...seedPromiseResult, schemes: promiseResults };
+  } catch (error) {
+    console.log(error);
+  }
 };
+
+//   const seedResult = fetch(seedUrl)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error(`HTTP Status: ${response.status}`);
+//       }
+//       return response.json();
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       return null;
+//     });
+
+//   fullResult.push({ Seed: seedResult });
+
+//   for (const colourScheme of colourSchemes) {
+//     const url = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}&mode=${colourScheme.name}`;
+
+//     const result = fetch(url)
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error(`HTTP Status: ${response.status}`);
+//         }
+//         return response.json();
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//         return null;
+//       });
+
+//     fullResult.push({ [colourScheme.label]: result });
+//   }
+
+//   return fullResult;
+// };
+
+// const show = async (rgb: RGB, colourSchemes: readonly ColourScheme[]) => {
+//     //rgbString must be in the format "(xx,xx,xx)"
+//     const RGBstring = stringifyRGB(rgb);
+//     const schemeColourCount = 6;
+
+//     const url = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}&mode=${colourSchemes[0].name}`;
+
+//     return fetch(url)
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error(`HTTP Status: ${response.status}`);
+//         }
+//         return response.json();
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//         return null;
+//       });
+//   };
 
 // const result = await show({ R: 21, G: 5, B: 0 });
 // console.log(result);

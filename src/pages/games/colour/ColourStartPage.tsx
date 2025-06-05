@@ -5,7 +5,7 @@ import {
   randomiseRGB,
   urlifyRGB,
   convertHEXtoRGB,
-} from "../../../features/colour/colourData";
+} from "../../../features/colour/colourRGBHandler";
 
 import debug from "debug";
 const log = debug("colours:pages/game/colour/ColourStartPage");
@@ -34,7 +34,7 @@ const ColourStartPage = () => {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData);
 
-    console.log(data.colourToAnalyse);
+    log(data.colourToAnalyse);
     const rgb = convertHEXtoRGB(data.colourToAnalyse as string); //TODO type guard
     const rgbUrl = urlifyRGB(rgb);
     navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
@@ -79,7 +79,7 @@ const ColourStartPage = () => {
           (intensity), and value (lightness or darkness). They are also grouped
           as warm (reds, oranges) or cool (blues, greens), helping us understand
           and use them better. Some methods include their colour proportions
-          (e.g. RGB, RYB, CMY), HSV (Hue, Saturation, Value), and Hex
+          (e.g. RGB, RYB, CMY), HSL (Hue, Saturation, Lightness), and Hex
           (hexademical) colour.
         </p>
       </div>

@@ -1,4 +1,4 @@
-const Loading = () => {
+const Loader = () => {
   return (
     <>
       <h1>Loading</h1>
@@ -6,4 +6,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default Loader;

@@ -43,7 +43,7 @@ HomePage
 
 - Colour Analysis (/game/colour/:id)
 
-  - [ ] As a user, with the selected colour, I will be able to see details of the selected colour (GET, API)
+  - [x] As a user, with the selected colour, I will be able to see details of the selected colour (GET, API)
     - RGB value, id
     - Name & picture
     - See if got proportion of RGBW, RYBW, CMYK
@@ -65,7 +65,7 @@ HomePage
     - analogic-complement
     - triad
     - quad
-  - [ ] As a user, i can also select the sub colours inside each theme, that would navigate to their colour analysis page
+  - [x] As a user, i can also select the sub colours inside each theme, that would navigate to their colour analysis page
 
 - Colour Game (/game/colour/match/)
   - [ ] As a user, I will be able to see a command bar that allows me to understand how the game works

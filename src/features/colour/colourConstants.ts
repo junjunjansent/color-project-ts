@@ -1,4 +1,4 @@
-export const colourSchemes = [
+export const colourSchemeList = [
   { name: "monochrome", label: "Monochrome" },
   { name: "monochrome-dark", label: "Monochrome Dark" },
   { name: "monochrome-light", label: "Monochrome Light" },
@@ -13,7 +13,8 @@ export const RGBUrlRegex = /^\d{1,3}-\d{1,3}-\d{1,3}$/;
 
 export type RGB = { R: number; G: number; B: number };
 
-export type ColourScheme = (typeof colourSchemes)[number];
+// [number] tells me that this is the type of any item in the array, i.e. union of all of them
+export type ColourSchemeList = (typeof colourSchemeList)[number];
 
 export type ColourData = ColourAPI & { schemes: ColourSchemeAPI[] };
 
@@ -70,7 +71,7 @@ type ColourAPI = {
   [key: string]: unknown;
 };
 
-type ColourSchemeAPI = {
+export type ColourSchemeAPI = {
   mode: string;
   count: number;
   colors: ColourAPI[];

@@ -5,19 +5,26 @@ import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import {
   RGBUrlRegex,
-  colourSchemes,
+  colourSchemeList,
   type ColourData,
+  type ColourSchemeAPI,
 } from "../../../features/colour/colourConstants";
+import { handleSelectedColourToNavigate } from "../../../routes/navigateHandlers";
 import {
   RGBifyUrl,
-  convertHEXtoRGB,
-  urlifyRGB,
+  // convertHEXtoRGB,
+  // urlifyRGB,
 } from "../../../features/colour/colourRGBHandler";
 import * as api_colour from "../../../features/colour/api_colour";
-import * as api_airtableColour from "../../../features/colour/api_airtableColour";
-import { PATHS } from "../../../routes/paths";
+
 import ErrorPage from "../../../components/ErrorPage";
 import Loader from "../../../components/Loader";
+import ColourNameCmpnt from "../../../components/colour/ColourNameCmpnt";
+
+interface ColourSchemeDetails {
+  name: string;
+  hexColours: string[];
+}
 
 const ColourAnalysis = () => {
   // get details of site
@@ -29,101 +36,78 @@ const ColourAnalysis = () => {
 
   // define states
   const [colourData, setColourData] = useState<ColourData>();
-  const [isSavedColour, setIsSavedColour] = useState<boolean>(false);
+  const [colourScheme, setColourScheme] = useState<ColourSchemeDetails>();
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
-  const handleSelectedColourAnalysis = (hex: string = "#000000") => {
-    const rgb = convertHEXtoRGB(hex); //TODO type guard
-    const rgbUrl = urlifyRGB(rgb);
-    navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
-  };
-
-  const handleSaveToList = async () => {
-    //TODO: explore react-toastify
-    // saved - navigate function & ignore
-    // show a notification
-    log("Saving Colour");
-
-    const cleanedColourData = {
-      fields: {
-        colourId: id,
-        hex: colourData?.hex.value ?? "",
-        name: colourData?.name?.exact_match_name ? colourData.name.value : "",
-      },
+  const handleSelectedColourScheme = (scheme: ColourSchemeAPI) => {
+    const cleanedColourScheme = {
+      name: scheme.mode,
+      hexColours: scheme.colors.map((color) => color.hex.value),
     };
-
-    await api_airtableColour.create(cleanedColourData);
-    setIsSavedColour(true);
+    setColourScheme(cleanedColourScheme);
+    log(cleanedColourScheme);
   };
 
   useEffect(() => {
-    const fetchColourDatas = async () => {
-      const newColourData = await api_colour.show(rgb, colourSchemes);
-      setColourData(newColourData);
-    };
-
-    const checkSavedColour = async () => {
-      const savedColourList = await api_airtableColour.index();
-      setIsSavedColour(
-        savedColourList.some(
-          (savedColour: api_airtableColour.AirtableColourListField) =>
-            savedColour.colourId === id
-        )
-      );
-    };
-
-    const renderPromises = async () => {
+    const loadColourDatas = async () => {
       setLoading(true);
-      await Promise.all([fetchColourDatas(), checkSavedColour()]);
+      // fetch data
+      const newColourData = await api_colour.show(rgb, colourSchemeList);
+      setColourData(newColourData);
+
+      // initialise theme if it exists
+      if (newColourData?.schemes?.[0]) {
+        handleSelectedColourScheme(newColourData.schemes[0]);
+      }
       setLoading(false);
     };
 
-    renderPromises();
+    loadColourDatas();
     // log(colourData);
   }, [id]);
 
-  const colourNameSection = (
-    <>
-      <img
-        src={
-          colourData?.name?.exact_match_name
-            ? colourData?.image?.named
-            : colourData?.image?.bare
-        }
-        alt=""
-      />
-      <h3>
-        <strong>Name: </strong>
+  // const colourNameSection = (
+  //   <>
+  //     <img
+  //       src={
+  //         colourData?.name?.exact_match_name
+  //           ? colourData?.image?.named
+  //           : colourData?.image?.bare
+  //       }
+  //       alt=""
+  //     />
+  //     <h3>
+  //       <strong>Name: </strong>
 
-        {colourData?.name?.exact_match_name
-          ? colourData?.name?.value
-          : "Unnamed"}
-      </h3>
+  //       {colourData?.name?.exact_match_name
+  //         ? colourData?.name?.value
+  //         : "Unnamed"}
+  //     </h3>
 
-      {isSavedColour ? (
-        <button>Saved</button>
-      ) : (
-        <button onClick={handleSaveToList}>Save Colour :)</button>
-      )}
+  //     {isSavedColour ? (
+  //       <button>Saved</button>
+  //     ) : (
+  //       <button onClick={handleSaveToList}>Save Colour :)</button>
+  //     )}
 
-      {colourData?.name?.exact_match_name || (
-        <div>
-          <p>
-            Not all colours are named! but you can find the closest named colour
-            here:{" "}
-          </p>
-          <button
-            onClick={() =>
-              handleSelectedColourAnalysis(colourData?.name?.closest_named_hex)
-            }
-          >
-            {colourData?.name?.closest_named_hex}
-          </button>
-        </div>
-      )}
-    </>
-  );
+  //     {colourData?.name?.exact_match_name || (
+  //       <div>
+  //         <p>
+  //           Not all colours are named! but you can find the closest named colour
+  //           here:{" "}
+  //         </p>
+  //         <button
+  //           onClick={() =>
+  //             handleSelectedColourAnalysis(colourData?.name?.closest_named_hex)
+  //           }
+  //         >
+  //           {colourData?.name?.closest_named_hex}
+  //         </button>
+  //       </div>
+  //     )}
+  //   </>
+  // );
 
   // Loader
   if (loading) {
@@ -133,7 +117,10 @@ const ColourAnalysis = () => {
   return (
     <>
       <h1>Colour Analysis</h1>
-      <section>{colourNameSection}</section>
+      {/* <section>{colourNameSection}</section> */}
+      <section>
+        <ColourNameCmpnt id={id} colourData={colourData} />
+      </section>
 
       <section>
         <h4>Categorisation</h4>
@@ -157,17 +144,21 @@ const ColourAnalysis = () => {
 
       <section>
         <h4>Themes</h4>
+        <h6>Current Theme: {colourScheme?.name ?? ""}</h6>
         {colourData?.schemes.map((scheme, indexScheme) => {
           return (
             <article key={indexScheme}>
               <h5>{scheme.mode}</h5>
+              <button onClick={() => handleSelectedColourScheme(scheme)}>
+                See Theme
+              </button>
               {scheme.colors.map((color, indexColour) => {
                 return (
                   <button
                     key={indexColour}
                     style={{ backgroundColor: color.hex.value }}
                     onClick={() =>
-                      handleSelectedColourAnalysis(color.hex.value)
+                      handleSelectedColourToNavigate(color.hex.value, navigate)
                     }
                   >
                     {color.rgb.value}
@@ -180,6 +171,8 @@ const ColourAnalysis = () => {
           );
         })}
       </section>
+
+      <section></section>
 
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}
     </>

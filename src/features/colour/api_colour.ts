@@ -3,6 +3,8 @@ import { stringifyRGB } from "./colourRGBHandler";
 
 const BASE_COLOUR_URL = "https://www.thecolorapi.com/";
 
+// ----------- Function Definitions
+
 const fetchJson = async (url: string) => {
   const res = await fetch(url);
   if (!res.ok) {

@@ -1,3 +1,4 @@
+// ----------- Constants
 export const colourSchemeList = [
   { name: "monochrome", label: "Monochrome" },
   { name: "monochrome-dark", label: "Monochrome Dark" },
@@ -10,6 +11,8 @@ export const colourSchemeList = [
 ] as const;
 
 export const RGBUrlRegex = /^\d{1,3}-\d{1,3}-\d{1,3}$/;
+
+// ----------- Types
 
 export type RGB = { R: number; G: number; B: number };
 

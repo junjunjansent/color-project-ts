@@ -54,7 +54,7 @@ const ColourNameCmpnt = ({ id, colourData }: ColourNameCmpntProp) => {
     checkSavedColour();
   }, []);
 
-  // Loader
+  // Loader & Error
   if (!colourData) {
     return <ErrorPage />;
   } else if (loading) {

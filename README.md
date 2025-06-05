@@ -44,10 +44,11 @@ HomePage
     - Potentially via Pop up boxes:
       - Colour & how their meaning is derived
       - Importance of Colour Schemes
-  - [ ] As a user, I will be able to to choose between two options on the start page
+  - [x] As a user, I will be able to to choose between two options on the start page
     - Choosing Colour Analysis
       - Colour of choice via input
       - Random generated colour
+      - Saved Colours
     - Playing Colour Game
       - Random Colour
       - Levelled one (future)
@@ -60,6 +61,8 @@ HomePage
     - See if got proportion of RGBW, RYBW, CMYK
     - Hex, HSV, HSL, CMYK
     - Complementary Colour
+  - [x] As a user, I will be given the option to Save Colours that I may like to view them again in the future.
+  - [x] As a user, I will be informed if the colour I have found has already been selected.
   - [ ] As a user, with the selected colour, closest match of a certain set of colours will be shown that will explain the emotion association [hard coded]
   - [ ] As a user, I will be given a list of themes where I can select them to transform the current page into the colour style I am looking at
     - ?? each theme has 6 colours:

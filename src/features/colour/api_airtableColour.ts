@@ -19,7 +19,7 @@ interface AirtableColourListRecord {
   fields: AirtableColourListField;
 }
 
-// function definitions
+// ---------- function definitions
 
 const fetchJson = async (
   url: string,

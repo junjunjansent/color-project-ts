@@ -66,9 +66,9 @@ const ColourList = () => {
             style={{ backgroundColor: savedColour.hex }}
           >
             <div>
-              rgb{stringifyRGB(RGBifyUrl(savedColour.colourId))} <br />
-              {savedColour.hex} <br />
-              {savedColour.name ?? ""}{" "}
+              <p>rgb{stringifyRGB(RGBifyUrl(savedColour.colourId))} </p>
+              <p>{savedColour.hex}</p>
+              <p>{savedColour.name ?? ""}</p>
             </div>
             <button
               onClick={() =>

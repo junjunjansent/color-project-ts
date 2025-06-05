@@ -20,6 +20,7 @@ import * as api_colour from "../../../features/colour/api_colour";
 import ErrorPage from "../../../components/ErrorPage";
 import Loader from "../../../components/Loader";
 import ColourNameCmpnt from "../../../components/colour/ColourNameCmpnt";
+import ColourEmotionsCmpnt from "../../../components/colour/ColourEmotionsCmpnt";
 
 interface ColourSchemeDetails {
   name: string;
@@ -172,7 +173,9 @@ const ColourAnalysis = () => {
         })}
       </section>
 
-      <section></section>
+      <section>
+        <ColourEmotionsCmpnt id={id} colourData={colourData} />
+      </section>
 
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}
     </>

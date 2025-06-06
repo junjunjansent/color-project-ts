@@ -1,3 +1,4 @@
+import colourEmotionsData from "./colourEmotionsData.json";
 import type { RGB } from "./colourConstants";
 
 const randomiseRGB = () => {
@@ -56,7 +57,7 @@ const convertHEXtoRGB = (hex: string): RGB => {
   return { R: RValue, G: GValue, B: BValue };
 };
 
-const findNearestEmotion = () => {};
+const findNearestEmotion = (rgb: RGB) => {};
 
 export {
   randomiseRGB,

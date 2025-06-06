@@ -73,13 +73,13 @@ const ColourNameCmpnt = ({ id, colourData }: ColourNameCmpntProp) => {
         }
         alt=""
       />
-      <h3>
+      <h2>
         <strong>Name: </strong>
 
         {colourData?.name?.exact_match_name
           ? colourData?.name?.value
           : "Unnamed"}
-      </h3>
+      </h2>
 
       {isSavedColour ? (
         <button>Saved</button>

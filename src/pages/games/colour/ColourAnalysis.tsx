@@ -124,7 +124,7 @@ const ColourAnalysis = () => {
       </section>
 
       <section>
-        <h4>Categorisation</h4>
+        <h3>Categorisation</h3>
         <p>
           <strong>Hex: </strong>
           {colourData?.hex?.value}
@@ -144,7 +144,7 @@ const ColourAnalysis = () => {
       </section>
 
       <section>
-        <h4>Themes</h4>
+        <h3>Themes</h3>
         <h6>Current Theme: {colourScheme?.name ?? ""}</h6>
         {colourData?.schemes.map((scheme, indexScheme) => {
           return (

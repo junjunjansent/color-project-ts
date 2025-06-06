@@ -33,7 +33,7 @@ const ColourEmotionsCmpnt = ({ id, colourData }: ColourEmotionsCmpntProp) => {
   }
   return (
     <>
-      <h4>Colour Emotions</h4>
+      <h3>Colour Emotions</h3>
       <p>
         Different colours elicit different emotions and how you experience these
         colours would be shaped by the culture you grew up in, as well as how

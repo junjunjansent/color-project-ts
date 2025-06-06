@@ -43,12 +43,7 @@ const ColourStartPage = () => {
         I chose this little project because I found it fascinating that
         theoretically, all colours on the colour wheel can be generated with the
         base primary colours. In order to test my CSS and advance my knowledge
-        on colour theory, I built this lil game :) Note the emotions were
-        derived from{" "}
-        <a href="https://www.empower-yourself-with-color-psychology.com/meaning-of-colors.html">
-          this website
-        </a>
-        .
+        on colour theory, I built this lil game :).
       </p>
 
       <h3>Just a lil Colour Theory 🎨</h3>

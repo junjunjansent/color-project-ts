@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 import type { ColourData } from "../../features/colour/colourConstants";
 import ErrorPage from "../ErrorPage";
 import Loader from "../Loader";
+import {
+  RGBifyUrl,
+  stringifyRGB,
+} from "../../features/colour/colourRGBHandler";
 
 interface ColourEmotionsCmpntProp {
   id: string;
@@ -15,7 +19,7 @@ interface ColourEmotionsCmpntProp {
 const ColourEmotionsCmpnt = ({ id, colourData }: ColourEmotionsCmpntProp) => {
   // define Hooks
   const [loading, setLoading] = useState<boolean>(true);
-  log(id);
+  log(stringifyRGB(RGBifyUrl(id)));
 
   useEffect(() => {
     setLoading(false);
@@ -30,8 +34,20 @@ const ColourEmotionsCmpnt = ({ id, colourData }: ColourEmotionsCmpntProp) => {
   return (
     <>
       <h4>Colour Emotions</h4>
+      <p>
+        Different colours elicit different emotions and how you experience these
+        colours would be shaped by the culture you grew up in, as well as how
+        you previously felt when interacting with objects around you. Based on
+        the colour selected, the closest colour variations have been picked to
+        give you some information on this choice. Note these were derived from{" "}
+        <a href="https://www.empower-yourself-with-color-psychology.com/meaning-of-colors.html">
+          this website
+        </a>
+        .
+      </p>
+
       <article style={{ backgroundColor: "#000000" }}>
-        <h5>Closest Variation: {}</h5>
+        <h5>Closest Variation with Emotions Data: {}</h5>
         <div>
           <p>{/* rgb value */}</p>
           <p>{/* hex value */}</p>
@@ -49,6 +65,13 @@ const ColourEmotionsCmpnt = ({ id, colourData }: ColourEmotionsCmpntProp) => {
 
       <article>
         <h5>Overarching Colour & Associated Emotions</h5>
+        <p> Out of 16 main colours, your colour is most associated to : {}</p>
+        <p>
+          <small>
+            Red, Orange, Yellow, Green, Blue, Indigo, Purple, Turquoise, Pink,
+            Magenta, Brown, Gray, Black, White, Silver, Gold.
+          </small>
+        </p>
         <div>
           <p>{/* rgb value */}</p>
           <p>{/* hex value */}</p>

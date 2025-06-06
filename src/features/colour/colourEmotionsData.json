@@ -1,6 +1,7 @@
 [
   {
-    "name": "red",
+    "name": "Red",
+    "rgb": { "R": "255", "G": "0", "B": "0" },
     "traits": {
       "positive": [
         "Action",
@@ -123,8 +124,38 @@
     ]
   },
   {
-    "name": "orange",
-    "traits": {},
+    "name": "Orange",
+    "rgb": { "R": "255", "G": "165", "B": "0" },
+    "traits": {
+      "positive": [
+        "Sociable",
+        "Optimistic",
+        "Enthusiastic",
+        "Cheerful",
+        "Self-confident",
+        "Independent",
+        "Flamboyant",
+        "Extroverted and uninhibited",
+        "Adventurous",
+        "Risk-taker",
+        "Creative flair",
+        "Warm-hearted",
+        "Agreeable",
+        "Informal"
+      ],
+      "negative": [
+        "Superficial",
+        "Insincere",
+        "Dependent",
+        "Overbearing",
+        "Self-indulgent",
+        "Exhibitionist",
+        "Pessimistic",
+        "Inexpensive",
+        "Unsociable",
+        "Overly proud"
+      ]
+    },
     "represents": [
       {
         "label": "Adventure And Risk Taking",
@@ -246,7 +277,8 @@
     ]
   },
   {
-    "name": "yellow",
+    "name": "Yellow",
+    "rgb": { "R": "255", "G": "255", "B": "0" },
     "traits": {
       "positive": [
         "Optimism",
@@ -393,7 +425,8 @@
     ]
   },
   {
-    "name": "green",
+    "name": "Green",
+    "rgb": { "R": "0", "G": "128", "B": "0" },
     "traits": {
       "positive": [
         "Growth and vitality",
@@ -581,7 +614,8 @@
     ]
   },
   {
-    "name": "blue",
+    "name": "Blue",
+    "rgb": { "R": "0", "G": "0", "B": "255" },
     "traits": {
       "positive": [
         "Calm and peace",
@@ -690,7 +724,8 @@
     ]
   },
   {
-    "name": "indigo",
+    "name": "Indigo",
+    "rgb": { "R": "75", "G": "0", "B": "130" },
     "traits": {
       "positive": [
         "Intuition",
@@ -701,12 +736,7 @@
         "Mystery",
         "Integrity"
       ],
-      "negative": [
-        "Intense",
-        "Moody",
-        "Unapproachable",
-        "Secretive"
-      ]
+      "negative": ["Intense", "Moody", "Unapproachable", "Secretive"]
     },
     "represents": [
       {
@@ -766,7 +796,8 @@
     ]
   },
   {
-    "name": "purple",
+    "name": "Purple",
+    "rgb": { "R": "128", "G": "0", "B": "128" },
     "traits": {
       "positive": [
         "Creativity",
@@ -855,7 +886,8 @@
     ]
   },
   {
-    "name": "turquoise",
+    "name": "Turquoise",
+    "rgb": { "R": "64", "G": "224", "B": "208" },
     "traits": {
       "positive": [
         "Calmness",
@@ -864,11 +896,7 @@
         "Balance",
         "Emotional healing"
       ],
-      "negative": [
-        "Coldness",
-        "Detachment",
-        "Indecisiveness"
-      ]
+      "negative": ["Coldness", "Detachment", "Indecisiveness"]
     },
     "represents": [
       {
@@ -924,7 +952,8 @@
     ]
   },
   {
-    "name": "pink",
+    "name": "Pink",
+    "rgb": { "R": "255", "G": "192", "B": "203" },
     "traits": {
       "positive": [
         "Love",
@@ -934,11 +963,7 @@
         "Kindness",
         "Femininity"
       ],
-      "negative": [
-        "Naivety",
-        "Over-sensitivity",
-        "Weakness"
-      ]
+      "negative": ["Naivety", "Over-sensitivity", "Weakness"]
     },
     "represents": [
       {
@@ -1007,7 +1032,8 @@
     ]
   },
   {
-    "name": "magenta",
+    "name": "Magenta",
+    "rgb": { "R": "255", "G": "0", "B": "255" },
     "traits": {
       "positive": [
         "Imagination",
@@ -1016,11 +1042,7 @@
         "Kindness",
         "Transformation"
       ],
-      "negative": [
-        "Impatience",
-        "Aggressiveness",
-        "Emotional instability"
-      ]
+      "negative": ["Impatience", "Aggressiveness", "Emotional instability"]
     },
     "represents": [
       {
@@ -1076,7 +1098,8 @@
     ]
   },
   {
-    "name": "brown",
+    "name": "Brown",
+    "rgb": { "R": "165", "G": "42", "B": "42" },
     "traits": {
       "positive": [
         "Stability",
@@ -1160,7 +1183,8 @@
     ]
   },
   {
-    "name": "gray",
+    "name": "Gray",
+    "rgb": { "R": "128", "G": "128", "B": "128" },
     "traits": {
       "positive": [
         "Neutrality",
@@ -1169,12 +1193,7 @@
         "Practicality",
         "Calmness"
       ],
-      "negative": [
-        "Indecision",
-        "Depression",
-        "Boredom",
-        "Lack of energy"
-      ]
+      "negative": ["Indecision", "Depression", "Boredom", "Lack of energy"]
     },
     "represents": [
       {
@@ -1243,7 +1262,8 @@
     ]
   },
   {
-    "name": "black",
+    "name": "Black",
+    "rgb": { "R": "0", "G": "0", "B": "0" },
     "traits": {
       "positive": [
         "Power",
@@ -1252,13 +1272,7 @@
         "Authority",
         "Mystery"
       ],
-      "negative": [
-        "Fear",
-        "Evil",
-        "Death",
-        "Negativity",
-        "Oppression"
-      ]
+      "negative": ["Fear", "Evil", "Death", "Negativity", "Oppression"]
     },
     "represents": [
       {
@@ -1314,20 +1328,11 @@
     ]
   },
   {
-    "name": "white",
+    "name": "White",
+    "rgb": { "R": "255", "G": "255", "B": "255" },
     "traits": {
-      "positive": [
-        "Purity",
-        "Cleanliness",
-        "Simplicity",
-        "Peace",
-        "Innocence"
-      ],
-      "negative": [
-        "Coldness",
-        "Emptiness",
-        "Sterility"
-      ]
+      "positive": ["Purity", "Cleanliness", "Simplicity", "Peace", "Innocence"],
+      "negative": ["Coldness", "Emptiness", "Sterility"]
     },
     "represents": [
       {
@@ -1383,7 +1388,8 @@
     ]
   },
   {
-    "name": "silver",
+    "name": "Silver",
+    "rgb": { "R": "192", "G": "192", "B": "192" },
     "traits": {
       "positive": [
         "Modernity",
@@ -1392,11 +1398,7 @@
         "Wealth",
         "Futurism"
       ],
-      "negative": [
-        "Coldness",
-        "Aloofness",
-        "Indecision"
-      ]
+      "negative": ["Coldness", "Aloofness", "Indecision"]
     },
     "represents": [
       {
@@ -1452,43 +1454,61 @@
     ]
   },
   {
-    "name": "gold",
+    "name": "Gold",
+    "rgb": { "R": "255", "G": "215", "B": "0" },
     "traits": {
       "positive": [
-        "Wealth",
         "Success",
-        "Luxury",
-        "Warmth",
-        "Optimism"
+        "Abundance",
+        "Wealth",
+        "Understanding",
+        "Self-worth",
+        "Wisdom",
+        "Compassion",
+        "Love",
+        "Passion",
+        "Charisma",
+        "Winning",
+        "Optimistic",
+        "Positive",
+        "Masculine"
       ],
       "negative": [
-        "Greed",
-        "Arrogance",
-        "Materialism"
+        "Fear of success",
+        "Fear of wealth",
+        "Self-centred",
+        "Demanding",
+        "Mean spirited",
+        "Lack of trust",
+        "Falseness"
       ]
     },
     "represents": [
       {
-        "label": "Wealth And Success",
-        "description": "Gold symbolizes wealth, success, and luxury"
+        "label": "Success",
+        "description": "Gold relates to achievement and victory, the winner."
       },
       {
-        "label": "Warmth And Optimism",
-        "description": "It represents warmth and optimism"
+        "label": "Wealth",
+        "description": "Gold implies affluence, material wealth and extravagance."
+      },
+      {
+        "label": "Prestige and Luxury",
+        "description": "Gold is associated with sophistication, elegance, value, quality and status."
       }
     ],
     "effects": [
       {
-        "label": "Evokes Wealth",
-        "description": "Gold evokes feelings of wealth and prestige"
+        "label": "Enlightenment",
+        "description": "Gold, at its highest level, inspires knowledge, spirituality and a deep understanding of the self and the soul."
       },
       {
-        "label": "Promotes Warmth",
-        "description": "It promotes warmth and happiness"
+        "label": "Compassion",
+        "description": "Caring, loving, generous and giving, gold is the benefactor or patron."
       },
       {
-        "label": "Can Feel Arrogant",
-        "description": "Too much gold may feel arrogant or gaudy"
+        "label": "Generosity",
+        "description": "Gold loves to share its wisdom, knowledge and wealth with others."
       }
     ],
     "variations": [

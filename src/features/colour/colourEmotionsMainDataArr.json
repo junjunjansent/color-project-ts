@@ -1,0 +1,1077 @@
+[
+  {
+    "name": "Red",
+    "rgb": { "R": 255, "G": 0, "B": 0 },
+    "traits": {
+      "positive": [
+        "Action",
+        "Energy and speed",
+        "Attention-getting",
+        "Assertive and confident",
+        "Energising",
+        "Stimulating",
+        "Exciting",
+        "Powerful",
+        "Passionate",
+        "Stimulating and driven",
+        "Courageous and strong",
+        "Spontaneous and determined"
+      ],
+      "negative": [
+        "Aggressive and domineering",
+        "Over-bearing",
+        "Tiring",
+        "Angry and quick-tempered",
+        "Ruthless",
+        "Fearful and intolerant",
+        "Rebellious and obstinate",
+        "Resentful",
+        "Violent and brutal"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Energy",
+        "description": "Boosts physical energy levels, increases heart rate and blood pressure, prompts adrenaline release"
+      },
+      {
+        "label": "Action",
+        "description": "Fast moving, promotes need for action and movement"
+      },
+      {
+        "label": "Desire",
+        "description": "Relates to physical desire in all its forms - sexual, appetite, cravings"
+      },
+      {
+        "label": "Passion",
+        "description": "Passionate belief in an issue or undertaking, including love or hate; anger is negative passion"
+      }
+    ],
+    "effects": [
+      {
+        "label": "Stimulating",
+        "description": "Stimulates physical senses, sexual and physical appetite; triggers deeper passions such as sex, love, courage, hatred, revenge"
+      },
+      {
+        "label": "Exciting And Motivating",
+        "description": "Excites emotions and inspires action"
+      },
+      {
+        "label": "Attention Getting",
+        "description": "Demands notice, alerts to danger (e.g., red traffic lights and stop signs)"
+      },
+      {
+        "label": "Assertive And Aggressive",
+        "description": "Associated with assertiveness and aggression (e.g., drivers of red cars feeling aggressive)"
+      }
+    ]
+  },
+  {
+    "name": "Orange",
+    "rgb": { "R": 255, "G": 165, "B": 0 },
+    "traits": {
+      "positive": [
+        "Sociable",
+        "Optimistic",
+        "Enthusiastic",
+        "Cheerful",
+        "Self-confident",
+        "Independent",
+        "Flamboyant",
+        "Extroverted and uninhibited",
+        "Adventurous",
+        "Risk-taker",
+        "Creative flair",
+        "Warm-hearted",
+        "Agreeable and informal"
+      ],
+      "negative": [
+        "Superficial and insincere",
+        "Dependent",
+        "Over-bearing",
+        "Self-indulgent",
+        "Exhibitionist",
+        "Pessimistic",
+        "Inexpensive",
+        "Unsociable",
+        "Overly proud"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Adventure & Risk-Taking",
+        "description": "Promotes physical confidence and enthusiasm; Favored by sportsmen and adventure seekers"
+      },
+      {
+        "label": "Social Communication & Interaction",
+        "description": "Stimulates two-way conversation between people; Ideal for social gatherings and dining rooms"
+      },
+      {
+        "label": "Friendship",
+        "description": "Associated with group socialising and parties; Represents community and togetherness"
+      },
+      {
+        "label": "Divorce",
+        "description": "Symbolises optimism helping people move forward; Encourages forward and outward thinking"
+      }
+    ],
+    "effects": [
+      {
+        "label": "Enthusiasm",
+        "description": "Optimistic and extroverted energy; Represents the uninhibited"
+      },
+      {
+        "label": "Rejuvenation",
+        "description": "Helps restore balance to physical energies; Revitalises and refreshes the spirit"
+      },
+      {
+        "label": "Stimulation",
+        "description": "Stimulates appetite and general energy; Less intense and passionate than red"
+      },
+      {
+        "label": "Courage",
+        "description": "Encourages facing consequences and change; Motivates onward and upward movement"
+      },
+      {
+        "label": "Vitality",
+        "description": "Has balanced and lively energy; Less aggressive than red but full of life"
+      }
+    ]
+  },
+  {
+    "name": "Yellow",
+    "rgb": { "R": 255, "G": 255, "B": 0 },
+    "traits": {
+      "positive": [
+        "Optimism",
+        "Cheerfulness",
+        "Enthusiasm",
+        "Fun",
+        "Good-humored",
+        "Confidence",
+        "Originality",
+        "Creativity",
+        "Challenging",
+        "Academic and analytical",
+        "Wisdom",
+        "Logic"
+      ],
+      "negative": [
+        "Critical and judgmental",
+        "Overly analytical",
+        "Impatient and impulsive",
+        "Egotistical",
+        "Pessimistic",
+        "Inferiority complex",
+        "Spiteful",
+        "Cowardly",
+        "Deceitful",
+        "Non-emotional",
+        "Lacking compassion"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Mind and intellect",
+        "description": "Yellow stimulates mental activity and activates the analytical brain"
+      },
+      {
+        "label": "Happiness and fun",
+        "description": "Uplifts the spirit and encourages confidence and enthusiasm for life"
+      },
+      {
+        "label": "Communication of new ideas",
+        "description": "Relates to the expression and integration of thoughts and innovations"
+      }
+    ],
+    "effects": [
+      {
+        "label": "Creative",
+        "description": "Supports the birth of new ideas and innovative thinking"
+      },
+      {
+        "label": "Quick decisions",
+        "description": "Encourages clear thinking and fast choices but may lead to impulsivity"
+      },
+      {
+        "label": "Anxiety producing",
+        "description": "Its fast vibration can increase agitation and emotional instability"
+      },
+      {
+        "label": "Critical",
+        "description": "Sharpens the analytical mind but can cause judgmental attitudes"
+      },
+      {
+        "label": "Non-emotional",
+        "description": "Associated more with intellectual processing than emotional depth"
+      }
+    ]
+  },
+  {
+    "name": "Green",
+    "rgb": { "R": 0, "G": 128, "B": 0 },
+    "traits": {
+      "positive": [
+        "Growth and vitality",
+        "Renewal and restoration",
+        "Self-reliance",
+        "Reliability and dependability",
+        "Tactful",
+        "Emotionally balanced and calm",
+        "Nature lover",
+        "Family oriented",
+        "Practical and down to earth",
+        "Sympathetic and compassionate",
+        "Nurturing and generous",
+        "Kind and loyal",
+        "High moral sense",
+        "Adaptable",
+        "Encourages social belonging"
+      ],
+      "negative": [
+        "Possessive and materialistic",
+        "Indifferent and over-cautious",
+        "Envious and selfish",
+        "Greedy and miserly",
+        "Devious with money",
+        "Inconsiderate",
+        "Inexperienced",
+        "Hypochondriac",
+        "Do-gooder"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Harmony and balance",
+        "description": "Green balances mental, emotional and physical energies — it's the heart center of the body."
+      },
+      {
+        "label": "Growth",
+        "description": "In nature, green signifies active life and continuous development."
+      },
+      {
+        "label": "Hope",
+        "description": "It embodies optimism and the anticipation of positive outcomes."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Rejuvenating",
+        "description": "Green revitalises us when we're physically, mentally, or emotionally tired."
+      },
+      {
+        "label": "Nurturing",
+        "description": "Encourages nurturing of both others and oneself, thanks to its heart-centered energy."
+      },
+      {
+        "label": "Diplomatic",
+        "description": "Fosters clear thinking and understanding from all perspectives."
+      },
+      {
+        "label": "Possessiveness",
+        "description": "Can create the urge to possess people or things, fostering materialism."
+      },
+      {
+        "label": "Envy",
+        "description": "Negatively associated with jealousy — 'green with envy.'"
+      }
+    ]
+  },
+  {
+    "name": "Blue",
+    "rgb": { "R": 0, "G": 0, "B": 255 },
+    "traits": {
+      "positive": [
+        "Loyalty",
+        "Trust and Integrity",
+        "Tactful",
+        "Reliability and Responsibility",
+        "Conservatism and Perseverance",
+        "Caring and Concern",
+        "Idealistic and Orderly",
+        "Authority",
+        "Devotion and Contemplation",
+        "Peaceful and Calm"
+      ],
+      "negative": [
+        "Rigid",
+        "Deceitful and Spiteful",
+        "Depressed and Sad",
+        "Too Passive",
+        "Self-righteous",
+        "Superstitious and Emotionally Unstable",
+        "Too Conservative and Old-fashioned",
+        "Predictable and Weak",
+        "Unforgiving",
+        "Aloof and Frigid",
+        "Manipulative",
+        "Unfaithful",
+        "Untrustworthy"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Communication",
+        "description": "Blue relates to one-to-one verbal communication and self expression."
+      },
+      {
+        "label": "Peace and Calm",
+        "description": "Induces calm and peace within us, especially the deeper shades."
+      },
+      {
+        "label": "Honesty",
+        "description": "Blue is the colour of truth and sincerity."
+      },
+      {
+        "label": "Authority",
+        "description": "The darker the blue, the greater its sense of authority and confidence."
+      },
+      {
+        "label": "Religion",
+        "description": "Blue is linked to devotion and spiritual reflection."
+      },
+      {
+        "label": "Wisdom",
+        "description": "Enhances intellectual insight and thoughtful reflection."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Conservative",
+        "description": "Blue is the safest and most universally liked colour."
+      },
+      {
+        "label": "Predictable",
+        "description": "Blue avoids impulsiveness and prefers planning and analysis."
+      },
+      {
+        "label": "Orderly",
+        "description": "Blue values structure, direction, and organisation."
+      },
+      {
+        "label": "Rigid",
+        "description": "Prefers familiarity and can resist change, even when it’s beneficial."
+      }
+    ]
+  },
+  {
+    "name": "Indigo",
+    "rgb": { "R": 75, "G": 0, "B": 130 },
+    "traits": {
+      "positive": [
+        "Integrity and Sincerity",
+        "Structure and Regulations",
+        "Highly Responsible",
+        "Idealism",
+        "Obedience",
+        "Highly Intuitive",
+        "Practical Visionary",
+        "Faithful",
+        "Devotion to the Truth",
+        "Selflessness"
+      ],
+      "negative": [
+        "Fanatical",
+        "Judgmental",
+        "Impractical",
+        "Intolerant and Inconsiderate",
+        "Depressed",
+        "Fearful",
+        "Self-righteous",
+        "Conformist",
+        "Addictive",
+        "Bigoted",
+        "Avoiding Conflict"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Intuition",
+        "description": "Use it to assist in accessing intuitive abilities — it is the first step to higher spiritual knowledge."
+      },
+      {
+        "label": "Integrity",
+        "description": "Indigo symbolises deep sincerity and integrity."
+      },
+      {
+        "label": "Structure and Order",
+        "description": "A good colour to use in restructuring aspects of your life or business."
+      },
+      {
+        "label": "Wisdom",
+        "description": "Represents an inner knowingness — spiritual wisdom beyond intellectual understanding."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Introspection",
+        "description": "Promotes deep concentration during introspection and meditation, though it may lead to feeling 'spaced out'."
+      },
+      {
+        "label": "Idealistic",
+        "description": "Fosters an ability to plan for the future with vision and clarity."
+      },
+      {
+        "label": "Addiction",
+        "description": "Can support addictive tendencies and should be avoided when trying to break harmful habits. Associated with fanaticism and workaholism."
+      },
+      {
+        "label": "The Dramatist",
+        "description": "Linked to theatricality and exaggeration — making mountains out of molehills."
+      },
+      {
+        "label": "Conformity",
+        "description": "Encourages adherence to rituals and traditional structures, often tied to the past."
+      }
+    ]
+  },
+  {
+    "name": "Purple",
+    "rgb": { "R": 128, "G": 0, "B": 128 },
+    "traits": {
+      "positive": [
+        "Unusual and Individual",
+        "Creative and Inventive",
+        "Psychic and Intuitive",
+        "Humanitarian",
+        "Selfless and Unlimited",
+        "Mystery",
+        "Fantasy",
+        "The Future"
+      ],
+      "negative": [
+        "Immaturity",
+        "Being Impractical",
+        "Cynical and Aloof",
+        "Pompous and Arrogant",
+        "Fraudulent and Corrupt",
+        "Delusions of Grandeur",
+        "Social Climber"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Inspiration",
+        "description": "Original and sound ideas are created with violet - use it when looking for inspiration during brainstorming sessions."
+      },
+      {
+        "label": "Imagination",
+        "description": "Violet inspires creativity with intellect and stimulates dream activity."
+      },
+      {
+        "label": "Individuality",
+        "description": "Violet is unconventional, individual and original. It hates to copy anyone else and likes to do its own thing."
+      },
+      {
+        "label": "Spirituality",
+        "description": "Violet assists us during prayer and meditation, helping us to get in touch with our deeper subconscious thoughts."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Empathy",
+        "description": "Compassion, kindness and a love of humanity are positive qualities of Violet."
+      },
+      {
+        "label": "Controlled Emotion",
+        "description": "Violet is passionate, like red, but inclined to display it in private only."
+      },
+      {
+        "label": "Respectable & Distinguished",
+        "description": "The darker shades of violet are linked to royalty and wealth."
+      },
+      {
+        "label": "Impractical",
+        "description": "Violet can be impractical, tending to see life as imagined rather than reality."
+      },
+      {
+        "label": "Immature",
+        "description": "Violet can encourage fantasy and idealism that are hard to achieve."
+      },
+      {
+        "label": "Dignity",
+        "description": "Violet exudes a quiet modest dignity appealing to others."
+      },
+      {
+        "label": "Cynical",
+        "description": "Violet can show a negative cynical side."
+      }
+    ]
+  },
+  {
+    "name": "Turquoise",
+    "rgb": { "R": 64, "G": 224, "B": 208 },
+    "traits": {
+      "positive": [
+        "Communication",
+        "Clarity of Thought",
+        "Balance and Harmony",
+        "Idealism",
+        "Calmness",
+        "Creativity",
+        "Compassion",
+        "Healing",
+        "Self-Sufficiency"
+      ],
+      "negative": [
+        "Boastfulness",
+        "Secrecy",
+        "Unreliability",
+        "Reticence",
+        "Fence-Sitting",
+        "Aloofness",
+        "Deception",
+        "Off-Handedness"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Communication",
+        "description": "Turquoise represents open communication from and between the heart and the spoken word. It relates to the electronic age, the world of computers, and large-scale communication."
+      },
+      {
+        "label": "Emotional Control",
+        "description": "Being the mid-colour between the extremes of red and violet, turquoise symbolises balance for emotions, thoughts, and speech."
+      },
+      {
+        "label": "Self-Sufficiency",
+        "description": "Turquoise tunes into its own needs and finds the way to success."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Clarity of Thought",
+        "description": "Enhances focus and concentration, assists with clear thinking, decision-making, and developing good organisational skills."
+      },
+      {
+        "label": "Calming",
+        "description": "Calming yet invigorating, restores depleted energies."
+      },
+      {
+        "label": "Non-Emotional",
+        "description": "Can cause aloofness and hiding of emotional reactions."
+      }
+    ]
+  },
+  {
+    "name": "Pink",
+    "rgb": { "R": 255, "G": 192, "B": 203 },
+    "traits": {
+      "positive": [
+        "Unconditional Love",
+        "Romantic Love",
+        "Compassion",
+        "Understanding",
+        "Nurturing",
+        "Romance",
+        "Warmth",
+        "Hope",
+        "Calming",
+        "Sweetness",
+        "Naiveté",
+        "Feminine",
+        "Intuitive Energy"
+      ],
+      "negative": [
+        "Physically Weak",
+        "Over-Emotional",
+        "Over-Cautious",
+        "Emotional Neediness",
+        "Unrealistic Expectations",
+        "Naive",
+        "Immature",
+        "Girlish",
+        "Lack of Will Power",
+        "Lack of Self Worth"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Unconditional Love",
+        "description": "Pink relates to both unconditional love and romantic love."
+      },
+      {
+        "label": "Compassion",
+        "description": "Empathy and understanding are the fuel for pink's nurturing."
+      },
+      {
+        "label": "Nurturing",
+        "description": "Pink is both the giving and the receiving of love, understanding and respect."
+      },
+      {
+        "label": "Hope",
+        "description": "Pink inspires the possibility of a positive outcome."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Calming",
+        "description": "Pink calms our emotional energies."
+      },
+      {
+        "label": "Non-Threatening",
+        "description": "Pink lacks any aggression or anger, although the deeper pinks can be more assertive and confident."
+      },
+      {
+        "label": "Affectionate",
+        "description": "Pink offers warmth and tenderness to friends and family."
+      },
+      {
+        "label": "Caring",
+        "description": "Sensitivity and tender loving care relate to pink's feminine and intuitive energies."
+      },
+      {
+        "label": "Immature",
+        "description": "Pink is the colour of the sweet young girl, before life's experiences take over."
+      }
+    ]
+  },
+  {
+    "name": "Magenta",
+    "rgb": { "R": 255, "G": 0, "B": 255 },
+    "traits": {
+      "positive": [
+        "Universal Harmony and Love",
+        "Emotional Balance",
+        "Helps Our Spirit Soar",
+        "Spiritual Yet Practical",
+        "Encourages Common Sense",
+        "Loving",
+        "Compassionate",
+        "Supportive",
+        "Kind",
+        "Imaginative",
+        "Innovative",
+        "Creative",
+        "Artistic",
+        "Non-Conformist",
+        "Negotiator"
+      ],
+      "negative": [
+        "Impulsive",
+        "Domineering",
+        "Impatient",
+        "Intolerant",
+        "Avoids Challenges",
+        "Too Relaxing",
+        "Feeling Disconnected to Others",
+        "Can Be Bossy and Demanding"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Universal Harmony",
+        "description": "At its highest level, magenta generates love, caring, kindness and cooperation, encouraging a balanced and harmonious outlook on life."
+      },
+      {
+        "label": "Non-Conformist",
+        "description": "Magenta is the colour of the free spirit—it does not like to be confined and contained."
+      },
+      {
+        "label": "Change and Transformation",
+        "description": "Magenta helps to release old and outdated patterns of behavior to inspire growth and personal development."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Emotional Balance",
+        "description": "Spiritual yet practical, it helps to create emotional, physical and spiritual balance."
+      },
+      {
+        "label": "Compassion",
+        "description": "Gentle and caring in its approach, magenta generates acceptance, tolerance, support and patience."
+      },
+      {
+        "label": "Inspiration",
+        "description": "Magenta inspires cheerfulness and optimism, creativity and innovation, dream activity, positive change and negotiating skills."
+      }
+    ]
+  },
+  {
+    "name": "Brown",
+    "rgb": { "R": 165, "G": 42, "B": 42 },
+    "traits": {
+      "positive": [
+        "Down-to-Earth",
+        "Wholesome",
+        "Practical",
+        "Approachable",
+        "Friendly",
+        "Stable",
+        "Structured",
+        "Supportive",
+        "Comforting",
+        "Reliable",
+        "Protective",
+        "Strength",
+        "Quietly Confident",
+        "Sensual",
+        "Sensitive",
+        "Warm",
+        "Reassured",
+        "Honest",
+        "Sincere",
+        "Quality"
+      ],
+      "negative": [
+        "Dull",
+        "Boring",
+        "Frugal",
+        "Materialistic",
+        "Lack of Humor",
+        "Lack of Sophistication",
+        "Predictable",
+        "Cheap",
+        "Stingy"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Stability",
+        "description": "Reassuring and comforting, earthy and contained."
+      },
+      {
+        "label": "Structure",
+        "description": "It encourages orderliness and organisation."
+      },
+      {
+        "label": "Security",
+        "description": "Safe and protective — a refuge from the chaos of the outside world and a sense of belonging."
+      },
+      {
+        "label": "Natural and Wholesome",
+        "description": "Related to the earth, nutrition, health and goodness."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Comforting",
+        "description": "Sensual and warm, friendly and approachable, brown engulfs one in a feeling of calm and safety."
+      },
+      {
+        "label": "Protective",
+        "description": "Creates a safe haven of support for family and friends."
+      },
+      {
+        "label": "Materialistic",
+        "description": "Brown encourages material security and the accumulation of possessions."
+      }
+    ]
+  },
+  {
+    "name": "Gray",
+    "rgb": { "R": 128, "G": 128, "B": 128 },
+    "traits": {
+      "positive": [
+        "Reliable",
+        "Conservative",
+        "Dignified",
+        "Neutral",
+        "Impartial",
+        "Professional",
+        "Mature",
+        "Intelligent",
+        "Classic",
+        "Solid",
+        "Stable",
+        "Calming",
+        "Subdued",
+        "Reserved",
+        "Elegant",
+        "Formal",
+        "Dependable"
+      ],
+      "negative": [
+        "Indecisive",
+        "Non-Emotional",
+        "Indifferent",
+        "Boring",
+        "Sad",
+        "Depressed",
+        "Lifeless",
+        "Lonely",
+        "Isolated"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Neutrality",
+        "description": "Gray is impartial and dispassionate; it doesn't take sides."
+      },
+      {
+        "label": "Compromise",
+        "description": "Gray is the transition between two non-colours, neither black nor white. It takes the middle ground, neither one way nor the other."
+      },
+      {
+        "label": "Control",
+        "description": "Gray is reserved, quiet and conservative. It has a steadying effect on other colours around it."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Indecision",
+        "description": "Gray prefers to sit in the middle, not making a decision either way, sitting on the fence."
+      },
+      {
+        "label": "Detached",
+        "description": "Being non-emotional, gray can appear indifferent, uncaring, cold and aloof."
+      },
+      {
+        "label": "Depression",
+        "description": "Gray can stifle and depress energy, but it is also the stable base from which the new and positive can come."
+      },
+      {
+        "label": "Unemotional",
+        "description": "Gray can appear neutral, disinterested, objective or impartial."
+      }
+    ]
+  },
+  {
+    "name": "Black",
+    "rgb": { "R": 0, "G": 0, "B": 0 },
+    "traits": {
+      "positive": [
+        "Protection and Comfort",
+        "Strong",
+        "Contained",
+        "Formal",
+        "Sophisticated",
+        "Seductive",
+        "Mysterious",
+        "Endings and Beginnings"
+      ],
+      "negative": [
+        "Aloof",
+        "Depressing",
+        "Pessimistic",
+        "Secretive",
+        "Withholding",
+        "Conservative",
+        "Serious",
+        "Power and Control",
+        "Sadness",
+        "Negativity"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Mystery",
+        "description": "Black is the unknown. It is secretive, keeping a lot buried inside, unwilling to show its real feelings."
+      },
+      {
+        "label": "Power and Control",
+        "description": "Black is power and control of the self and others. It creates fear and intimidation."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Formal, Dignified and Sophisticated",
+        "description": "As in the little black dress and the formal dinner suit, black represents elegance and refinement."
+      },
+      {
+        "label": "Aloof",
+        "description": "Black sets itself aside from others with its heavy and intense energy. It keeps others at arm's length."
+      },
+      {
+        "label": "Depressing",
+        "description": "Black can close us to the positive aspects of life, forcing us to look at our disappointments and the negative aspects of life. It can create a fear of the future."
+      },
+      {
+        "label": "Pessimistic",
+        "description": "Too much black encourages us to focus on the negative side of life."
+      }
+    ]
+  },
+  {
+    "name": "White",
+    "rgb": { "R": 255, "G": 255, "B": 255 },
+    "traits": {
+      "positive": [
+        "Innocence",
+        "Purity",
+        "Cleanliness",
+        "Equality",
+        "Complete and Whole",
+        "Simplicity",
+        "Immaculate and Neat",
+        "Self-Sufficient",
+        "Pristine and Open",
+        "New Beginnings"
+      ],
+      "negative": [
+        "Sterile",
+        "Stark",
+        "Fastidious",
+        "Empty",
+        "Isolated",
+        "Cautious",
+        "Plain",
+        "Distant",
+        "Unimaginative",
+        "Critical",
+        "Boring"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Innocence and Purity",
+        "description": "White is the beginning of everything, before anything is muddied or thinking is 'coloured'."
+      },
+      {
+        "label": "New Beginnings",
+        "description": "White represents the clean slate, helping us through times of stress, and allowing us to put the past behind us and prepare to move on."
+      },
+      {
+        "label": "Equality and Unity",
+        "description": "White represents the positive as well as the negative aspects of all colours. It contains an equal balance of all the colours of the spectrum."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Impartial",
+        "description": "White suggests fairness and neutrality because of the balance and equality of all the colours contained within it."
+      },
+      {
+        "label": "Rescuer",
+        "description": "White rescues us from the dark. It is the white knight, rescuing the damsel in distress."
+      },
+      {
+        "label": "Futuristic",
+        "description": "Symbolising a clean slate, we can envisage anything with white."
+      },
+      {
+        "label": "Efficient",
+        "description": "White is clean and clinical, giving an impression of efficiency and organisation."
+      }
+    ]
+  },
+  {
+    "name": "Silver",
+    "rgb": { "R": 192, "G": 192, "B": 192 },
+    "traits": {
+      "positive": [
+        "Illumination",
+        "Reflection",
+        "Feminine Power",
+        "Balancing",
+        "Calming",
+        "Soothing",
+        "Dignity",
+        "Glamour",
+        "Self Control",
+        "Responsibility",
+        "Organisation",
+        "Insight",
+        "Wisdom",
+        "Modern",
+        "Sleek",
+        "Hi-Tech",
+        "Scientific"
+      ],
+      "negative": [
+        "Dull",
+        "Melancholy",
+        "Lonely",
+        "Lifeless",
+        "colourless",
+        "Rigid",
+        "Negative",
+        "Neutral",
+        "Indecisive",
+        "Insincere",
+        "Deceptive"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Illumination",
+        "description": "Silver opens the mind and lights the way forward."
+      },
+      {
+        "label": "Reflection",
+        "description": "It reflects back the energy sent out, whether that energy is positive or negative."
+      },
+      {
+        "label": "Prestige and Wealth",
+        "description": "Silver is seen as glamorous and sophisticated, and relates to the professional and corporate market."
+      },
+      {
+        "label": "Feminine Power",
+        "description": "Silver is related to the femininity of the moon's energy, sensitive, emotional and fluid."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Calming and Soothing",
+        "description": "Its gentle and comforting qualities relate to the sensitivity of the moon's cycle of ebb and flow."
+      },
+      {
+        "label": "Lifeless",
+        "description": "The colourless energy of silver can lead to negative feelings of coldness, indecision and being non-committal."
+      },
+      {
+        "label": "Dignified and Responsible",
+        "description": "Silver is respectable and courteous, mature and determined, wise and organised."
+      }
+    ]
+  },
+  {
+    "name": "Gold",
+    "rgb": { "R": 255, "G": 215, "B": 0 },
+    "traits": {
+      "positive": [
+        "Success",
+        "Abundance",
+        "Wealth",
+        "Understanding",
+        "Self-worth",
+        "Wisdom",
+        "Compassion",
+        "Love",
+        "Passion",
+        "Charisma",
+        "Winning",
+        "Optimistic",
+        "Positive",
+        "Masculine"
+      ],
+      "negative": [
+        "Fear of success",
+        "Fear of wealth",
+        "Self-centred",
+        "Demanding",
+        "Mean spirited",
+        "Lack of trust",
+        "Falseness"
+      ]
+    },
+    "represents": [
+      {
+        "label": "Success",
+        "description": "Gold relates to achievement and victory, the winner."
+      },
+      {
+        "label": "Wealth",
+        "description": "Gold implies affluence, material wealth and extravagance."
+      },
+      {
+        "label": "Prestige & Luxury",
+        "description": "Gold is associated with sophistication, elegance, value, quality and status."
+      }
+    ],
+    "effects": [
+      {
+        "label": "Enlightenment",
+        "description": "Gold, at its highest level, inspires knowledge, spirituality and a deep understanding of the self and the soul."
+      },
+      {
+        "label": "Compassion",
+        "description": "Caring, loving, generous and giving, gold is the benefactor or patron."
+      },
+      {
+        "label": "Generosity",
+        "description": "Gold loves to share its wisdom, knowledge and wealth with others."
+      }
+    ]
+  }
+]

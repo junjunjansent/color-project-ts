@@ -15,7 +15,7 @@ const AppRoutes = () => {
 
         {/* Game Routes: cause all are new pages */}
         <Route path="/game/colour" element={<ColourStartPage />} />
-        <Route path="/game/colour/:id" element={<ColourAnalysis />} />
+        <Route path="/game/colour/:colourId" element={<ColourAnalysis />} />
         <Route path="/game/colour/list" element={<ColourList />} />
         <Route
           path="/game/colour/matchRandom"

@@ -29,11 +29,11 @@ interface ColourSchemeDetails {
 
 const ColourAnalysis = () => {
   // get details of site
-  const { id } = useParams();
-  if (!id || !RGBUrlRegex.test(id)) {
+  const { colourId } = useParams();
+  if (!colourId || !RGBUrlRegex.test(colourId)) {
     return <ErrorPage />;
   }
-  const rgb = RGBifyUrl(id);
+  const rgb = RGBifyUrl(colourId);
 
   // define states
   const [colourData, setColourData] = useState<ColourData>();
@@ -66,7 +66,7 @@ const ColourAnalysis = () => {
 
     loadColourDatas();
     // log(colourData);
-  }, [id]);
+  }, [colourId]);
 
   // const colourNameSection = (
   //   <>
@@ -113,6 +113,8 @@ const ColourAnalysis = () => {
   // Loader
   if (loading) {
     return <Loader />;
+  } else if (!colourData) {
+    return <ErrorPage />;
   }
 
   return (
@@ -120,26 +122,26 @@ const ColourAnalysis = () => {
       <h1>Colour Analysis</h1>
       {/* <section>{colourNameSection}</section> */}
       <section>
-        <ColourNameCmpnt id={id} colourData={colourData} />
+        <ColourNameCmpnt colourId={colourId} colourData={colourData} />
       </section>
 
       <section>
         <h3>Categorisation</h3>
         <p>
           <strong>Hex: </strong>
-          {colourData?.hex?.value}
+          {colourData.hex.value}
         </p>
         <p>
           <strong>RGB: </strong>
-          {colourData?.rgb?.value}
+          {colourData.rgb.value}
         </p>
         <p>
           <strong>HSL: </strong>
-          {colourData?.hsl?.value}
+          {colourData.hsl.value}
         </p>
         <p>
           <strong>CMYK: </strong>
-          {colourData?.cmyk?.value}
+          {colourData.cmyk.value}
         </p>
       </section>
 
@@ -174,7 +176,7 @@ const ColourAnalysis = () => {
       </section>
 
       <section>
-        <ColourEmotionsCmpnt id={id} colourData={colourData} />
+        <ColourEmotionsCmpnt rgb={rgb} />
       </section>
 
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}

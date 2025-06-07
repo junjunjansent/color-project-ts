@@ -1,3 +1,8 @@
+import {
+  type AirtableColourListField,
+  type AirtableColourListRecord,
+} from "./colourConstants";
+
 const BASE_AIRTABLE_COLOUR_URL =
   "https://api.airtable.com/v0/appbkUvuOT2Hs1VEv/Table%201";
 
@@ -5,19 +10,6 @@ const AIRTABLE_HEADER = {
   Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
   "Content-Type": "application/json",
 };
-
-export interface AirtableColourListField {
-  colourId: string;
-  hex: string;
-  name?: string;
-  id?: string;
-}
-
-interface AirtableColourListRecord {
-  id: string;
-  createdTime: string;
-  fields: AirtableColourListField;
-}
 
 // ---------- function definitions
 

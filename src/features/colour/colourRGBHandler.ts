@@ -1,5 +1,6 @@
-import colourEmotionsData from "./colourEmotionsData.json";
-import type { RGB } from "./colourConstants";
+import colourEmotionsVariationDataArr from "./colourEmotionsVariationDataArr.json";
+import colourEmotionsMainDataArr from "./colourEmotionsMainDataArr.json";
+import { type RGB, type ColourEmotionsData } from "./colourConstants";
 
 const randomiseRGB = () => {
   const RValue = Math.floor(Math.random() * 256);
@@ -41,7 +42,7 @@ const convertRGBtoHEX = (rgb: RGB): string => {
 
   const toHexadec = (n: number) =>
     n.toString(16).padStart(2, "0").toUpperCase();
-  return "#" + toHexadec(rgb.R) + toHexadec(rgb.G) + +toHexadec(rgb.B);
+  return "#" + toHexadec(rgb.R) + toHexadec(rgb.G) + toHexadec(rgb.B);
 };
 
 const convertHEXtoRGB = (hex: string): RGB => {
@@ -57,7 +58,37 @@ const convertHEXtoRGB = (hex: string): RGB => {
   return { R: RValue, G: GValue, B: BValue };
 };
 
-const findNearestEmotion = (rgb: RGB) => {};
+const getClosestEmotionsData = (rgb: RGB): ColourEmotionsData => {
+  // requires colourEmotionsVariationsData.json with .rgb values
+  // efficient for now... for ~100 variations
+  // calculate Euclidean distance
+  let minEuDist = Infinity;
+  let result: ColourEmotionsData | null = null;
+
+  for (const variation of colourEmotionsVariationDataArr) {
+    const euDist =
+      (variation.rgb.R - rgb.R) ** 2 +
+      (variation.rgb.G - rgb.G) ** 2 +
+      (variation.rgb.B - rgb.B) ** 2;
+
+    if (euDist < minEuDist) {
+      minEuDist = euDist;
+
+      const mainColourDetails = colourEmotionsMainDataArr.find(
+        (main) => main.name === variation.belongsTo
+      );
+      if (!mainColourDetails) {
+        throw new Error("Main colour Details not found.");
+      }
+      result = { ...variation, mainColour: mainColourDetails };
+    }
+  }
+
+  if (!result) {
+    throw new Error("Closest colour variation not found.");
+  }
+  return result;
+};
 
 export {
   randomiseRGB,
@@ -66,5 +97,5 @@ export {
   stringifyRGB,
   convertRGBtoHEX,
   convertHEXtoRGB,
-  findNearestEmotion,
+  getClosestEmotionsData,
 };

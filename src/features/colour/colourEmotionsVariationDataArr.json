@@ -1,0 +1,1198 @@
+[
+  {
+    "name": "Red",
+    "rgb": { "R": 255, "G": 0, "B": 0 },
+    "hex": "#FF0000",
+    "description": [
+      "Red is the colour of energy, passion and action",
+      "It stimulates physical energy and courage"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Red"
+  },
+  {
+    "name": "Orange",
+    "rgb": { "R": 255, "G": 165, "B": 0 },
+    "hex": "#FFA500",
+    "description": [
+      "Orange combines the energy of red and the happiness of yellow",
+      "It encourages social interaction and adventure"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Orange"
+  },
+  {
+    "name": "Yellow",
+    "rgb": { "R": 255, "G": 255, "B": 0 },
+    "hex": "#FFFF00",
+    "description": [
+      "Yellow is the colour of the mind and intellect",
+      "It inspires original thought and curiosity"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Yellow"
+  },
+  {
+    "name": "Green",
+    "rgb": { "R": 0, "G": 128, "B": 0 },
+    "hex": "#008000",
+    "description": [
+      "Green is the colour of balance and harmony",
+      "It renews and restores depleted energy"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Blue",
+    "rgb": { "R": 0, "G": 0, "B": 255 },
+    "hex": "#0000FF",
+    "description": [
+      "Blue is the colour of trust, loyalty and wisdom",
+      "It has a calming effect and aids concentration"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Blue"
+  },
+  {
+    "name": "Indigo",
+    "rgb": { "R": 75, "G": 0, "B": 130 },
+    "hex": "#4B0082",
+    "description": [
+      "Indigo is the colour of intuition and perception",
+      "It promotes deep concentration and spiritual awareness"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Indigo"
+  },
+  {
+    "name": "Purple",
+    "rgb": { "R": 128, "G": 0, "B": 128 },
+    "hex": "#800080",
+    "description": [
+      "Purple combines the stability of blue and the energy of red",
+      "It symbolizes creativity, mystery and spiritual awareness"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Purple"
+  },
+  {
+    "name": "Turquoise",
+    "rgb": { "R": 64, "G": 224, "B": 208 },
+    "hex": "#40E0D0",
+    "description": [
+      "Turquoise balances emotions and promotes inner calm",
+      "It aids clarity of thought and communication"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Turquoise"
+  },
+  {
+    "name": "Pink",
+    "rgb": { "R": 255, "G": 192, "B": 203 },
+    "hex": "#FFC0CB",
+    "description": [
+      "Pink is the colour of unconditional love and nurturing",
+      "It soothes emotional energies and promotes affection"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Pink"
+  },
+  {
+    "name": "Magenta",
+    "rgb": { "R": 255, "G": 0, "B": 255 },
+    "hex": "#FF00FF",
+    "description": [
+      "Magenta is a colour of emotional balance and harmony",
+      "It combines practical energy with spiritual insight"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Magenta"
+  },
+  {
+    "name": "Brown",
+    "rgb": { "R": 165, "G": 42, "B": 42 },
+    "hex": "#A52A2A",
+    "description": [
+      "Brown is the colour of stability and reliability",
+      "It promotes security, comfort and grounding"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Brown"
+  },
+  {
+    "name": "Gray",
+    "rgb": { "R": 128, "G": 128, "B": 128 },
+    "hex": "#808080",
+    "description": [
+      "Gray is the colour of compromise and neutrality",
+      "It provides a sense of control and calm"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Gray"
+  },
+  {
+    "name": "Black",
+    "rgb": { "R": 0, "G": 0, "B": 0 },
+    "hex": "#000000",
+    "description": [
+      "Black is the colour of power and sophistication",
+      "It represents control, authority and independence"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Black"
+  },
+  {
+    "name": "White",
+    "rgb": { "R": 255, "G": 255, "B": 255 },
+    "hex": "#FFFFFF",
+    "description": [
+      "White is the colour of purity and innocence",
+      "It offers clarity, peace and new beginnings"
+    ],
+    "isMainColour": true,
+    "belongsTo": "White"
+  },
+  {
+    "name": "Silver",
+    "rgb": { "R": 192, "G": 192, "B": 192 },
+    "hex": "#C0C0C0",
+    "description": [
+      "Silver is associated with feminine energy and intuition",
+      "It reflects clarity, vision and modern sophistication"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Silver"
+  },
+  {
+    "name": "Gold",
+    "rgb": { "R": 255, "G": 215, "B": 0 },
+    "hex": "#FFD700",
+    "description": [
+      "Gold is the colour of success, achievement and abundance",
+      "It symbolizes prestige, luxury and prosperity"
+    ],
+    "isMainColour": true,
+    "belongsTo": "Gold"
+  },
+  {
+    "name": "Maroon",
+    "rgb": {
+      "R": 128,
+      "G": 0,
+      "B": 0
+    },
+    "hex": "#800000",
+    "description": [
+      "Maroon is a dark bluish red denoting controlled and thoughtful action",
+      "It is softer than burgundy and less dramatic than true red"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Red"
+  },
+  {
+    "name": "Burgundy",
+    "rgb": {
+      "R": 128,
+      "G": 0,
+      "B": 32
+    },
+    "hex": "#800020",
+    "description": [
+      "Burgundy is a dark purplish red symbolizing controlled power and ambition",
+      "It is sophisticated, serious, and favored by the wealthy"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Red"
+  },
+  {
+    "name": "Crimson",
+    "rgb": {
+      "R": 220,
+      "G": 20,
+      "B": 60
+    },
+    "hex": "#DC143C",
+    "description": [
+      "Crimson has a little blue, indicating determination without upsetting others",
+      "It exudes sensuality rather than sexuality"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Red"
+  },
+  {
+    "name": "Scarlet",
+    "rgb": {
+      "R": 255,
+      "G": 36,
+      "B": 0
+    },
+    "hex": "#FF2400",
+    "description": [
+      "Scarlet has a hint of orange, giving richness, brightness, and enthusiasm",
+      "It is less intense, more fun-loving, and tempered with defiance"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Red"
+  },
+
+  {
+    "name": "Peach",
+    "rgb": {
+      "R": 255,
+      "G": 218,
+      "B": 185
+    },
+    "hex": "#FFDAB9",
+    "description": [
+      "Peach encourages great communication and conversation",
+      "It inspires good manners and puts people at ease"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Orange"
+  },
+  {
+    "name": "Golden Orange",
+    "rgb": {
+      "R": 255,
+      "G": 165,
+      "B": 0
+    },
+    "hex": "#FFA500",
+    "description": [
+      "Golden Orange encourages vitality and self-control",
+      "It promotes balanced energy and focus"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Orange"
+  },
+  {
+    "name": "Amber",
+    "rgb": {
+      "R": 255,
+      "G": 191,
+      "B": 0
+    },
+    "hex": "#FFBF00",
+    "description": [
+      "Amber helps to inspire greater confidence and better self esteem",
+      "It can promote a degree of arrogance"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Orange"
+  },
+  {
+    "name": "Burnt Orange",
+    "rgb": {
+      "R": 204,
+      "G": 85,
+      "B": 0
+    },
+    "hex": "#CC5500",
+    "description": [
+      "Burnt Orange emits pride, tension and aggressive self-assertion",
+      "It carries a negative vibration"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Orange"
+  },
+  {
+    "name": "Dark Orange",
+    "rgb": {
+      "R": 255,
+      "G": 140,
+      "B": 0
+    },
+    "hex": "#FF8C00",
+    "description": [
+      "Dark Orange indicates over-confidence and over-ambition",
+      "It represents the opportunist with a chip on shoulder"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Orange"
+  },
+
+  {
+    "name": "Light Clear Yellow",
+    "rgb": {
+      "R": 255,
+      "G": 255,
+      "B": 153
+    },
+    "hex": "#FFFF99",
+    "description": [
+      "Light Clear Yellow clears mental fog and boosts alertness",
+      "It encourages clarity and openness to new ideas"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Yellow"
+  },
+  {
+    "name": "Lemon Yellow",
+    "rgb": {
+      "R": 253,
+      "G": 253,
+      "B": 84
+    },
+    "hex": "#FDFD54",
+    "description": [
+      "Lemon Yellow promotes self-reliance and structured living",
+      "It increases sensitivity to criticism and precision in thought"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Yellow"
+  },
+  {
+    "name": "Citrine Yellow",
+    "rgb": {
+      "R": 228,
+      "G": 208,
+      "B": 10
+    },
+    "hex": "#E4D00A",
+    "description": [
+      "Citrine Yellow encourages unstable emotions and surface-level attraction",
+      "It relates to avoidance of responsibility and emotional teasing"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Yellow"
+  },
+  {
+    "name": "Golden Yellow",
+    "rgb": {
+      "R": 255,
+      "G": 223,
+      "B": 0
+    },
+    "hex": "#FFDF00",
+    "description": [
+      "Golden Yellow reflects curiosity and deep investigation",
+      "It is sensitive to critique and tends to favor solitude"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Yellow"
+  },
+  {
+    "name": "Cream",
+    "rgb": {
+      "R": 255,
+      "G": 253,
+      "B": 208
+    },
+    "hex": "#FFFDD0",
+    "description": [
+      "Cream encourages gentle creativity and soft new ideas",
+      "It may reflect a lack of confidence and desire for support"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Yellow"
+  },
+  {
+    "name": "Dark Yellow",
+    "rgb": {
+      "R": 204,
+      "G": 204,
+      "B": 0
+    },
+    "hex": "#CCCC00",
+    "description": [
+      "Dark Yellow suggests melancholy, pessimism, and self-doubt",
+      "It is tied to chronic complaining and emotional heaviness"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Yellow"
+  },
+
+  {
+    "name": "Pale Green",
+    "rgb": {
+      "R": 152,
+      "G": 251,
+      "B": 152
+    },
+    "hex": "#98FB98",
+    "description": [
+      "Pale Green suggests youth, inexperience, and new beginnings",
+      "It allows fresh perspectives and personal growth"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Emerald",
+    "rgb": {
+      "R": 80,
+      "G": 200,
+      "B": 120
+    },
+    "hex": "#50C878",
+    "description": [
+      "Emerald symbolises abundance, vitality, and success",
+      "It is emotionally uplifting and creatively energizing"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Jade",
+    "rgb": {
+      "R": 0,
+      "G": 168,
+      "B": 107
+    },
+    "hex": "#00A86B",
+    "description": [
+      "Jade represents trust, diplomacy, and spiritual insight",
+      "It encourages generosity and deeper understanding"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Lime Green",
+    "rgb": {
+      "R": 50,
+      "G": 205,
+      "B": 50
+    },
+    "hex": "#32CD32",
+    "description": [
+      "Lime Green symbolizes playfulness, freshness, and youth",
+      "It clears negativity and inspires mental clarity"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Dark Green",
+    "rgb": {
+      "R": 0,
+      "G": 100,
+      "B": 0
+    },
+    "hex": "#006400",
+    "description": [
+      "Dark Green conveys ambition, wealth, and seriousness",
+      "To some, it may also reflect possessiveness or resentment"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Aquamarine",
+    "rgb": {
+      "R": 127,
+      "G": 255,
+      "B": 212
+    },
+    "hex": "#7FFFD4",
+    "description": [
+      "Aquamarine soothes emotional tension and calms the spirit",
+      "It provides healing and emotional clarity"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Olive",
+    "rgb": {
+      "R": 128,
+      "G": 128,
+      "B": 0
+    },
+    "hex": "#808000",
+    "description": [
+      "Olive is associated with peace and diplomacy",
+      "It may indicate stubbornness, blame, or deceit"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Yellow Green",
+    "rgb": {
+      "R": 154,
+      "G": 205,
+      "B": 50
+    },
+    "hex": "#9ACD32",
+    "description": [
+      "Yellow Green represents fear, cowardice, and inner conflict",
+      "It may suggest one to be emotionally unstable when unbalanced"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+  {
+    "name": "Grass (Lawn) Green",
+    "rgb": {
+      "R": 124,
+      "G": 252,
+      "B": 0
+    },
+    "hex": "#7CFC00",
+    "description": [
+      "Lawn Green symbolizes abundance, vitality, and growth",
+      "It evokes confidence, health, and connection to nature"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Green"
+  },
+
+  {
+    "name": "Pale Blue",
+    "rgb": {
+      "R": 175,
+      "G": 215,
+      "B": 255
+    },
+    "hex": "#AFD7FF",
+    "description": [
+      "Pale blue inspires creativity",
+      "It conveys the freedom to break free"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Blue"
+  },
+  {
+    "name": "Sky Blue",
+    "rgb": {
+      "R": 135,
+      "G": 206,
+      "B": 235
+    },
+    "hex": "#87CEEB",
+    "description": [
+      "Sky blue inspires selfless love and fidelity",
+      "It is non-threatening and promotes a helpful nature that can over come all obstacles"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Blue"
+  },
+  {
+    "name": "Navy Blue",
+    "rgb": {
+      "R": 0,
+      "G": 0,
+      "B": 128
+    },
+    "hex": "#000080",
+    "description": [
+      "Navy blue is strong and reliable",
+      "It denotes authority and trust"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Blue"
+  },
+  {
+    "name": "Azure Blue",
+    "rgb": {
+      "R": 0,
+      "G": 127,
+      "B": 255
+    },
+    "hex": "#007FFF",
+    "description": [
+      "Azure Blue inspires true contentment, determination, and ambition.",
+      "It instills a sense of purpose in striving for goals"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Blue"
+  },
+  {
+    "name": "Royal Blue",
+    "rgb": {
+      "R": 65,
+      "G": 105,
+      "B": 225
+    },
+    "hex": "#4169E1",
+    "description": [
+      "Royal blue conveys richness and importance",
+      "It is elegant and sophisticated"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Blue"
+  },
+  {
+    "name": "Powder Blue",
+    "rgb": {
+      "R": 176,
+      "G": 224,
+      "B": 230
+    },
+    "hex": "#B0E0E6",
+    "description": [
+      "Powder blue is gentle and calming",
+      "It can evoke nostalgia and softness"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Blue"
+  },
+  {
+    "name": "Dark Blue",
+    "rgb": {
+      "R": 0,
+      "G": 0,
+      "B": 139
+    },
+    "hex": "#00008B",
+    "description": [
+      "Dark blue may repress emotions, appearing cool but deep-feeling.",
+      "It represents knowledge, power, and integrity - the color of conservatism and responsibility"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Blue"
+  },
+
+  {
+    "name": "Dark Indigo",
+    "rgb": {
+      "R": 75,
+      "G": 0,
+      "B": 130
+    },
+    "hex": "#4B0082",
+    "description": [
+      "Dark indigo suggests depth and sophistication",
+      "It is mysterious and powerful"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Indigo"
+  },
+  {
+    "name": "Indigo Blue",
+    "rgb": {
+      "R": 54,
+      "G": 0,
+      "B": 115
+    },
+    "hex": "#360073",
+    "description": [
+      "Indigo blue combines calm blue with mystical purple",
+      "It is thoughtful and introspective"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Indigo"
+  },
+
+  {
+    "name": "Lavender",
+    "rgb": {
+      "R": 230,
+      "G": 230,
+      "B": 250
+    },
+    "hex": "#E6E6FA",
+    "description": [
+      "Lavendar suggests an attraction to the beautiful things",
+      "It conveys fragility, sensitivity, and vulnerability"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Purple"
+  },
+  {
+    "name": "Lilac",
+    "rgb": {
+      "R": 200,
+      "G": 162,
+      "B": 200
+    },
+    "hex": "#C8A2C8",
+    "description": [
+      "Lilac implies immaturity, superficiality, youthfulness, extroverted, and enthusiastic.",
+      "It inspires glamour, romance, and vanity."
+    ],
+    "isMainColour": false,
+    "belongsTo": "Purple"
+  },
+  {
+    "name": "Mauve",
+    "rgb": {
+      "R": 224,
+      "G": 176,
+      "B": 255
+    },
+    "hex": "#E0B0FF",
+    "description": [
+      "Mauve promotes the best choices and decisions; a colour concerned for justice",
+      "It may also convey a degree of commonness and social aspiring to higher ideals"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Purple"
+  },
+  {
+    "name": "Amethyst",
+    "rgb": {
+      "R": 153,
+      "G": 102,
+      "B": 204
+    },
+    "hex": "#9966CC",
+    "description": [
+      "Amethyst opens itself to intuitive channels, a color of the evolved soul",
+      "Protects the vulnerable and assists the humanitarian"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Purple"
+  },
+  {
+    "name": "Plum",
+    "rgb": {
+      "R": 142,
+      "G": 69,
+      "B": 133
+    },
+    "hex": "#8E4585",
+    "description": [
+      "Plum is honourable and linked to family traditions",
+      "To some, it can be prudish and narrow-minded"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Purple"
+  },
+  {
+    "name": "Deep Purple",
+    "rgb": {
+      "R": 48,
+      "G": 25,
+      "B": 52
+    },
+    "hex": "#301934",
+    "description": [
+      "Dark purple relates to higher spiritual attainment",
+      "Powerful, can indicate arrogance and ruthlessness"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Purple"
+  },
+
+  {
+    "name": "Aqua",
+    "rgb": {
+      "R": 0,
+      "G": 255,
+      "B": 255
+    },
+    "hex": "#00FFFF",
+    "description": [
+      "Aqua is refreshing and uplifting",
+      "It is creative and light-hearted, yet strong and individual"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Turquoise"
+  },
+  {
+    "name": "Teal",
+    "rgb": {
+      "R": 0,
+      "G": 128,
+      "B": 128
+    },
+    "hex": "#008080",
+    "description": [
+      "Teal signifies trustworthiness and reliability",
+      "It promotes spiritual advancement and commitment"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Turquoise"
+  },
+
+  {
+    "name": "Blush",
+    "rgb": {
+      "R": 222,
+      "G": 193,
+      "B": 200
+    },
+    "hex": "#DEC1C8",
+    "description": [
+      "Blush is similar to skin color and has sensual and sexual connotations.",
+      "It is non-threatening but lacks passion and energy."
+    ],
+    "isMainColour": false,
+    "belongsTo": "Pink"
+  },
+  {
+    "name": "Salmon Pink",
+    "rgb": {
+      "R": 255,
+      "G": 145,
+      "B": 164
+    },
+    "hex": "#FF91A4",
+    "description": [
+      "Salmon pink has a touch of orange.",
+      "It encourages the flirt and can be a sign of the timid lover, all talk and no play."
+    ],
+    "isMainColour": false,
+    "belongsTo": "Pink"
+  },
+  {
+    "name": "Baby Pink",
+    "rgb": {
+      "R": 255,
+      "G": 182,
+      "B": 193
+    },
+    "hex": "#FFB6C1",
+    "description": [
+      "Baby pink is soft and gentle",
+      "It suggests innocence and sweetness"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Pink"
+  },
+  {
+    "name": "Hot Pink",
+    "rgb": {
+      "R": 255,
+      "G": 105,
+      "B": 180
+    },
+    "hex": "#FF69B4",
+    "description": [
+      "Hot pink is vibrant and energetic",
+      "It conveys passion and playfulness"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Pink"
+  },
+  {
+    "name": "Rose",
+    "rgb": {
+      "R": 255,
+      "G": 0,
+      "B": 127
+    },
+    "hex": "#FF007F",
+    "description": [
+      "Rose is romantic and elegant",
+      "It evokes maturity, femininity, and intuition"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Pink"
+  },
+
+  {
+    "name": "Fuchsia",
+    "rgb": {
+      "R": 255,
+      "G": 0,
+      "B": 255
+    },
+    "hex": "#FF00FF",
+    "description": [
+      "Fuchsia is bright and bold",
+      "It conveys confidence, assurance, and maturity"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Magenta"
+  },
+  {
+    "name": "Orchid",
+    "rgb": {
+      "R": 218,
+      "G": 112,
+      "B": 214
+    },
+    "hex": "#DA70D6",
+    "description": [
+      "Orchid is soft and elegant, yet unconventional",
+      "It suggests charm and mystery - a non-conformist"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Magenta"
+  },
+
+  {
+    "name": "Light Brown",
+    "rgb": {
+      "R": 181,
+      "G": 101,
+      "B": 29
+    },
+    "hex": "#B5651D",
+    "description": [
+      "Light brown is friendly and approachable",
+      "It is sincere, honest, and genuine"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Brown"
+  },
+  {
+    "name": "Dark Brown",
+    "rgb": {
+      "R": 101,
+      "G": 67,
+      "B": 33
+    },
+    "hex": "#654321",
+    "description": [
+      "Dark brown is strong yet sad and depressive",
+      "It is materialistic yet prudent"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Brown"
+  },
+  {
+    "name": "Beige",
+    "rgb": {
+      "R": 245,
+      "G": 245,
+      "B": 220
+    },
+    "hex": "#F5F5DC",
+    "description": [
+      "Beige is practical and reliable",
+      "It is conservative, constant, unchanging, and loyal"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Brown"
+  },
+  {
+    "name": "Tan",
+    "rgb": {
+      "R": 210,
+      "G": 180,
+      "B": 140
+    },
+    "hex": "#D2B48C",
+    "description": [
+      "Tan is light and natural",
+      "It suggests simplicity and calmness"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Brown"
+  },
+  {
+    "name": "Chocolate",
+    "rgb": {
+      "R": 123,
+      "G": 63,
+      "B": 0
+    },
+    "hex": "#7B3F00",
+    "description": [
+      "Chocolate is rich and warm",
+      "It evokes comfort and security"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Brown"
+  },
+  {
+    "name": "Umber",
+    "rgb": {
+      "R": 99,
+      "G": 81,
+      "B": 71
+    },
+    "hex": "#635147",
+    "description": [
+      "Umber is dark and earthy",
+      "It suggests strength and reliability"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Brown"
+  },
+
+  {
+    "name": "Light Gray",
+    "rgb": {
+      "R": 211,
+      "G": 211,
+      "B": 211
+    },
+    "hex": "#D3D3D3",
+    "description": [
+      "Light gray is soft and neutral",
+      "It suggests calmness and balance"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Gray"
+  },
+  {
+    "name": "Slate Gray",
+    "rgb": {
+      "R": 112,
+      "G": 128,
+      "B": 144
+    },
+    "hex": "#708090",
+    "description": [
+      "Slate gray is strong and serious",
+      "It evokes professionalism and formality"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Gray"
+  },
+  {
+    "name": "Charcoal Gray",
+    "rgb": {
+      "R": 54,
+      "G": 69,
+      "B": 79
+    },
+    "hex": "#36454F",
+    "description": [
+      "Charcoal gray is deep and sophisticated",
+      "It suggests power and elegance"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Gray"
+  },
+
+  {
+    "name": "Jet Black",
+    "rgb": {
+      "R": 0,
+      "G": 0,
+      "B": 0
+    },
+    "hex": "#000000",
+    "description": [
+      "Jet black is pure and intense",
+      "It suggests strength and formality"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Black"
+  },
+  {
+    "name": "Charcoal Black",
+    "rgb": {
+      "R": 54,
+      "G": 69,
+      "B": 79
+    },
+    "hex": "#36454F",
+    "description": [
+      "Charcoal black is softer and muted",
+      "It conveys seriousness and depth"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Black"
+  },
+
+  {
+    "name": "Snow",
+    "rgb": {
+      "R": 255,
+      "G": 250,
+      "B": 250
+    },
+    "hex": "#FFFAFA",
+    "description": [
+      "Snow is a bright, clean white with a hint of coolness",
+      "It symbolizes purity, freshness, and clarity"
+    ],
+    "isMainColour": false,
+    "belongsTo": "White"
+  },
+  {
+    "name": "Pearl",
+    "rgb": {
+      "R": 234,
+      "G": 224,
+      "B": 200
+    },
+    "hex": "#EAE0C8",
+    "description": [
+      "Pearl is a soft off-white with subtle shimmer and elegance",
+      "It conveys refinement, delicacy, and quiet luxury"
+    ],
+    "isMainColour": false,
+    "belongsTo": "White"
+  },
+  {
+    "name": "Ivory",
+    "rgb": {
+      "R": 255,
+      "G": 255,
+      "B": 240
+    },
+    "hex": "#FFFFF0",
+    "description": [
+      "Ivory is calming, yet encouraging",
+      "It has a reserved style of simple sophistication"
+    ],
+    "isMainColour": false,
+    "belongsTo": "White"
+  },
+  {
+    "name": "Alabaster",
+    "rgb": {
+      "R": 242,
+      "G": 240,
+      "B": 230
+    },
+    "hex": "#F2F0E6",
+    "description": [
+      "Alabaster is a gentle, warm white with a hint of beige",
+      "It feels comforting, pure, and timeless"
+    ],
+    "isMainColour": false,
+    "belongsTo": "White"
+  },
+
+  {
+    "name": "Light Silver",
+    "rgb": {
+      "R": 192,
+      "G": 192,
+      "B": 192
+    },
+    "hex": "#C0C0C0",
+    "description": [
+      "Light silver is bright and reflective",
+      "It suggests clarity and innovation"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Silver"
+  },
+  {
+    "name": "Dark Silver",
+    "rgb": {
+      "R": 169,
+      "G": 169,
+      "B": 169
+    },
+    "hex": "#A9A9A9",
+    "description": [
+      "Dark silver is rich and elegant",
+      "It conveys sophistication and depth"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Silver"
+  },
+
+  {
+    "name": "Light Gold",
+    "rgb": {
+      "R": 255,
+      "G": 215,
+      "B": 0
+    },
+    "hex": "#FFD700",
+    "description": [
+      "Light gold is bright and radiant",
+      "It suggests positivity and wealth"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Gold"
+  },
+  {
+    "name": "Dark Gold",
+    "rgb": {
+      "R": 184,
+      "G": 134,
+      "B": 11
+    },
+    "hex": "#B8860B",
+    "description": [
+      "Dark gold is deep and rich",
+      "It conveys luxury and sophistication"
+    ],
+    "isMainColour": false,
+    "belongsTo": "Gold"
+  }
+]

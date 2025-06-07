@@ -17,17 +17,16 @@ import {
   faTrashCan,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
+import { type AirtableColourListField } from "../../../features/colour/colourConstants";
 
 const ColourList = () => {
   // declare hooks
   const [savedColourList, setSavedColourList] =
-    useState<api_airtableColour.AirtableColourListField[]>();
+    useState<AirtableColourListField[]>();
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
-  const handleRemoveFromList = async (
-    savedColour: api_airtableColour.AirtableColourListField
-  ) => {
+  const handleRemoveFromList = async (savedColour: AirtableColourListField) => {
     //TODO: explore react-toastify
     // show a notification
 

@@ -2,35 +2,56 @@ import debug from "debug";
 const log = debug("colours:Component:ColourEmotionsCompt");
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
-import type { ColourData } from "../../features/colour/colourConstants";
+import {
+  type RGB,
+  type ColourEmotionsData,
+} from "../../features/colour/colourConstants";
 import ErrorPage from "../ErrorPage";
 import Loader from "../Loader";
 import {
-  RGBifyUrl,
+  convertRGBtoHEX,
+  getClosestEmotionsData,
   stringifyRGB,
 } from "../../features/colour/colourRGBHandler";
+import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
 
 interface ColourEmotionsCmpntProp {
-  id: string;
-  colourData: ColourData | undefined;
+  rgb: RGB;
 }
 
-const ColourEmotionsCmpnt = ({ id, colourData }: ColourEmotionsCmpntProp) => {
+const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
   // define Hooks
+  const [emotionsData, setEmotionsData] = useState<ColourEmotionsData>();
   const [loading, setLoading] = useState<boolean>(true);
-  log(stringifyRGB(RGBifyUrl(id)));
+  const navigate = useNavigate();
+  log(stringifyRGB(rgb));
 
   useEffect(() => {
+    setLoading(true);
+    // no need to use await because json is compiled (via import & loaded statically), so function would be synchronous
+    const newEmotionsData = getClosestEmotionsData(rgb);
+    setEmotionsData(newEmotionsData);
     setLoading(false);
   }, []);
 
   // Loader & Error
-  if (!colourData) {
-    return <ErrorPage />;
-  } else if (loading) {
+  if (loading) {
     return <Loader />;
+  } else if (!emotionsData) {
+    return <ErrorPage />;
   }
+
+  // check is RGB values are the same
+  const isSameAsVariation =
+    stringifyRGB(rgb) === stringifyRGB(emotionsData.rgb);
+  const isSameAsMainColour =
+    stringifyRGB(rgb) === stringifyRGB(emotionsData.mainColour.rgb);
+
+  log(emotionsData.mainColour.rgb);
+  log(convertRGBtoHEX(emotionsData.mainColour.rgb));
+
   return (
     <>
       <h3>Colour Emotions</h3>
@@ -46,57 +67,131 @@ const ColourEmotionsCmpnt = ({ id, colourData }: ColourEmotionsCmpntProp) => {
         .
       </p>
 
-      <article style={{ backgroundColor: "#000000" }}>
-        <h5>Closest Variation with Emotions Data: {}</h5>
+      <article style={{ backgroundColor: emotionsData.hex }}>
+        <h5>Closest Variation with Emotion Data: {emotionsData.name}</h5>
         <div>
-          <p>{/* rgb value */}</p>
-          <p>{/* hex value */}</p>
-          <p>{/* name */}</p>
-          <button>
-            {/* Navigation */}
-            See Colour
-          </button>
-        </div>
-        <div>
-          <strong>Description: </strong>
-          <ul>{/* li elements */}</ul>
+          <p>
+            <strong>RGB: </strong>rgb{stringifyRGB(emotionsData.rgb)}
+          </p>
+          <p>
+            <strong>HEX: </strong>
+            {emotionsData.hex}
+          </p>
+          <div>
+            <strong>Description: </strong>
+            <ul>
+              {emotionsData.description.map((description, index) => {
+                return <li key={index}>{description}</li>;
+              })}
+            </ul>
+          </div>
+          {isSameAsVariation || emotionsData.isMainColour || (
+            <button
+              onClick={() =>
+                handleSelectedColourToNavigate(emotionsData.hex, navigate)
+              }
+            >
+              See this Variation: {emotionsData.hex}
+            </button>
+          )}
         </div>
       </article>
 
-      <article>
+      <article
+        style={{
+          backgroundColor: convertRGBtoHEX(emotionsData.mainColour.rgb),
+        }}
+      >
         <h5>Overarching Colour & Associated Emotions</h5>
-        <p> Out of 16 main colours, your colour is most associated to : {}</p>
+        <p>
+          {" "}
+          Out of 16 main colours, your colour is most associated to:{" "}
+          <strong>{emotionsData.mainColour.name}</strong>
+        </p>
         <p>
           <small>
-            Red, Orange, Yellow, Green, Blue, Indigo, Purple, Turquoise, Pink,
-            Magenta, Brown, Gray, Black, White, Silver, Gold.
+            Others were: Red, Orange, Yellow, Green, Blue, Indigo, Purple,
+            Turquoise, Pink, Magenta, Brown, Gray, Black, White, Silver, Gold.
           </small>
         </p>
         <div>
-          <p>{/* rgb value */}</p>
-          <p>{/* hex value */}</p>
-          <p>{/* name */}</p>
-          <button>
-            {/* Navigation */}
-            See Colour
-          </button>
+          <p>
+            <strong>RGB: </strong>rgb{stringifyRGB(emotionsData.mainColour.rgb)}
+          </p>
+          <p>
+            <strong>HEX: </strong>
+            {convertRGBtoHEX(emotionsData.mainColour.rgb)}
+          </p>
+
+          {isSameAsMainColour || (
+            <button
+              onClick={() =>
+                handleSelectedColourToNavigate(
+                  convertRGBtoHEX(emotionsData.mainColour.rgb),
+                  navigate
+                )
+              }
+            >
+              See this Variation: {convertRGBtoHEX(emotionsData.mainColour.rgb)}
+            </button>
+          )}
         </div>
         <div>
           <h6>Represents: </h6>
-          <ul>{/* li elements */}</ul>
+          <ul>
+            {emotionsData.mainColour.represents.map((represent, index) => {
+              return (
+                <li key={index}>
+                  <strong>{represent.label}: </strong>
+                  {represent.description}
+                </li>
+              );
+            })}
+          </ul>
         </div>
         <div>
           <h6>Effects: </h6>
-          <ul>{/* li elements */}</ul>
+          <ul>
+            {emotionsData.mainColour.effects.map((represent, index) => {
+              return (
+                <li key={index}>
+                  <strong>{represent.label}: </strong>
+                  {represent.description}
+                </li>
+              );
+            })}
+          </ul>
         </div>
         <div>
           <h6>Traits: </h6>
           <div>
-            <ul>{/* li Positive traits */}</ul>
-            <ul>{/* li Negative traits */}</ul>
+            <ul>
+              <li>
+                Positive
+                <ul>
+                  {emotionsData.mainColour.traits.positive.map(
+                    (posTrait, index) => {
+                      return <li key={index}>{posTrait}</li>;
+                    }
+                  )}
+                </ul>
+              </li>
+              <li>
+                Negative{" "}
+                <ul>
+                  {emotionsData.mainColour.traits.negative.map(
+                    (negTrait, index) => {
+                      return <li key={index}>{negTrait}</li>;
+                    }
+                  )}
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
       </article>
+
+      {/* <pre>{JSON.stringify(emotionsData, null, 2)}</pre> */}
     </>
   );
 };

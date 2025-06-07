@@ -1,5 +1,5 @@
 // ----------- Constants
-export const colourSchemeList = [
+const colourSchemeList = [
   { name: "monochrome", label: "Monochrome" },
   { name: "monochrome-dark", label: "Monochrome Dark" },
   { name: "monochrome-light", label: "Monochrome Light" },
@@ -10,20 +10,41 @@ export const colourSchemeList = [
   { name: "quad", label: "Quad" },
 ] as const;
 
-export const RGBUrlRegex = /^\d{1,3}-\d{1,3}-\d{1,3}$/;
+const RGBUrlRegex = /^\d{1,3}-\d{1,3}-\d{1,3}$/;
 
 // ----------- Types
 
-export type RGB = { R: number; G: number; B: number };
+type RGB = { R: number; G: number; B: number };
 
 // [number] tells me that this is the type of any item in the array, i.e. union of all of them
-export type ColourSchemeList = (typeof colourSchemeList)[number];
+type ColourSchemeList = (typeof colourSchemeList)[number];
 
-export type ColourData = ColourAPI & { schemes: ColourSchemeAPI[] };
+// ----------- Colour Emotions Type
+type ColourEmotionsData = ColourEmotionsVariationData & {
+  mainColour: ColourEmotionsMainData;
+};
+
+interface ColourEmotionsVariationData {
+  name: string;
+  rgb: RGB;
+  hex: string;
+  description: string[];
+  isMainColour: boolean;
+  belongsTo: string;
+}
+
+interface ColourEmotionsMainData {
+  name: string;
+  rgb: RGB;
+  traits: { positive: string[]; negative: string[] };
+  represents: { label: string; description: string }[];
+  effects: { label: string; description: string }[];
+}
 
 // TODO - Constants API zod?
-// API Calls
-type ColourAPI = {
+// ----------- API Colour Types
+type ColourData = ColourAPI & { schemes: ColourSchemeAPI[] };
+interface ColourAPI {
   hex: {
     value: string;
   };
@@ -72,9 +93,9 @@ type ColourAPI = {
     value: string;
   };
   [key: string]: unknown;
-};
+}
 
-export type ColourSchemeAPI = {
+interface ColourSchemeAPI {
   mode: string;
   count: number;
   colors: ColourAPI[];
@@ -84,4 +105,32 @@ export type ColourSchemeAPI = {
     named: string;
   };
   [key: string]: unknown;
+}
+
+// ----------- Airtable API Types
+interface AirtableColourListField {
+  colourId: string;
+  hex: string;
+  name?: string;
+  id?: string;
+}
+
+interface AirtableColourListRecord {
+  id: string;
+  createdTime: string;
+  fields: AirtableColourListField;
+}
+
+export {
+  colourSchemeList,
+  RGBUrlRegex,
+  type RGB,
+  type ColourSchemeList,
+  type ColourEmotionsData,
+  type ColourEmotionsVariationData,
+  type ColourEmotionsMainData,
+  type ColourData,
+  type ColourSchemeAPI,
+  type AirtableColourListField,
+  type AirtableColourListRecord,
 };

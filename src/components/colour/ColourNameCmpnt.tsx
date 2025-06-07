@@ -5,17 +5,18 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
 import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
-import type { ColourData } from "../../features/colour/colourConstants";
+import { type ColourData } from "../../features/colour/colourConstants";
+import { type AirtableColourListField } from "../../features/colour/colourConstants";
 import * as api_airtableColour from "../../features/colour/api_airtableColour";
 import Loader from "../Loader";
 import ErrorPage from "../ErrorPage";
 
 interface ColourNameCmpntProp {
-  id: string;
+  colourId: string;
   colourData: ColourData | undefined;
 }
 
-const ColourNameCmpnt = ({ id, colourData }: ColourNameCmpntProp) => {
+const ColourNameCmpnt = ({ colourId, colourData }: ColourNameCmpntProp) => {
   // define State
   const [loading, setLoading] = useState<boolean>(true);
   const [isSavedColour, setIsSavedColour] = useState<boolean>(false);
@@ -29,7 +30,7 @@ const ColourNameCmpnt = ({ id, colourData }: ColourNameCmpntProp) => {
 
     const cleanedColourData = {
       fields: {
-        colourId: id,
+        colourId: colourId,
         hex: colourData?.hex.value ?? "",
         name: colourData?.name?.exact_match_name ? colourData.name.value : "",
       },
@@ -47,8 +48,8 @@ const ColourNameCmpnt = ({ id, colourData }: ColourNameCmpntProp) => {
       const savedColourList = await api_airtableColour.index();
       setIsSavedColour(
         savedColourList.some(
-          (savedColour: api_airtableColour.AirtableColourListField) =>
-            savedColour.colourId === id
+          (savedColour: AirtableColourListField) =>
+            savedColour.colourId === colourId
         )
       );
       setLoading(false);
@@ -57,53 +58,52 @@ const ColourNameCmpnt = ({ id, colourData }: ColourNameCmpntProp) => {
   }, []);
 
   // Loader & Error
-  if (!colourData) {
-    return <ErrorPage />;
-  } else if (loading) {
+  if (loading) {
     return <Loader />;
+  } else if (!colourData) {
+    return <ErrorPage />;
   }
 
   return (
     <>
       <img
         src={
-          colourData?.name?.exact_match_name
-            ? colourData?.image?.named
-            : colourData?.image?.bare
+          colourData.name.exact_match_name
+            ? colourData.image.named
+            : colourData.image.bare
         }
         alt=""
       />
       <h2>
         <strong>Name: </strong>
 
-        {colourData?.name?.exact_match_name
-          ? colourData?.name?.value
-          : "Unnamed"}
+        {colourData.name.exact_match_name ? colourData?.name.value : "Unnamed"}
       </h2>
 
-      {isSavedColour ? (
-        <button>Saved</button>
-      ) : (
-        <button onClick={handleSaveToList}>Save Colour :)</button>
-      )}
-
-      {colourData?.name?.exact_match_name || (
+      {colourData.name.exact_match_name || (
         <div>
           <p>
             Not all colours are named! but you can find the closest named colour
             here:{" "}
           </p>
           <button
+            style={{ backgroundColor: colourData.name.closest_named_hex }}
             onClick={() =>
               handleSelectedColourToNavigate(
-                colourData?.name?.closest_named_hex,
+                colourData.name.closest_named_hex,
                 navigate
               )
             }
           >
-            {colourData?.name?.closest_named_hex}
+            See Colour: {colourData.name.closest_named_hex}
           </button>
         </div>
+      )}
+
+      {isSavedColour ? (
+        <button>Saved</button>
+      ) : (
+        <button onClick={handleSaveToList}>Save Colour :)</button>
       )}
     </>
   );

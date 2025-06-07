@@ -63,7 +63,7 @@ HomePage
     - Complementary Colour
   - [x] As a user, I will be given the option to Save Colours that I may like to view them again in the future.
   - [x] As a user, I will be informed if the colour I have found has already been selected.
-  - [ ] As a user, with the selected colour, closest match of a certain set of colours will be shown that will explain the emotion association [hard coded]
+  - [x] As a user, with the selected colour, closest match of a certain set of colours will be shown that will explain the emotion association [hard coded]
   - [ ] As a user, I will be given a list of themes where I can select them to transform the current page into the colour style I am looking at
     - ?? each theme has 6 colours:
       - Main Bg

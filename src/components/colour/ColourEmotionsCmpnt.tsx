@@ -1,5 +1,5 @@
-import debug from "debug";
-const log = debug("colours:Component:ColourEmotionsCompt");
+// import debug from "debug";
+// const log = debug("colours:Component:ColourEmotionsCompt");
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -26,7 +26,7 @@ const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
   const [emotionsData, setEmotionsData] = useState<ColourEmotionsData>();
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-  log(stringifyRGB(rgb));
+  // log(stringifyRGB(rgb));
 
   useEffect(() => {
     setLoading(true);
@@ -48,9 +48,6 @@ const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
     stringifyRGB(rgb) === stringifyRGB(emotionsData.rgb);
   const isSameAsMainColour =
     stringifyRGB(rgb) === stringifyRGB(emotionsData.mainColour.rgb);
-
-  log(emotionsData.mainColour.rgb);
-  log(convertRGBtoHEX(emotionsData.mainColour.rgb));
 
   return (
     <>

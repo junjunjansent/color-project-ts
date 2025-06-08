@@ -15,7 +15,7 @@ const fetchJson = async (url: string) => {
 
 const show = async (
   rgb: RGB,
-  colourSchemeList: readonly ColourSchemeList[]
+  colourSchemeList: ColourSchemeList
 ): Promise<ColourData | undefined> => {
   //rgbString must be in the format "(xx,xx,xx)"
   const RGBstring = stringifyRGB(rgb);
@@ -26,10 +26,12 @@ const show = async (
   const colourSeedPromise = fetchJson(colourSeedUrl);
 
   // obtain list of colour scheme Objects as Promises
-  const colourSchemePromises = colourSchemeList.map((colourScheme) => {
-    const colourSchemeUrl = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}&mode=${colourScheme.name}`;
-    return fetchJson(colourSchemeUrl);
-  });
+  const colourSchemePromises = Object.keys(colourSchemeList).map(
+    (colourSchemeKey) => {
+      const colourSchemeUrl = `${BASE_COLOUR_URL}scheme?rgb=rgb${RGBstring}&format=json&count=${schemeColourCount}&mode=${colourSchemeKey}`;
+      return fetchJson(colourSchemeUrl);
+    }
+  );
 
   // promise all clean up and error
   try {

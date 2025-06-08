@@ -43,7 +43,7 @@ const ColourAnalysis = () => {
 
   const handleSelectedColourScheme = (scheme: ColourSchemeAPI) => {
     const cleanedColourScheme = {
-      name: scheme.mode,
+      name: colourSchemeList[scheme.mode],
       hexColours: scheme.colors.map((color) => color.hex.value),
     };
     setColourScheme(cleanedColourScheme);
@@ -67,48 +67,6 @@ const ColourAnalysis = () => {
     loadColourDatas();
     // log(colourData);
   }, [colourId]);
-
-  // const colourNameSection = (
-  //   <>
-  //     <img
-  //       src={
-  //         colourData?.name?.exact_match_name
-  //           ? colourData?.image?.named
-  //           : colourData?.image?.bare
-  //       }
-  //       alt=""
-  //     />
-  //     <h3>
-  //       <strong>Name: </strong>
-
-  //       {colourData?.name?.exact_match_name
-  //         ? colourData?.name?.value
-  //         : "Unnamed"}
-  //     </h3>
-
-  //     {isSavedColour ? (
-  //       <button>Saved</button>
-  //     ) : (
-  //       <button onClick={handleSaveToList}>Save Colour :)</button>
-  //     )}
-
-  //     {colourData?.name?.exact_match_name || (
-  //       <div>
-  //         <p>
-  //           Not all colours are named! but you can find the closest named colour
-  //           here:{" "}
-  //         </p>
-  //         <button
-  //           onClick={() =>
-  //             handleSelectedColourAnalysis(colourData?.name?.closest_named_hex)
-  //           }
-  //         >
-  //           {colourData?.name?.closest_named_hex}
-  //         </button>
-  //       </div>
-  //     )}
-  //   </>
-  // );
 
   // Loader
   if (loading) {
@@ -151,7 +109,7 @@ const ColourAnalysis = () => {
         {colourData?.schemes.map((scheme, indexScheme) => {
           return (
             <article key={indexScheme}>
-              <h5>{scheme.mode}</h5>
+              <h5>{colourSchemeList[scheme.mode]}</h5>
               <button onClick={() => handleSelectedColourScheme(scheme)}>
                 See Theme
               </button>

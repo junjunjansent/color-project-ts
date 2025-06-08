@@ -1,14 +1,25 @@
 // ----------- Constants
-const colourSchemeList = [
-  { name: "monochrome", label: "Monochrome" },
-  { name: "monochrome-dark", label: "Monochrome Dark" },
-  { name: "monochrome-light", label: "Monochrome Light" },
-  { name: "analogic", label: "Analogic" },
-  { name: "complement", label: "Complement" },
-  { name: "analogic-complement", label: "Analogic Complement" },
-  { name: "triad", label: "Triad" },
-  { name: "quad", label: "Quad" },
-] as const;
+// const colourSchemeList2 = [
+//   { name: "monochrome", label: "Monochrome" },
+//   { name: "monochrome-dark", label: "Monochrome Dark" },
+//   { name: "monochrome-light", label: "Monochrome Light" },
+//   { name: "analogic", label: "Analogic" },
+//   { name: "complement", label: "Complement" },
+//   { name: "analogic-complement", label: "Analogic Complement" },
+//   { name: "triad", label: "Triad" },
+//   { name: "quad", label: "Quad" },
+// ] as const;
+
+const colourSchemeList = {
+  monochrome: "Monochrome",
+  "monochrome-dark": "Monochrome Dark",
+  "monochrome-light": "Monochrome Light",
+  analogic: "Analogic",
+  complement: "Complement",
+  "analogic-complement": "Analogic Complement",
+  triad: "Triad",
+  quad: "Quad",
+} as const;
 
 const RGBUrlRegex = /^\d{1,3}-\d{1,3}-\d{1,3}$/;
 
@@ -17,7 +28,7 @@ const RGBUrlRegex = /^\d{1,3}-\d{1,3}-\d{1,3}$/;
 type RGB = { R: number; G: number; B: number };
 
 // [number] tells me that this is the type of any item in the array, i.e. union of all of them
-type ColourSchemeList = (typeof colourSchemeList)[number];
+type ColourSchemeList = typeof colourSchemeList;
 
 // ----------- Colour Emotions Type
 type ColourEmotionsData = ColourEmotionsVariationData & {
@@ -96,7 +107,7 @@ interface ColourAPI {
 }
 
 interface ColourSchemeAPI {
-  mode: string;
+  mode: keyof typeof colourSchemeList; // very certain its one of these modes
   count: number;
   colors: ColourAPI[];
   seed: ColourAPI;

@@ -78,7 +78,7 @@
   },
   {
     "name": "Turquoise",
-    "rgb": { "R": 64, "G": 224, "B": 208 },
+    "rgb": { "R": 48, "G": 213, "B": 200 },
     "hex": "#40E0D0",
     "description": [
       "Turquoise balances emotions and promotes inner calm",
@@ -99,7 +99,7 @@
     "belongsTo": "Pink"
   },
   {
-    "name": "Magenta",
+    "name": "Magenta/Fuchsia",
     "rgb": { "R": 255, "G": 0, "B": 255 },
     "hex": "#FF00FF",
     "description": [
@@ -872,22 +872,6 @@
     ],
     "isMainColour": false,
     "belongsTo": "Pink"
-  },
-
-  {
-    "name": "Fuchsia",
-    "rgb": {
-      "R": 255,
-      "G": 0,
-      "B": 255
-    },
-    "hex": "#FF00FF",
-    "description": [
-      "Fuchsia is bright and bold",
-      "It conveys confidence, assurance, and maturity"
-    ],
-    "isMainColour": false,
-    "belongsTo": "Magenta"
   },
   {
     "name": "Orchid",

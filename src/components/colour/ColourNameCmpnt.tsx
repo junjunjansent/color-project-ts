@@ -40,8 +40,6 @@ const ColourNameCmpnt = ({ colourId, colourData }: ColourNameCmpntProp) => {
     setIsSavedColour(true);
   };
 
-  log("hi");
-
   useEffect(() => {
     const checkSavedColour = async () => {
       setLoading(true);

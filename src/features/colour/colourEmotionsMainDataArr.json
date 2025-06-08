@@ -500,7 +500,7 @@
   },
   {
     "name": "Turquoise",
-    "rgb": { "R": 64, "G": 224, "B": 208 },
+    "rgb": { "R": 48, "G": 213, "B": 200 },
     "traits": {
       "positive": [
         "Communication",

@@ -1,0 +1,416 @@
+[
+  {
+    "name": "Red",
+    "hex": "#FF0000",
+    "rgbURL": "255-0-0",
+    "colourVar": true
+  },
+  {
+    "name": "Orange",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Yellow",
+    "hex": "#FFFF00",
+    "rgbURL": "255-255-0",
+    "colourVar": true
+  },
+  {
+    "name": "Green",
+    "hex": "#00FF00",
+    "rgbURL": "0-255-0",
+    "colourVar": true
+  },
+  {
+    "name": "Blue",
+    "hex": "#0000FF",
+    "rgbURL": "0-0-255",
+    "colourVar": true
+  },
+  {
+    "name": "Indigo (Pigment Indigo)",
+    "hex": "#4B0082",
+    "rgbURL": "75-0-130",
+    "colourVar": true
+  },
+  {
+    "name": "Purple",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Magenta / Fuchsia",
+    "hex": "#FF00FF",
+    "rgbURL": "255-0-255",
+    "colourVar": true
+  },
+  {
+    "name": "Pink",
+    "hex": "#FFC0CB",
+    "rgbURL": "255-192-203",
+    "colourVar": true
+  },
+  {
+    "name": "Turquoise",
+    "hex": "#30D5C8",
+    "rgbURL": "48-213-200",
+    "colourVar": true
+  },
+  {
+    "name": "Brown",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Black",
+    "hex": "#000000",
+    "rgbURL": "0-0-0",
+    "colourVar": true
+  },
+  {
+    "name": "White",
+    "hex": "#FFFFFF",
+    "rgbURL": "255-255-255",
+    "colourVar": true
+  },
+  {
+    "name": "Grey",
+    "hex": "#808080",
+    "rgbURL": "128-128-128",
+    "colourVar": true
+  },
+  {
+    "name": "Silver",
+    "hex": "#C0C0C0",
+    "rgbURL": "192-192-192",
+    "colourVar": true
+  },
+  {
+    "name": "Gold",
+    "hex": "#FFD700",
+    "rgbURL": "255-215-0",
+    "colourVar": true
+  },
+  {
+    "name": "Alice Blue",
+    "hex": "#f0f8ff",
+    "rgbURL": "240-248-255",
+    "colourVar": false
+  },
+  {
+    "name": "Amethyst",
+    "hex": "#9966CC",
+    "rgbURL": "240-248-255",
+    "colourVar": true
+  },
+  {
+    "name": "Periodot",
+    "hex": "#ABAD48",
+    "rgbURL": "171-173-72",
+    "colourVar": false
+  },
+  {
+    "name": "Espresso",
+    "hex": "#612718",
+    "rgbURL": "97-39-24",
+    "colourVar": false
+  },
+  {
+    "name": "Pickled Bean",
+    "hex": "#6E4826",
+    "rgbURL": "110-72-38",
+    "colourVar": false
+  },
+  {
+    "name": "Mexican Red",
+    "hex": "#A72525",
+    "rgbURL": "167-37-37",
+    "colourVar": false
+  },
+  {
+    "name": "Van Cleef",
+    "hex": "#49170C",
+    "rgbURL": "73-23-12",
+    "colourVar": false
+  },
+  {
+    "name": "Fresh Eggplant",
+    "hex": "#990066",
+    "rgbURL": "153-0-102",
+    "colourVar": false
+  },
+  {
+    "name": "Brown Derby",
+    "hex": "#492615",
+    "rgbURL": "73-38-21",
+    "colourVar": false
+  },
+  {
+    "name": "Revolver",
+    "hex": "#2C1632",
+    "rgbURL": "44-22-50",
+    "colourVar": false
+  },
+  {
+    "name": "Granite Gray",
+    "hex": "#676767",
+    "rgbURL": "103-103-103",
+    "colourVar": false
+  },
+  {
+    "name": "Kabul",
+    "hex": "#5E483E",
+    "rgbURL": "94-72-62",
+    "colourVar": false
+  },
+  {
+    "name": "Lunar Green",
+    "hex": "#3C493A",
+    "rgbURL": "60-73-58",
+    "colourVar": false
+  },
+  {
+    "name": "Limed Spruce",
+    "hex": "#394851",
+    "rgbURL": "57-72-81",
+    "colourVar": false
+  },
+  {
+    "name": "Mobster",
+    "hex": "#7F7589",
+    "rgbURL": "127-117-137",
+    "colourVar": false
+  },
+  {
+    "name": "Willow Grove",
+    "hex": "#65745D",
+    "rgbURL": "101-116-93",
+    "colourVar": false
+  },
+  {
+    "name": "Highland",
+    "hex": "#6F8E63",
+    "rgbURL": "111-142-99",
+    "colourVar": false
+  },
+  {
+    "name": "Cactus",
+    "hex": "#587156",
+    "rgbURL": "88-113-86",
+    "colourVar": false
+  },
+  {
+    "name": "Flush Orange",
+    "hex": "#FF7F00",
+    "rgbURL": "255-127-0",
+    "colourVar": false
+  },
+  {
+    "name": "Web Orange",
+    "hex": "#FFA500",
+    "rgbURL": "255-165-0",
+    "colourVar": false
+  },
+  {
+    "name": "Cyan / Aqua",
+    "hex": "#00FFFF",
+    "rgbURL": "0-255-255",
+    "colourVar": true
+  },
+  {
+    "name": "Silver Chalice",
+    "hex": "#ACACAC",
+    "rgbURL": "172-172-172",
+    "colourVar": false
+  },
+  {
+    "name": "Plum",
+    "hex": "#8E4585",
+    "rgbURL": "142-69-133",
+    "colourVar": true
+  },
+  {
+    "name": "Cerulean",
+    "hex": "#1DACD6",
+    "rgbURL": "29-172-214",
+    "colourVar": false
+  },
+  {
+    "name": "Lavender Magenta",
+    "hex": "#EE82EE",
+    "rgbURL": "238-130-238",
+    "colourVar": false
+  },
+  {
+    "name": "Chantilly",
+    "hex": "#F8C3DF",
+    "rgbURL": "248-195-223",
+    "colourVar": false
+  },
+  {
+    "name": "Romantic",
+    "hex": "#FFD2B7",
+    "rgbURL": "255-210-183",
+    "colourVar": false
+  },
+  {
+    "name": "Frangipani",
+    "hex": "#FFDEB3",
+    "rgbURL": "255-222-179",
+    "colourVar": false
+  },
+  {
+    "name": "Sea Buckthorn",
+    "hex": "#FBA129",
+    "rgbURL": "251-161-41",
+    "colourVar": false
+  },
+  {
+    "name": "Tahiti Gold",
+    "hex": "#E97C07",
+    "rgbURL": "233-124-7",
+    "colourVar": false
+  },
+  {
+    "name": "Pizazz",
+    "hex": "#FF9000",
+    "rgbURL": "255-144-0",
+    "colourVar": false
+  },
+  {
+    "name": "Ecstasy",
+    "hex": "#FA7814",
+    "rgbURL": "250-120-20",
+    "colourVar": false
+  },
+  {
+    "name": "Citrine",
+    "hex": "#933709",
+    "rgbURL": "147-55-9",
+    "colourVar": false
+  },
+  {
+    "name": "Cinnamon",
+    "hex": "#7B3F00",
+    "rgbURL": "123-63-0",
+    "colourVar": false
+  },
+  {
+    "name": "Kilamanjaro",
+    "hex": "#240C02",
+    "rgbURL": "36-12-2",
+    "colourVar": false
+  },
+  {
+    "name": "Brown Bramble",
+    "hex": "#592804",
+    "rgbURL": "89-40-4",
+    "colourVar": false
+  },
+  {
+    "name": "Christalle",
+    "hex": "#33036B",
+    "rgbURL": "51-3-107",
+    "colourVar": false
+  },
+  {
+    "name": "Tyrian Purple",
+    "hex": "#66023C",
+    "rgbURL": "102-2-60",
+    "colourVar": false
+  },
+  {
+    "name": "Torch Red",
+    "hex": "#FD0E35",
+    "rgbURL": "253-14-53",
+    "colourVar": false
+  },
+  {
+    "name": "Crimson",
+    "hex": "#DC143C",
+    "rgbURL": "220-20-60",
+    "colourVar": true
+  },
+  {
+    "name": "Caribbean Green",
+    "hex": "#1CD3A2",
+    "rgbURL": "28-211-162",
+    "colourVar": false
+  },
+  {
+    "name": "Pacific Blue",
+    "hex": "#1CA9C9",
+    "rgbURL": "28-169-201",
+    "colourVar": false
+  },
+  {
+    "name": "Mine Shaft",
+    "hex": "#323232",
+    "rgbURL": "50-50-50",
+    "colourVar": false
+  },
+  {
+    "name": "Olive",
+    "hex": "#808000",
+    "rgbURL": "128-128-0",
+    "colourVar": true
+  },
+  {
+    "name": "Deep Sea Green",
+    "hex": "#095859",
+    "rgbURL": "9-88-89",
+    "colourVar": false
+  },
+  {
+    "name": "",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": false
+  },
+  {
+    "name": "",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": false
+  },
+  {
+    "name": "",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": false
+  },
+  {
+    "name": "",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": false
+  },
+  {
+    "name": "",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": false
+  },
+  {
+    "name": "",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": false
+  },
+  {
+    "name": "",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": false
+  },
+  {
+    "name": "",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": false
+  }
+]

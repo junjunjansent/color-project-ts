@@ -2,7 +2,7 @@ import {
   type AirtableColourListField,
   type AirtableColourListFieldWithID,
   type AirtableColourListRecord,
-} from "./colourConstants";
+} from "../colourConstants";
 
 const BASE_AIRTABLE_COLOUR_URL =
   "https://api.airtable.com/v0/appbkUvuOT2Hs1VEv/Table%201";

@@ -27,7 +27,8 @@
   color: var(--colour-title);
 }
 
-.colour-profile-default-scheme p {
+.colour-profile-default-scheme p,
+.colour-profile-default-scheme ul {
   color: var(--colour-text, #ffffff);
 }
 

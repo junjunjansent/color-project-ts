@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import styles from "../../../styles/colour/colourList.module.css";
 
 import Loader from "../../../components/Loader";
-import * as api_airtableColour from "../../../features/colour/api_airtableColour";
+import * as api_airtableColour from "../../../features/colour/services/api_airtableColour";
 import { type AirtableColourListFieldWithID } from "../../../features/colour/colourConstants";
 import ColourListCardCmpnt from "../../../components/colour/ColourListCardCmpnt";
 

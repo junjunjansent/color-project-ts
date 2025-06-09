@@ -1,14 +1,4 @@
 // ----------- Constants
-// const colourSchemeList2 = [
-//   { name: "monochrome", label: "Monochrome" },
-//   { name: "monochrome-dark", label: "Monochrome Dark" },
-//   { name: "monochrome-light", label: "Monochrome Light" },
-//   { name: "analogic", label: "Analogic" },
-//   { name: "complement", label: "Complement" },
-//   { name: "analogic-complement", label: "Analogic Complement" },
-//   { name: "triad", label: "Triad" },
-//   { name: "quad", label: "Quad" },
-// ] as const;
 
 const colourSchemeList = {
   monochrome: "Monochrome",

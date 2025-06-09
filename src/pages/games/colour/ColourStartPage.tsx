@@ -1,3 +1,6 @@
+import debug from "debug";
+const log = debug("colours:pages/game/colour/ColourStartPage");
+
 import { Link, useNavigate } from "react-router";
 import { PATHS } from "../../../routes/paths";
 
@@ -7,8 +10,7 @@ import {
   convertHEXtoRGB,
 } from "../../../features/colour/colourRGBHandler";
 
-import debug from "debug";
-const log = debug("colours:pages/game/colour/ColourStartPage");
+// import "../../../styles/game.module.css";
 
 const ColourStartPage = () => {
   // define state

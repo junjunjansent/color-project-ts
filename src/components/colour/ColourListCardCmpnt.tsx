@@ -41,9 +41,9 @@ const ColourListCardCmpnt = ({
   return (
     <div className={styles["colour-div-default"]} style={cssVariables}>
       <div>
-        <p>rgb{stringifyRGB(RGBifyUrl(savedColour.colourId))} </p>
+        <p>Name: {savedColour.name ?? "-"}</p>
         <p>{savedColour.hex}</p>
-        <p>{savedColour.name ?? ""}</p>
+        <p>rgb{stringifyRGB(RGBifyUrl(savedColour.colourId))} </p>
       </div>
       <div className={styles["div-btns"]}>
         <button

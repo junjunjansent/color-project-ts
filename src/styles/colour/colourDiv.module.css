@@ -12,8 +12,10 @@
   align-items: center;
 }
 
-.colour-div-default p {
+.colour-div-default p,
+.colour-div-default ul {
   color: var(--colour-div-text, #ffffff);
+  margin: 0.2rem;
 }
 
 .colour-div-default button {

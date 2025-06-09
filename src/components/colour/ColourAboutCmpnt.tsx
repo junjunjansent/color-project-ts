@@ -12,7 +12,7 @@ import { faBookmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
 import { type ColourData } from "../../features/colour/colourConstants";
 import { type AirtableColourListFieldWithID } from "../../features/colour/colourConstants";
-import * as api_airtableColour from "../../features/colour/api_airtableColour";
+import * as api_airtableColour from "../../features/colour/services/api_airtableColour";
 import Loader from "../Loader";
 import ErrorPage from "../ErrorPage";
 

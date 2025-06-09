@@ -14,7 +14,7 @@ import {
   type ColourSchemeAPI,
 } from "../../../features/colour/colourConstants";
 import { RGBifyUrl } from "../../../features/colour/colourRGBHandler";
-import * as api_colour from "../../../features/colour/api_colour";
+import * as api_colour from "../../../features/colour/services/api_colour";
 
 import ErrorPage from "../../../components/ErrorPage";
 import Loader from "../../../components/Loader";

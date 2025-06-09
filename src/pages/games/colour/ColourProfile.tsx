@@ -1,25 +1,19 @@
 import debug from "debug";
 const log = debug("colours:ColourProfile");
 
-import { useParams, useNavigate } from "react-router";
+import { useParams } from "react-router";
 import { useEffect, useMemo, useState } from "react";
 
 import styles from "../../../styles/colour/colourProfile.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import {
   RGBUrlRegex,
   colourSchemeList,
   type ColourData,
+  type ColourSchemeCore,
   type ColourSchemeAPI,
 } from "../../../features/colour/colourConstants";
-import { handleSelectedColourToNavigate } from "../../../routes/navigateHandlers";
-import {
-  RGBifyUrl,
-  // convertHEXtoRGB,
-  // urlifyRGB,
-} from "../../../features/colour/colourRGBHandler";
+import { RGBifyUrl } from "../../../features/colour/colourRGBHandler";
 import * as api_colour from "../../../features/colour/api_colour";
 
 import ErrorPage from "../../../components/ErrorPage";
@@ -27,11 +21,7 @@ import Loader from "../../../components/Loader";
 import ColourAboutCmpnt from "../../../components/colour/ColourAboutCmpnt";
 import ColourEmotionsCmpnt from "../../../components/colour/ColourEmotionsCmpnt";
 import { chooseTextColour } from "../../../styles/colour/colourStyles";
-
-interface ColourSchemeDetails {
-  name: string;
-  hexColours: string[];
-}
+import ColourSchemeCardCmpnt from "../../../components/colour/ColourSchemeCardCmpnt";
 
 const ColourProfile = () => {
   // get details of site
@@ -43,13 +33,13 @@ const ColourProfile = () => {
 
   // define states
   const [colourData, setColourData] = useState<ColourData>();
-  const [colourScheme, setColourScheme] = useState<ColourSchemeDetails>();
+  const [colourScheme, setColourScheme] = useState<ColourSchemeCore>();
   const [loading, setLoading] = useState<boolean>(true);
-  const navigate = useNavigate();
 
   const handleSelectedColourScheme = (scheme: ColourSchemeAPI) => {
-    const cleanedColourScheme = {
-      name: colourSchemeList[scheme.mode],
+    const cleanedColourScheme: ColourSchemeCore = {
+      label: colourSchemeList[scheme.mode],
+      mode: scheme.mode,
       hexColours: scheme.colors.map((color) => color.hex.value),
     };
     setColourScheme(cleanedColourScheme);
@@ -64,7 +54,7 @@ const ColourProfile = () => {
         const newColourData = await api_colour.show(rgb, colourSchemeList);
         setColourData(newColourData);
 
-        // initialise theme if it exists
+        // initialise scheme if it exists
         if (newColourData?.schemes?.[0]) {
           handleSelectedColourScheme(newColourData.schemes[0]);
         }
@@ -127,84 +117,33 @@ const ColourProfile = () => {
     >
       <section className={styles["about"]}>
         <ColourAboutCmpnt colourId={colourId} colourData={colourData} />
-        <div>
-          <h4>Colour Specs</h4>
-          <ul>
-            <li>
-              {" "}
-              <strong>Hex: </strong>
-              {colourData.hex.value}
-            </li>
-            <li>
-              {" "}
-              <strong>RGB: </strong>
-              {colourData.rgb.value}
-            </li>
-            <li>
-              {" "}
-              <strong>HSL: </strong>
-              {colourData.hsl.value}
-            </li>
-            <li>
-              {" "}
-              <strong>CMYK: </strong>
-              {colourData.cmyk.value}
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section></section>
-
-      <section>
-        <h3>Themes</h3>
-        <h6>Current Theme: {colourScheme?.name ?? ""}</h6>
-        {colourData?.schemes.map((scheme, indexScheme) => {
-          return (
-            <article key={indexScheme}>
-              <h5>{colourSchemeList[scheme.mode]}</h5>
-              <button onClick={() => handleSelectedColourScheme(scheme)}>
-                {colourScheme?.name === colourSchemeList[scheme.mode] ? (
-                  <>
-                    Selected <FontAwesomeIcon icon={faCheck} />
-                  </>
-                ) : (
-                  <>
-                    See Colour Scheme{" "}
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                  </>
-                )}
-              </button>
-              <div>
-                {scheme.colors.map((color) => {
-                  return (
-                    <button
-                      key={color.hex.value}
-                      style={{
-                        backgroundColor: color.hex.value,
-                        color: chooseTextColour(color.hex.value),
-                      }}
-                      onClick={() =>
-                        handleSelectedColourToNavigate(
-                          color.hex.value,
-                          navigate
-                        )
-                      }
-                    >
-                      {color.rgb.value}
-                      <br />
-                      {color.hex.value}
-                    </button>
-                  );
-                })}
-              </div>
-            </article>
-          );
-        })}
       </section>
 
       <section>
         <ColourEmotionsCmpnt rgb={rgb} />
+      </section>
+
+      <section>
+        <h3>Schemes</h3>
+        <h6>Current Scheme: {colourScheme?.label ?? "No label found"}</h6>
+        <p>
+          Select any of the different available colour schemes to see how they
+          would look when applied onto this page! Good schemes (should) create
+          harmony, making designs feel unified and easy on the eyes.
+        </p>
+        <div className={styles["schemes-div"]}>
+          {colourData?.schemes.map((scheme) => {
+            return (
+              <article key={scheme.mode}>
+                <ColourSchemeCardCmpnt
+                  scheme={scheme}
+                  handleSelectedColourScheme={handleSelectedColourScheme}
+                  selected={colourScheme?.mode === scheme.mode}
+                />
+              </article>
+            );
+          })}
+        </div>
       </section>
 
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}

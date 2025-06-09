@@ -5,6 +5,11 @@
     --colour-div-text */
 
   background-color: var(--colour-div-bg);
+  gap: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .colour-div-default p {
@@ -14,4 +19,10 @@
 .colour-div-default button {
   background-color: #4f5481;
   color: #ffffff;
+}
+
+.div-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

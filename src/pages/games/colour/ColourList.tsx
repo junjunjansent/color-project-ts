@@ -3,6 +3,8 @@
 
 import { useEffect, useState } from "react";
 
+import styles from "../../../styles/colour/colourList.module.css";
+
 import Loader from "../../../components/Loader";
 import * as api_airtableColour from "../../../features/colour/api_airtableColour";
 import { type AirtableColourListFieldWithID } from "../../../features/colour/colourConstants";
@@ -55,15 +57,17 @@ const ColourList = () => {
   return (
     <>
       <h1>List of Saved Colours</h1>
-      {savedColourList?.map((savedColour) => {
-        return (
-          <ColourListCardCmpnt
-            key={savedColour.colourId}
-            savedColour={savedColour}
-            handleRemoveFromList={handleRemoveFromList}
-          />
-        );
-      })}
+      <section className={styles["list-saved-colours"]}>
+        {savedColourList?.map((savedColour) => {
+          return (
+            <ColourListCardCmpnt
+              key={savedColour.colourId}
+              savedColour={savedColour}
+              handleRemoveFromList={handleRemoveFromList}
+            />
+          );
+        })}
+      </section>
 
       {/* <pre>{JSON.stringify(savedColourList, null, 2)}</pre> */}
     </>

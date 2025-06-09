@@ -14,6 +14,10 @@
   background-color: var(--colour-bg);
 }
 
+.colour-profile-default-scheme section {
+  padding: 0rem 1rem;
+}
+
 .colour-profile-default-scheme h1,
 .colour-profile-default-scheme h2,
 .colour-profile-default-scheme h3,
@@ -49,4 +53,14 @@
 .colour-profile-default-scheme article button {
   background-color: var(--colour-article-btn);
   color: var(--colour-article-btn-text, #ffffff);
+}
+
+.schemes-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.schemes-div article {
+  text-align: center;
 }

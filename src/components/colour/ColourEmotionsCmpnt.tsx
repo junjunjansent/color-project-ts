@@ -58,7 +58,7 @@ const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
         colours would be shaped by the culture you grew up in, as well as how
         you previously felt when interacting with objects around you. Based on
         the colour selected, the closest colour variations have been picked to
-        give you some information on this choice. Note these were derived from{" "}
+        give you some information on this choice. Note: these were derived from{" "}
         <a href="https://www.empower-yourself-with-color-psychology.com/meaning-of-colors.html">
           this website
         </a>

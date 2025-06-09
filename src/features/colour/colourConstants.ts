@@ -30,7 +30,7 @@ type RGB = { R: number; G: number; B: number };
 // [number] tells me that this is the type of any item in the array, i.e. union of all of them
 type ColourSchemeList = typeof colourSchemeList;
 
-// ----------- Colour Emotions Type
+// ----------- Types: Colour Emotions from JSON
 type ColourEmotionsData = ColourEmotionsVariationData & {
   mainColour: ColourEmotionsMainData;
 };
@@ -55,6 +55,12 @@ interface ColourEmotionsMainData {
 // TODO - Constants API zod?
 // ----------- API Colour Types
 type ColourData = ColourAPI & { schemes: ColourSchemeAPI[] };
+
+type ColourSchemeCore = {
+  mode: string;
+  label: string;
+  hexColours: string[];
+};
 interface ColourAPI {
   hex: {
     value: string;
@@ -118,7 +124,7 @@ interface ColourSchemeAPI {
   [key: string]: unknown;
 }
 
-// ----------- Airtable API Types
+// ----------- Types: Airtable API
 interface AirtableColourListField {
   colourId: string;
   hex: string;
@@ -143,6 +149,7 @@ export {
   type ColourEmotionsVariationData,
   type ColourEmotionsMainData,
   type ColourData,
+  type ColourSchemeCore,
   type ColourSchemeAPI,
   type AirtableColourListField,
   type AirtableColourListFieldWithID,

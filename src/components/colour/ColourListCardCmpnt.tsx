@@ -39,22 +39,24 @@ const ColourListCardCmpnt = ({
   }, [savedColour]);
 
   return (
-    <div className={styles["colour-analysis-default"]} style={cssVariables}>
+    <div className={styles["colour-div-default"]} style={cssVariables}>
       <div>
         <p>rgb{stringifyRGB(RGBifyUrl(savedColour.colourId))} </p>
         <p>{savedColour.hex}</p>
         <p>{savedColour.name ?? ""}</p>
       </div>
-      <button
-        onClick={() =>
-          handleSelectedColourToNavigate(savedColour.hex, navigate)
-        }
-      >
-        View <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </button>
-      <button onClick={() => handleRemoveFromList(savedColour)}>
-        Delete <FontAwesomeIcon icon={faTrashCan} />
-      </button>
+      <div className={styles["div-btns"]}>
+        <button
+          onClick={() =>
+            handleSelectedColourToNavigate(savedColour.hex, navigate)
+          }
+        >
+          View <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
+        <button onClick={() => handleRemoveFromList(savedColour)}>
+          Delete <FontAwesomeIcon icon={faTrashCan} />
+        </button>
+      </div>
     </div>
   );
 };

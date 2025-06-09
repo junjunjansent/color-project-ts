@@ -2,36 +2,26 @@
 // const log = debug("colours:ColourList");
 
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 
-import * as api_airtableColour from "../../../features/colour/api_airtableColour";
-import {
-  RGBifyUrl,
-  stringifyRGB,
-} from "../../../features/colour/colourRGBHandler";
-import { handleSelectedColourToNavigate } from "../../../routes/navigateHandlers";
 import Loader from "../../../components/Loader";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTrashCan,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
-import { type AirtableColourListField } from "../../../features/colour/colourConstants";
+import * as api_airtableColour from "../../../features/colour/api_airtableColour";
+import { type AirtableColourListFieldWithID } from "../../../features/colour/colourConstants";
+import ColourListCardCmpnt from "../../../components/colour/ColourListCardCmpnt";
 
 const ColourList = () => {
   // declare hooks
   const [savedColourList, setSavedColourList] =
-    useState<AirtableColourListField[]>();
+    useState<AirtableColourListFieldWithID[]>();
   const [loading, setLoading] = useState<boolean>(true);
-  const navigate = useNavigate();
 
-  const handleRemoveFromList = async (savedColour: AirtableColourListField) => {
+  const handleRemoveFromList = async (
+    savedColour: AirtableColourListFieldWithID
+  ) => {
     //TODO: explore react-toastify
     // show a notification
 
     // Very certain savedColour will have an id upon being call
-    const id = savedColour.id!;
+    const id = savedColour.id;
     await api_airtableColour.destroy(id);
     const updatedList = savedColourList!.filter(
       (savedColourItem) => savedColourItem.id !== id
@@ -41,10 +31,17 @@ const ColourList = () => {
 
   useEffect(() => {
     const fetchSavedColourList = async () => {
-      setLoading(true);
-      const fetchedColourList = await api_airtableColour.index();
-      setSavedColourList(fetchedColourList);
-      setLoading(false);
+      // using try/catch block to setColourData properly
+      try {
+        setLoading(true);
+        const fetchedColourList = await api_airtableColour.index();
+        setSavedColourList(fetchedColourList);
+      } catch (error) {
+        console.error("Failed to load Airtable colour list:", error);
+        setSavedColourList(undefined);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchSavedColourList();
@@ -60,26 +57,11 @@ const ColourList = () => {
       <h1>List of Saved Colours</h1>
       {savedColourList?.map((savedColour) => {
         return (
-          <div
-            key={savedColour.id!}
-            style={{ backgroundColor: savedColour.hex }}
-          >
-            <div>
-              <p>rgb{stringifyRGB(RGBifyUrl(savedColour.colourId))} </p>
-              <p>{savedColour.hex}</p>
-              <p>{savedColour.name ?? ""}</p>
-            </div>
-            <button
-              onClick={() =>
-                handleSelectedColourToNavigate(savedColour.hex, navigate)
-              }
-            >
-              View <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-            <button onClick={() => handleRemoveFromList(savedColour)}>
-              Delete <FontAwesomeIcon icon={faTrashCan} />
-            </button>
-          </div>
+          <ColourListCardCmpnt
+            key={savedColour.colourId}
+            savedColour={savedColour}
+            handleRemoveFromList={handleRemoveFromList}
+          />
         );
       })}
 

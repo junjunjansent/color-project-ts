@@ -123,7 +123,9 @@ interface AirtableColourListField {
   colourId: string;
   hex: string;
   name?: string;
-  id?: string;
+}
+interface AirtableColourListFieldWithID extends AirtableColourListField {
+  id: string;
 }
 
 interface AirtableColourListRecord {
@@ -143,5 +145,6 @@ export {
   type ColourData,
   type ColourSchemeAPI,
   type AirtableColourListField,
+  type AirtableColourListFieldWithID,
   type AirtableColourListRecord,
 };

@@ -19,7 +19,7 @@ const show = async (
 ): Promise<ColourData | undefined> => {
   //rgbString must be in the format "(xx,xx,xx)"
   const RGBstring = stringifyRGB(rgb);
-  const schemeColourCount = 5;
+  const schemeColourCount = 6;
 
   // obtain seed Object as the Promise, start promise, handle errors later
   const colourSeedUrl = `${BASE_COLOUR_URL}id?rgb=rgb${RGBstring}`;

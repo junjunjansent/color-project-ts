@@ -54,25 +54,31 @@ const ColourAnalysis = () => {
   };
 
   useEffect(() => {
-    const loadColourDatas = async () => {
-      setLoading(true);
-      // fetch data
-      const newColourData = await api_colour.show(rgb, colourSchemeList);
-      setColourData(newColourData);
+    const loadColourData = async () => {
+      // using try/catch block to setColourData properly
+      try {
+        setLoading(true);
+        const newColourData = await api_colour.show(rgb, colourSchemeList);
+        setColourData(newColourData);
 
-      // initialise theme if it exists
-      if (newColourData?.schemes?.[0]) {
-        handleSelectedColourScheme(newColourData.schemes[0]);
+        // initialise theme if it exists
+        if (newColourData?.schemes?.[0]) {
+          handleSelectedColourScheme(newColourData.schemes[0]);
+        }
+      } catch (error) {
+        console.error("Failed to load colour:", error);
+        setColourData(undefined);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
-    loadColourDatas();
+    loadColourData();
     // log(colourData);
   }, [colourId]);
 
   // Styles Setter
-  // to avoid CSS declaration every rerender
+  // using useMemo to avoid CSS declaration every rerender
   // type it into format of CSS Variable (which are basically objects)
   const cssVariables = useMemo((): Record<`--${string}`, string> => {
     if (!colourScheme) {
@@ -104,36 +110,49 @@ const ColourAnalysis = () => {
   if (loading) {
     return <Loader />;
   } else if (!colourData) {
-    return <ErrorPage />;
+    return (
+      <>
+        <ErrorPage /> <p>Failed to load Colour!</p>
+      </>
+    );
   }
 
   return (
-    <div className={styles["colour-analysis-default"]} style={cssVariables}>
+    <div
+      className={styles["colour-analysis-default-scheme"]}
+      style={cssVariables}
+    >
       <h1>Colour Analysis</h1>
-      {/* <section>{colourNameSection}</section> */}
-      <section>
+      <section className={styles["name-and-specs"]}>
         <ColourNameCmpnt colourId={colourId} colourData={colourData} />
+        <div>
+          <h4>Colour Specs</h4>
+          <ul>
+            <li>
+              {" "}
+              <strong>Hex: </strong>
+              {colourData.hex.value}
+            </li>
+            <li>
+              {" "}
+              <strong>RGB: </strong>
+              {colourData.rgb.value}
+            </li>
+            <li>
+              {" "}
+              <strong>HSL: </strong>
+              {colourData.hsl.value}
+            </li>
+            <li>
+              {" "}
+              <strong>CMYK: </strong>
+              {colourData.cmyk.value}
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <section>
-        <h3>Categorisation</h3>
-        <p>
-          <strong>Hex: </strong>
-          {colourData.hex.value}
-        </p>
-        <p>
-          <strong>RGB: </strong>
-          {colourData.rgb.value}
-        </p>
-        <p>
-          <strong>HSL: </strong>
-          {colourData.hsl.value}
-        </p>
-        <p>
-          <strong>CMYK: </strong>
-          {colourData.cmyk.value}
-        </p>
-      </section>
+      <section></section>
 
       <section>
         <h3>Themes</h3>
@@ -145,10 +164,10 @@ const ColourAnalysis = () => {
               <button onClick={() => handleSelectedColourScheme(scheme)}>
                 See Theme
               </button>
-              {scheme.colors.map((color, indexColour) => {
+              {scheme.colors.map((color) => {
                 return (
                   <button
-                    key={indexColour}
+                    key={color.hex.value}
                     style={{
                       backgroundColor: color.hex.value,
                       color: chooseTextColour(color.hex.value),

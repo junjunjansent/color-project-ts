@@ -16,6 +16,7 @@ import {
   stringifyRGB,
 } from "../../features/colour/colourRGBHandler";
 import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
+import { chooseTextColour } from "../../styles/colour/colourStyles";
 
 interface ColourEmotionsCmpntProp {
   rgb: RGB;
@@ -64,8 +65,14 @@ const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
         .
       </p>
 
-      <article style={{ backgroundColor: emotionsData.hex }}>
+      <article>
         <h5>Closest Variation with Emotion Data: {emotionsData.name}</h5>
+        <p>
+          <small>
+            Obtained from calculating closest Euclidean Distance from RGB values
+            of data base.
+          </small>
+        </p>
         <div>
           <p>
             <strong>RGB: </strong>rgb{stringifyRGB(emotionsData.rgb)}
@@ -84,6 +91,10 @@ const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
           </div>
           {isSameAsVariation || emotionsData.isMainColour || (
             <button
+              style={{
+                backgroundColor: emotionsData.hex,
+                color: chooseTextColour(emotionsData.hex),
+              }}
               onClick={() =>
                 handleSelectedColourToNavigate(emotionsData.hex, navigate)
               }
@@ -94,11 +105,7 @@ const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
         </div>
       </article>
 
-      <article
-        style={{
-          backgroundColor: convertRGBtoHEX(emotionsData.mainColour.rgb),
-        }}
-      >
+      <article>
         <h5>Overarching Colour & Associated Emotions</h5>
         <p>
           {" "}
@@ -122,6 +129,12 @@ const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
 
           {isSameAsMainColour || (
             <button
+              style={{
+                backgroundColor: convertRGBtoHEX(emotionsData.mainColour.rgb),
+                color: chooseTextColour(
+                  convertRGBtoHEX(emotionsData.mainColour.rgb)
+                ),
+              }}
               onClick={() =>
                 handleSelectedColourToNavigate(
                   convertRGBtoHEX(emotionsData.mainColour.rgb),

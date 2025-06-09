@@ -1,5 +1,6 @@
 import {
   type AirtableColourListField,
+  type AirtableColourListFieldWithID,
   type AirtableColourListRecord,
 } from "./colourConstants";
 
@@ -31,7 +32,7 @@ const fetchJson = async (
   return res.json();
 };
 
-const index = async (): Promise<AirtableColourListField[]> => {
+const index = async (): Promise<AirtableColourListFieldWithID[]> => {
   const url = `${BASE_AIRTABLE_COLOUR_URL}?view=Grid view`;
 
   try {

@@ -1,0 +1,17 @@
+.colour-div-default {
+  /* default colours */
+  --colour-div-bg: #404040;
+  /* textcolours to be defined:
+    --colour-div-text */
+
+  background-color: var(--colour-div-bg);
+}
+
+.colour-div-default p {
+  color: var(--colour-div-text, #ffffff);
+}
+
+.colour-div-default button {
+  background-color: #4f5481;
+  color: #ffffff;
+}

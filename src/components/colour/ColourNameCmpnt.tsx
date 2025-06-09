@@ -2,11 +2,16 @@ import debug from "debug";
 const log = debug("colours:Component:ColourNameCompt");
 
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
+import { PATHS } from "../../routes/paths";
+
+import styles from "../../styles/colour/colourAnalysis.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 
 import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
 import { type ColourData } from "../../features/colour/colourConstants";
-import { type AirtableColourListField } from "../../features/colour/colourConstants";
+import { type AirtableColourListFieldWithID } from "../../features/colour/colourConstants";
 import * as api_airtableColour from "../../features/colour/api_airtableColour";
 import Loader from "../Loader";
 import ErrorPage from "../ErrorPage";
@@ -46,7 +51,7 @@ const ColourNameCmpnt = ({ colourId, colourData }: ColourNameCmpntProp) => {
       const savedColourList = await api_airtableColour.index();
       setIsSavedColour(
         savedColourList.some(
-          (savedColour: AirtableColourListField) =>
+          (savedColour: AirtableColourListFieldWithID) =>
             savedColour.colourId === colourId
         )
       );
@@ -64,22 +69,15 @@ const ColourNameCmpnt = ({ colourId, colourData }: ColourNameCmpntProp) => {
 
   return (
     <>
-      <img
-        src={
-          colourData.name.exact_match_name
-            ? colourData.image.named
-            : colourData.image.bare
-        }
-        alt=""
-      />
-      <h2>
-        <strong>Name: </strong>
-
-        {colourData.name.exact_match_name ? colourData?.name.value : "Unnamed"}
-      </h2>
-
       {colourData.name.exact_match_name || (
         <div>
+          <h2>
+            <strong>Name: </strong>
+
+            {colourData.name.exact_match_name
+              ? colourData?.name.value
+              : "Unnamed"}
+          </h2>
           <p>
             Not all colours are named! but you can find the closest named colour
             here:{" "}
@@ -98,11 +96,30 @@ const ColourNameCmpnt = ({ colourId, colourData }: ColourNameCmpntProp) => {
         </div>
       )}
 
-      {isSavedColour ? (
-        <button>Saved</button>
-      ) : (
-        <button onClick={handleSaveToList}>Save Colour :)</button>
-      )}
+      <div className={styles["name-and-specs-middle"]}>
+        <h4>Colour Image</h4>
+        <img
+          src={
+            colourData.name.exact_match_name
+              ? colourData.image.named
+              : colourData.image.bare
+          }
+          alt=""
+        />
+        {isSavedColour ? (
+          <Link to={PATHS.GAME.COLOUR.LIST}>
+            {" "}
+            <button>
+              Saved already <FontAwesomeIcon icon={faBookmark} /> <br /> See the
+              saved list here!
+            </button>
+          </Link>
+        ) : (
+          <button onClick={handleSaveToList}>
+            Save Colour <FontAwesomeIcon icon={faFloppyDisk} />
+          </button>
+        )}
+      </div>
     </>
   );
 };

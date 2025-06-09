@@ -1,4 +1,4 @@
-import { Outlet, Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { PATHS } from "../../../routes/paths";
 
 import {
@@ -22,14 +22,14 @@ const ColourStartPage = () => {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData);
 
-    log(data.colourToAnalyse);
+    log("Analysing Colour: ", data.colourToAnalyse);
     const rgb = convertHEXtoRGB(data.colourToAnalyse as string); //TODO type guard
     const rgbUrl = urlifyRGB(rgb);
     navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
   };
 
   const handleRandomiseColourAnalysis = () => {
-    log("randomising");
+    log("Randomising Colour for Aanlysis");
     const rgb = randomiseRGB();
     const rgbUrl = urlifyRGB(rgb);
     navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
@@ -158,7 +158,6 @@ const ColourStartPage = () => {
           Create Own Colour (Not Built)
         </button>
       </section>
-      <Outlet />
     </>
   );
 };

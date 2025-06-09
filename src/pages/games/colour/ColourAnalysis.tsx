@@ -2,7 +2,9 @@ import debug from "debug";
 const log = debug("colours:ColourAnalysis");
 
 import { useParams, useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import styles from "../../../styles/colour/colourAnalysis.module.css";
+
 import {
   RGBUrlRegex,
   colourSchemeList,
@@ -21,6 +23,7 @@ import ErrorPage from "../../../components/ErrorPage";
 import Loader from "../../../components/Loader";
 import ColourNameCmpnt from "../../../components/colour/ColourNameCmpnt";
 import ColourEmotionsCmpnt from "../../../components/colour/ColourEmotionsCmpnt";
+import { chooseTextColour } from "../../../styles/colour/colourStyles";
 
 interface ColourSchemeDetails {
   name: string;
@@ -68,6 +71,35 @@ const ColourAnalysis = () => {
     // log(colourData);
   }, [colourId]);
 
+  // Styles Setter
+  // to avoid CSS declaration every rerender
+  // type it into format of CSS Variable (which are basically objects)
+  const cssVariables = useMemo((): Record<`--${string}`, string> => {
+    if (!colourScheme) {
+      return {};
+    }
+
+    const [colour1, colour2, colour3, colour4, colour5] =
+      colourScheme.hexColours;
+
+    return {
+      // Main Bg --> Colour 1
+      // Buttons--> Colour 2
+      // Article --> Colour 3
+      // Article Buttons --> Colour 4
+      // Title --> Colour 5
+      "--colour-bg": colour1,
+      "--colour-title": colour5,
+      "--colour-btn": colour2,
+      "--colour-article": colour3,
+      "--colour-article-btn": colour4,
+      "--colour-text": chooseTextColour(colour1),
+      "--colour-btn-text": chooseTextColour(colour2),
+      "--colour-article-text": chooseTextColour(colour3),
+      "--colour-article-btn-text": chooseTextColour(colour4),
+    };
+  }, [colourScheme]);
+
   // Loader
   if (loading) {
     return <Loader />;
@@ -76,7 +108,7 @@ const ColourAnalysis = () => {
   }
 
   return (
-    <>
+    <div className={styles["colour-analysis-default"]} style={cssVariables}>
       <h1>Colour Analysis</h1>
       {/* <section>{colourNameSection}</section> */}
       <section>
@@ -117,7 +149,10 @@ const ColourAnalysis = () => {
                 return (
                   <button
                     key={indexColour}
-                    style={{ backgroundColor: color.hex.value }}
+                    style={{
+                      backgroundColor: color.hex.value,
+                      color: chooseTextColour(color.hex.value),
+                    }}
                     onClick={() =>
                       handleSelectedColourToNavigate(color.hex.value, navigate)
                     }
@@ -138,7 +173,7 @@ const ColourAnalysis = () => {
       </section>
 
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}
-    </>
+    </div>
   );
 };
 

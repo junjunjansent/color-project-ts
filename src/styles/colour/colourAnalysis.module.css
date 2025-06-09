@@ -1,0 +1,40 @@
+.colour-analysis-default {
+  /* default colours */
+  --colour-bg: #404040;
+  --colour-title: #ffffff;
+  --colour-btn: #4f5481;
+  --colour-article: #5b5959;
+  --colour-article-btn: #585e92;
+  /* textcolours to be defined:
+  --colour-text 
+  --colour-btn-text 
+  --colour-article-text 
+  --colour-article-btn-text */
+
+  background-color: var(--colour-bg);
+  color: var(--colour-text, #ffffff);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--colour-title);
+}
+
+button {
+  background-color: var(--colour-btn);
+  color: var(--colour-btn-text, #ffffff);
+}
+
+article {
+  background-color: var(--colour-article);
+  color: var(--colour-article-text, #ffffff);
+}
+
+article button {
+  background-color: var(--colour-article-btn);
+  color: var(--colour-article-btn-text, #ffffff);
+}

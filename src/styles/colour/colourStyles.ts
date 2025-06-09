@@ -1,5 +1,5 @@
-import { convertHEXtoRGB } from "../features/colour/colourRGBHandler";
-import { type RGB } from "../features/colour/colourConstants";
+import { convertHEXtoRGB } from "../../features/colour/colourRGBHandler";
+import { type RGB } from "../../features/colour/colourConstants";
 
 const getContrastRatio = (lumiA: number, lumiB: number) => {
   // Contrast ratio is calculated as (L1 + 0.05) / (L2 + 0.05), to adjust for human perception
@@ -23,11 +23,11 @@ const getLuminance = ({ R, G, B }: RGB): number => {
   return 0.2126 * newRGBArr[0] + 0.7152 * newRGBArr[1] + 0.0722 * newRGBArr[2];
 };
 
-const chooseTextColour = (hex: string): string => {
+const chooseTextColour = (hex: string | undefined): string => {
   // from stack overflow lol
   const hexRegex = /^#([A-Fa-f0-9]{6})$/;
 
-  if (!hexRegex.test(hex)) {
+  if (!hex || !hexRegex.test(hex)) {
     console.warn(`Hex is not valid, ${hex}. Black text has been chosen`);
     return "#000000"; //default black
   }

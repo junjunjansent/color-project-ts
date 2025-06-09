@@ -17,11 +17,17 @@ export interface ColourProportion {
 
 export interface ColourGameState {
   status: GameStatus;
-  mode: "RGBW" | "RYBW" | "CMYK" | null;
-  timer: number;
-  timerRunning: boolean;
+  mode: {
+    name: "RGBW" | "RYBW" | "CMYK" | null;
+    colour1: number;
+    colour2: number;
+    colour3: number;
+    colour4: number;
+  };
   correctColourProportion: ColourProportion;
   currentColourProportion: ColourProportion;
+  timer: number;
+  timerRunning: boolean;
   showWinPopup: boolean;
   showLosePopup: boolean;
   showHints: boolean;

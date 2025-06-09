@@ -1,0 +1,52 @@
+.colour-profile-default-scheme {
+  /* default colours */
+  --colour-bg: #404040;
+  --colour-title: #ffffff;
+  --colour-btn: #4f5481;
+  --colour-article: #5b5959;
+  --colour-article-btn: #585e92;
+  /* textcolours to be defined:
+  --colour-text 
+  --colour-btn-text 
+  --colour-article-text 
+  --colour-article-btn-text */
+
+  background-color: var(--colour-bg);
+}
+
+.colour-profile-default-scheme h1,
+.colour-profile-default-scheme h2,
+.colour-profile-default-scheme h3,
+.colour-profile-default-scheme h4,
+.colour-profile-default-scheme h5,
+.colour-profile-default-scheme h6 {
+  color: var(--colour-title);
+}
+
+.colour-profile-default-scheme p {
+  color: var(--colour-text, #ffffff);
+}
+
+.colour-profile-default-scheme button {
+  background-color: var(--colour-btn);
+  color: var(--colour-btn-text, #ffffff);
+}
+
+.colour-profile-default-scheme article {
+  background-color: var(--colour-article);
+  color: var(--colour-article-text, #ffffff);
+}
+
+.colour-profile-default-scheme article h1,
+.colour-profile-default-scheme article h2,
+.colour-profile-default-scheme article h3,
+.colour-profile-default-scheme article h4,
+.colour-profile-default-scheme article h5,
+.colour-profile-default-scheme article h6 {
+  color: var(--colour-article-text, #ffffff);
+}
+
+.colour-profile-default-scheme article button {
+  background-color: var(--colour-article-btn);
+  color: var(--colour-article-btn-text, #ffffff);
+}

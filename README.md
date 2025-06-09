@@ -23,7 +23,7 @@
 HomePage
 
 - ColourGameStartPage
-  - ColourAnalysis
+  - ColourProfile
   - ColourMatchLevelled
   - ColourMatchRandom
 
@@ -45,7 +45,7 @@ HomePage
       - Colour & how their meaning is derived
       - Importance of Colour Schemes
   - [x] As a user, I will be able to to choose between two options on the start page
-    - Choosing Colour Analysis
+    - Choosing Colour Profile
       - Colour of choice via input
       - Random generated colour
       - Saved Colours
@@ -53,7 +53,7 @@ HomePage
       - Random Colour
       - Levelled one (future)
 
-- Colour Analysis (/game/colour/:id)
+- Colour Profile (/game/colour/:id)
 
   - [x] As a user, with the selected colour, I will be able to see details of the selected colour (GET, API)
     - RGB value, id
@@ -64,7 +64,7 @@ HomePage
   - [x] As a user, I will be given the option to Save Colours that I may like to view them again in the future.
   - [x] As a user, I will be informed if the colour I have found has already been selected.
   - [x] As a user, with the selected colour, closest match of a certain set of colours will be shown that will explain the emotion association [hard coded]
-  - [ ] As a user, I will be given a list of themes where I can select them to transform the current page into the colour style I am looking at
+  - [x] As a user, I will be given a list of themes where I can select them to transform the current page into the colour style I am looking at
     - ?? each theme has 6 colours:
       - Main Bg
       - Nav Bar
@@ -79,7 +79,7 @@ HomePage
     - analogic-complement
     - triad
     - quad
-  - [x] As a user, i can also select the sub colours inside each theme, that would navigate to their colour analysis page
+  - [x] As a user, i can also select the sub colours inside each theme, that would navigate to their colour profile page
 
 - Colour Game (/game/colour/match/)
   - [ ] As a user, I will be able to see a command bar that allows me to understand how the game works
@@ -95,7 +95,7 @@ HomePage
   - [ ] As a user, I will be able to see the proportions of colour selected and the total number of moves colours and the resulting colour after the proportions have mixed in order in order to understand how close I am to obtaining the given colour
   - [ ] As a user, as long as the correct proportion of colour is obtained, I will be told I won and be given three options
     - Leaderboard Form
-    - Head to colour Analysis of selected colour
+    - Head to colour Profile of selected colour
     - Play Again
   - [ ] As a user, on the leaderboard form, I will be able to input my name as into the leaderboard form
   - [ ] As a user, upon submission of the form, I will see the leaderboard and my ranking

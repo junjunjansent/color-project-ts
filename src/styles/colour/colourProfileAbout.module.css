@@ -1,0 +1,22 @@
+.about {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.about-middle {
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+}
+
+.about-middle img {
+  width: 100%;
+  max-width: 100%;
+  height: auto; /* to preserve aspect ratio */
+}
+
+.about-middle button {
+  margin: 1rem auto;
+}

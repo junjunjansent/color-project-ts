@@ -14,7 +14,7 @@ const ColourStartPage = () => {
   // define state
   const navigate = useNavigate();
 
-  const handleInputColourAnalysis = (
+  const handleInputColourDetails = (
     event: React.FormEvent<HTMLFormElement>
   ) => {
     // get form Data
@@ -28,7 +28,7 @@ const ColourStartPage = () => {
     navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
   };
 
-  const handleRandomiseColourAnalysis = () => {
+  const handleRandomiseColourDetailsPage = () => {
     log("Randomising Colour for Aanlysis");
     const rgb = randomiseRGB();
     const rgbUrl = urlifyRGB(rgb);
@@ -92,13 +92,13 @@ const ColourStartPage = () => {
       </div>
 
       <section>
-        <h4>Colour Analysis</h4>
+        <h4>More on a Specific Colour</h4>
         <p>
           Choose a colour to learn about their details, the emotion it may be
           closely linked to, and some of their colour schemes you could try out
           in designs :)
         </p>
-        <button onClick={handleRandomiseColourAnalysis}>Randomise</button>
+        <button onClick={handleRandomiseColourDetailsPage}>Randomise</button>
         <Link to={PATHS.GAME.COLOUR.LIST}>
           <button>See Saved Colours</button>
         </Link>
@@ -106,7 +106,7 @@ const ColourStartPage = () => {
           {/* TODO Explore this feature */}
           Search Emotion (Not Built)
         </button>
-        <form onSubmit={handleInputColourAnalysis}>
+        <form onSubmit={handleInputColourDetails}>
           <label>
             <input
               type="color"

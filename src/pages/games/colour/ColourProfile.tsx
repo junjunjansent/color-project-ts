@@ -1,9 +1,12 @@
 import debug from "debug";
-const log = debug("colours:ColourAnalysis");
+const log = debug("colours:ColourProfile");
 
 import { useParams, useNavigate } from "react-router";
 import { useEffect, useMemo, useState } from "react";
-import styles from "../../../styles/colour/colourAnalysis.module.css";
+
+import styles from "../../../styles/colour/colourProfile.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import {
   RGBUrlRegex,
@@ -21,7 +24,7 @@ import * as api_colour from "../../../features/colour/api_colour";
 
 import ErrorPage from "../../../components/ErrorPage";
 import Loader from "../../../components/Loader";
-import ColourNameCmpnt from "../../../components/colour/ColourNameCmpnt";
+import ColourAboutCmpnt from "../../../components/colour/ColourAboutCmpnt";
 import ColourEmotionsCmpnt from "../../../components/colour/ColourEmotionsCmpnt";
 import { chooseTextColour } from "../../../styles/colour/colourStyles";
 
@@ -30,7 +33,7 @@ interface ColourSchemeDetails {
   hexColours: string[];
 }
 
-const ColourAnalysis = () => {
+const ColourProfile = () => {
   // get details of site
   const { colourId } = useParams();
   if (!colourId || !RGBUrlRegex.test(colourId)) {
@@ -119,12 +122,11 @@ const ColourAnalysis = () => {
 
   return (
     <div
-      className={styles["colour-analysis-default-scheme"]}
+      className={styles["colour-profile-default-scheme"]}
       style={cssVariables}
     >
-      <h1>Colour Analysis</h1>
-      <section className={styles["name-and-specs"]}>
-        <ColourNameCmpnt colourId={colourId} colourData={colourData} />
+      <section className={styles["about"]}>
+        <ColourAboutCmpnt colourId={colourId} colourData={colourData} />
         <div>
           <h4>Colour Specs</h4>
           <ul>
@@ -162,26 +164,40 @@ const ColourAnalysis = () => {
             <article key={indexScheme}>
               <h5>{colourSchemeList[scheme.mode]}</h5>
               <button onClick={() => handleSelectedColourScheme(scheme)}>
-                See Theme
+                {colourScheme?.name === colourSchemeList[scheme.mode] ? (
+                  <>
+                    Selected <FontAwesomeIcon icon={faCheck} />
+                  </>
+                ) : (
+                  <>
+                    See Colour Scheme{" "}
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </>
+                )}
               </button>
-              {scheme.colors.map((color) => {
-                return (
-                  <button
-                    key={color.hex.value}
-                    style={{
-                      backgroundColor: color.hex.value,
-                      color: chooseTextColour(color.hex.value),
-                    }}
-                    onClick={() =>
-                      handleSelectedColourToNavigate(color.hex.value, navigate)
-                    }
-                  >
-                    {color.rgb.value}
-                    <br />
-                    {color.hex.value}
-                  </button>
-                );
-              })}
+              <div>
+                {scheme.colors.map((color) => {
+                  return (
+                    <button
+                      key={color.hex.value}
+                      style={{
+                        backgroundColor: color.hex.value,
+                        color: chooseTextColour(color.hex.value),
+                      }}
+                      onClick={() =>
+                        handleSelectedColourToNavigate(
+                          color.hex.value,
+                          navigate
+                        )
+                      }
+                    >
+                      {color.rgb.value}
+                      <br />
+                      {color.hex.value}
+                    </button>
+                  );
+                })}
+              </div>
             </article>
           );
         })}
@@ -196,4 +212,4 @@ const ColourAnalysis = () => {
   );
 };
 
-export default ColourAnalysis;
+export default ColourProfile;

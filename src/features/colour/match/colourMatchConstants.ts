@@ -1,7 +1,9 @@
 // import { type RGB } from "../colourConstants";
 
+// ---------- Colour Base
+
 // I included baseName for easier UI rendering
-const ColourMatchBaseCore = {
+const colourMatchBases = {
   RGBW: {
     baseName: "RGBW",
     baseType: "Additive",
@@ -28,10 +30,21 @@ const ColourMatchBaseCore = {
   },
 } as const;
 
-type ColourMatchBasesFull = typeof ColourMatchBaseCore;
-type ColourMatchBase = keyof ColourMatchBasesFull;
+type ColourMatchBasesFull = typeof colourMatchBases;
+type ColourMatchBaseNames = keyof ColourMatchBasesFull;
 
-const ColourLevelDetails = {
+// specific function for type checking via type predicate
+const isColourMatchBase = (value: string): value is ColourMatchBaseNames => {
+  return value in colourMatchBases; // use in operator to check Boolean
+};
+
+// ---------- Colour Play Style
+
+type ColourGamePlayStyle = "random" | "levelled";
+
+// ---------- Colour Level
+
+const colourLevelDetails = {
   level1: {
     level: 1,
     coloursAvail: 2,
@@ -77,8 +90,10 @@ const ColourLevelDetails = {
 } as const;
 
 export {
-  ColourMatchBaseCore,
-  ColourLevelDetails,
+  colourMatchBases,
+  colourLevelDetails,
   type ColourMatchBasesFull,
-  type ColourMatchBase,
+  type ColourMatchBaseNames,
+  type ColourGamePlayStyle,
+  isColourMatchBase,
 };

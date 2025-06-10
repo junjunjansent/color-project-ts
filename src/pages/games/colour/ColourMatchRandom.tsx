@@ -20,7 +20,8 @@ import {
   getViewStateFromGameStatus,
 } from "../../../features/colour/match/colourGameReducer";
 import {
-  ColourMatchBaseCore,
+  colourMatchBases,
+  isColourMatchBase,
   // type ColourMatchBase,
 } from "../../../features/colour/match/colourMatchConstants";
 
@@ -33,40 +34,30 @@ const ColourMatchRandom = () => {
     initialColourGameState
   );
 
-  // initialise playStyle
-  const initialisePlay = () => {
-    dispatch({
-      type: "SET_GAME_STATUS",
-      payload: { newGameStatus: "pendingMode" },
-    });
-    dispatch({
-      type: "SET_PLAYSTYLE",
-      payload: { newPlayStyle: "Random" },
-    });
-  };
-
   useEffect(() => {
-    initialisePlay();
+    dispatch({ type: "PENDING_RANDOM_PLAY" });
   }, []);
 
   // --------- handlers
-  const handleBaseSelector = (baseName: string) => {
-    log(baseName);
-    // if (baseName in ColourMatchBase)
-    // //   dispatch({
-    // //     type: "SET_BASE",
-    // //     payload: { newBase: baseName },
-    // //   });
-    // // dispatch({
-    // //   type: "SET_BASE",
-    // //   payload: { newBase: baseName },
-    // // });
+  const handleChangeBaseColours = (): void => {
+    dispatch({ type: "PENDING_RANDOM_PLAY" });
   };
 
+  const handleBaseSelector = (baseName: string): void => {
+    if (isColourMatchBase(baseName)) {
+      dispatch({
+        type: "INITIALISE_PLAY",
+        payload: { newBase: baseName },
+      });
+    }
+  };
+
+  // ----------- cleanup every render
   const colourGameViewState: ColourGameViewState = getViewStateFromGameStatus(
-    colourGameModelState.status
+    colourGameModelState.gameStatus
   );
   log(colourGameModelState);
+  log(colourGameViewState);
 
   return (
     <>
@@ -78,7 +69,7 @@ const ColourMatchRandom = () => {
           <Link to={PATHS.GAME.COLOUR.START}>
             <button>Return to Start Page</button>
           </Link>
-          <button>
+          <button onClick={handleChangeBaseColours}>
             Change Base Colours <FontAwesomeIcon icon={faArrowsRotate} />
           </button>
         </div>
@@ -108,7 +99,7 @@ const ColourMatchRandom = () => {
 
       {colourGameViewState.showBaseSelector && (
         <section id="difficulty-section">
-          {Object.keys(ColourMatchBaseCore).map((baseName) => (
+          {Object.keys(colourMatchBases).map((baseName) => (
             <button key={baseName} onClick={() => handleBaseSelector(baseName)}>
               {baseName}
             </button>
@@ -120,6 +111,9 @@ const ColourMatchRandom = () => {
         </button> --> */}
         </section>
       )}
+
+      <pre>{JSON.stringify(colourGameModelState, null, 2)}</pre>
+      <pre>{JSON.stringify(colourGameViewState, null, 2)}</pre>
     </>
   );
 };

@@ -2,6 +2,8 @@ import colourEmotionsVariationDataArr from "./colourEmotionsVariationDataArr.jso
 import colourEmotionsMainDataArr from "./colourEmotionsMainDataArr.json";
 import { type RGB, type ColourEmotionsData } from "./colourConstants";
 
+// ----------- Pure functions
+
 const randomiseRGB = () => {
   const RValue = Math.floor(Math.random() * 256);
   const GValue = Math.floor(Math.random() * 256);
@@ -56,6 +58,8 @@ const convertHEXtoRGB = (hex: string): RGB => {
   const BValue = parseInt(hex.slice(5, 7), 16);
   return { R: RValue, G: GValue, B: BValue };
 };
+
+// ----------- Impure functions
 
 const getClosestEmotionsData = (rgb: RGB): ColourEmotionsData => {
   // requires colourEmotionsVariationsData.json with .rgb values

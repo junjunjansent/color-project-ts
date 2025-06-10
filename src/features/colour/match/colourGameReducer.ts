@@ -35,70 +35,41 @@
 
 import type { GameStatus } from "../../gameConstants";
 import {
-  type ColourMatchBasesFull,
-  type ColourMatchBase,
-  // ColourLevelDetails,
+  type ColourMatchBaseNames,
+  type ColourGamePlayStyle,
 } from "./colourMatchConstants";
-
-// ---------- Googled this
-// Idea was to restrict typing to ensure proportions would have desired keys
-
-// "`rgbBase${string}` ? K : never" ==> used to filter keys in indicated format
-// "in" is used to loop and create a new object type if a property exists in an object
-type KeysRGBBase<T> = {
-  [K in keyof T as K extends `rgbBase${string}` ? K : never]: number;
-  // {"rgbBase1": number; "rgbBase2": number; ... }
-};
-
-type BaseToProportion = {
-  [K in ColourMatchBase]: KeysRGBBase<ColourMatchBasesFull[K]>;
-  // ["rgbBase1", "rgbBase2", ... ]["RGBW" | "RYBW" | "CMYK" ]
-};
+import { randomiseColourProportions } from "./colourMatchUtils";
 
 // ---------- Type: Additional
 
-interface ColourGameLevelTracker<
-  Base extends ColourMatchBase = ColourMatchBase
-> {
+interface ColourGameLevelTracker {
   currentLevel: number;
   currentRound: number;
   memory: {
     level: number;
     round: number;
-    colorProportion: BaseToProportion[Base];
+    colorProportion: Record<string, number>;
   }[];
 }
 
 // ---------- Typing State
 
-interface ColourGameModelState<Base extends ColourMatchBase = ColourMatchBase> {
-  status: GameStatus;
-  playStyle: "Random" | "Levelled" | null;
-  base: Base | undefined;
-  correctColourProportion: BaseToProportion[Base] | undefined;
-  currentColourProportion: BaseToProportion[Base] | undefined;
+// TODO - TOLEARN: a bit difficult to type ColourProportion exactly :\
+interface ColourGameModelState {
+  gameStatus: GameStatus;
+  playStyle: ColourGamePlayStyle | undefined;
+  base: ColourMatchBaseNames | undefined;
+  correctColourProportion: Record<string, number> | undefined;
+  currentColourProportion: Record<string, number> | undefined;
   progress: ColourGameLevelTracker | undefined;
-  timer: {
-    timerCount: number;
-    timerIsRunning: boolean;
-  };
+  timer:
+    | {
+        timerCount: number;
+        timerIsRunning: boolean;
+      }
+    | undefined;
   hintsModeIsOn: boolean; // RGB of 4 Colour Bases, RGB of Current Proportion, RGB of Correct Proportion
 }
-
-// To be Calculated:
-// - RGB of Current Proportion
-// - RGB of Correct Proportion
-
-// interface ColourGameViewState {
-//   showHints: boolean;
-//   showBaseSelector: boolean;
-//   showCommandSection: boolean;
-//   showColourSelectors: boolean;
-//   showColourProportions: boolean;
-//   showAnswer: boolean;
-//   showWinPopup: boolean;
-//   showLosePopup: boolean;
-// }
 
 type ColourGameState = ColourGameModelState;
 
@@ -113,16 +84,13 @@ type ColourGameViewState = {
 };
 
 const initialColourGameState: ColourGameState = {
-  status: "pendingMode",
-  playStyle: null,
+  gameStatus: "pendingMode",
+  playStyle: undefined,
   base: undefined,
   correctColourProportion: undefined,
   currentColourProportion: undefined,
   progress: undefined,
-  timer: {
-    timerCount: 0,
-    timerIsRunning: false,
-  },
+  timer: undefined,
   hintsModeIsOn: false,
 };
 
@@ -140,7 +108,14 @@ const getViewStateFromGameStatus = (
 
 // ---------- Typing Action
 
-type ColourGameModelAction<Base extends ColourMatchBase = ColourMatchBase> =
+type ColourGameModelAction =
+  | {
+      type: "PENDING_RANDOM_PLAY";
+    }
+  | {
+      type: "INITIALISE_PLAY";
+      payload: { newBase: ColourMatchBaseNames };
+    }
   // | {
   //     type: "INITIALISE_PLAY";
   //     payload: {
@@ -148,28 +123,31 @@ type ColourGameModelAction<Base extends ColourMatchBase = ColourMatchBase> =
   //       newPlayStyle: "Random" | "Levelled";
   //     };
   //   }
+  // | {
+  //     type: "INITIALISE";
+  //   }
   | {
       type: "SET_GAME_STATUS";
       payload: { newGameStatus: GameStatus };
     }
   | {
       type: "SET_PLAYSTYLE";
-      payload: { newPlayStyle: "Random" | "Levelled" | null };
+      payload: { newPlayStyle: ColourGamePlayStyle };
     }
   | {
       type: "SET_BASE";
-      payload: { newBase: Base };
+      payload: { newBase: ColourMatchBaseNames };
     }
   | {
       type: "SET_CORRECT_PROPORTION";
       payload: {
-        newCorrectProportion: BaseToProportion[Base];
+        newCorrectProportion: Record<string, number>;
       };
     }
   | {
       type: "SET_CURRENT_PROPORTION";
       payload: {
-        changeCurrentProportion: BaseToProportion[Base];
+        changeCurrentProportion: Record<string, number>;
       };
     }
   | {
@@ -214,8 +192,31 @@ type ColourGameAction = ColourGameModelAction | ColourGameViewAction;
 const colourGameReducer = (
   state: ColourGameState,
   action: ColourGameAction
-) => {
+): ColourGameState => {
   switch (action.type) {
+    case "PENDING_RANDOM_PLAY":
+      return {
+        ...initialColourGameState,
+        gameStatus: "pendingMode",
+        playStyle: "random",
+      };
+    case "INITIALISE_PLAY":
+      if (!state.playStyle) {
+        throw new Error("No Play Style Selected to initialise Colour Game!");
+      }
+      return {
+        ...state,
+        gameStatus: "initialisePlay",
+        base: action.payload.newBase,
+        correctColourProportion: randomiseColourProportions(
+          state.playStyle,
+          action.payload.newBase
+        ),
+      };
+    case "SET_BASE":
+      return { ...state, base: action.payload.newBase };
+    // case "INITIALISE":
+    //   return { initialColourGameState };
     case "RESET":
       // Model GameStatus set to pendingMode
       // may not be an option, might force back to start page
@@ -224,10 +225,6 @@ const colourGameReducer = (
       // Model playStyle changes
       // Model GameStatus remains at pendingMode
       return { ...state, playStyle: action.payload.newPlayStyle };
-    case "SET_BASE":
-      // Model base changes
-      // Model GameStatus set to initialisePlay
-      return { ...state, base: action.payload.newBase };
     case "SET_CORRECT_PROPORTION":
       // Model correctColourProportion is calculated/randomised
       return state;
@@ -238,7 +235,7 @@ const colourGameReducer = (
 
     // --- View Action.types
     case "SET_VIEW_HINTS":
-      return { ...state, showHints: action.payload.isHintsShown };
+      return { ...state, hintsModeIsOn: action.payload.isHintsShown };
     // case "SET_VIEW_BASE_SELECTOR":
     //   return { ...state, showBaseSelector: action.payload.isBaseSelectorShown };
     // case "SET_VIEW_COMMAND_SECTION":

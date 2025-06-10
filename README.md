@@ -9,21 +9,43 @@
 
 ### Background
 
+I chose to implement this colour game/idea inspired by the idea of colour combination and also inspired by conversations of my friends about the importance of colour in design, even though I myself am slightly colour deficient. I wanted to expand the game design knowledge I learnt in Unit 1 as well as test my CSS side in implementing them in React.
+
+- This continues on the challenge and desire to further build a portfolio for myself.
+
 ### Challenges
 
-- !!!! Typing Fetched Data :(
-- Understanding Colour Theory
-- Styling of pages on theme selection
-- Inter navigation of colours
-- Loading Page & Error page pop ups
-- Leaderboard Forms & Time Management
+- Typescript
+
+  - !!!! Typing Fetched Data :(
+  - Typing Game Data
+
+- Info
+
+  - Understanding Colour Theory
+  - Inconsistent Naming Conventions
+  - Approximation of Colours due Human Perception vs Colour Values
+
+- Other React
+
+  - Styling of pages on theme selection
+  - Inter navigation of colours & Routing
+  - useMemo
+  - useReducer
+  - Loading Page & Error page pop ups
+
+- Personal
+  - Leaderboard Forms & Time Management
+  - Writing React Cmoponent Functions vs. Pure Functions
+  - Writing words/variables using UK vs US
 
 ### Page Structure
 
 HomePage
 
 - ColourGameStartPage
-  - ColourProfile
+  - ColourAbout
+  - Colour List
   - ColourMatchLevelled
   - ColourMatchRandom
 
@@ -61,25 +83,27 @@ HomePage
     - See if got proportion of RGBW, RYBW, CMYK
     - Hex, HSV, HSL, CMYK
     - Complementary Colour
-  - [x] As a user, I will be given the option to Save Colours that I may like to view them again in the future.
-  - [x] As a user, I will be informed if the colour I have found has already been selected.
+  - [x] As a user, closest named colours, if the current selection is not named, will be shown and I would be able to navigate to that colour's profile.
   - [x] As a user, with the selected colour, closest match of a certain set of colours will be shown that will explain the emotion association [hard coded]
-  - [x] As a user, I will be given a list of themes where I can select them to transform the current page into the colour style I am looking at
-    - ?? each theme has 6 colours:
+  - [x] As a user, I will be given a list of themes where I can select them to transform the current page into the colour scheme I am looking at
+    - Each scheme has 6 colours that will help to style features on the page such as:
       - Main Bg
-      - Nav Bar
       - Big Font
       - Small Font
       - Buttons
       - Second Button
-    - monochrome
-    - monochrome-dark
-    - monochrome-light
-    - analogic, complement
-    - analogic-complement
-    - triad
-    - quad
-  - [x] As a user, i can also select the sub colours inside each theme, that would navigate to their colour profile page
+    - Schemes available (based on API) include:
+      - monochrome
+      - monochrome-dark
+      - monochrome-light
+      - analogic, complement
+      - analogic-complement
+      - triad
+      - quad
+  - [x] As a user, I can see which colour scheme has been currently selected.
+  - [x] As a user, I can also select the sub colours inside each theme, that would navigate to their colour profile page
+  - [x] As a user, I can save a colour to a consolidated list so that I may revisit it if I wish.
+  - [x] As a user, if a colour has been saved, I will be informed and am able to navigate to the consolidated saved list.
 
 - Colour Game (/game/colour/match/)
   - [ ] As a user, I will be able to see a command bar that allows me to understand how the game works
@@ -100,3 +124,20 @@ HomePage
   - [ ] As a user, on the leaderboard form, I will be able to input my name as into the leaderboard form
   - [ ] As a user, upon submission of the form, I will see the leaderboard and my ranking
     - Airtable send information PUT (Name, Time, Colour obtained)
+
+## Overall
+
+API/Info adopted from:
+
+- [The Color API](https://thecolorapi.com)
+- [Meaning of Colours](https://www.empower-yourself-with-color-psychology.com/meaning-of-colors.html)
+
+Theory adopted from:
+
+- [Luminance Calculation](https://www.w3.org/TR/WCAG20/relative-luminance.xml)
+- [Contrast Calculation](https://www.w3.org/TR/WCAG20/#contrast-ratiodef)
+
+Features adopted from:
+
+<!-- - [Toggle Switch](https://uiverse.io/MuhammadHasann/popular-seahorse-73)
+- [Confetti Animation](https://www.youtube.com/watch?v=hq_tKbSzAiY) -->

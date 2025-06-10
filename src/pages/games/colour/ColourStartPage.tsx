@@ -39,59 +39,63 @@ const ColourStartPage = () => {
 
   return (
     <>
-      <h1>Colour Game</h1>
-      <h3>Background</h3>
-      <p>
-        I chose this little project because I found it fascinating that
-        theoretically, all colours on the colour wheel can be generated with the
-        base primary colours. In order to test my CSS and advance my knowledge
-        on colour theory, I built this lil game :).
-      </p>
+      <section>
+        <h1>Colour Game</h1>
+        <h3>Background</h3>
+        <p>
+          I chose this little project because I found it fascinating that
+          theoretically, all colours on the colour wheel can be generated with
+          the base primary colours. In order to test my CSS and advance my
+          knowledge on colour theory, I built this lil game :).
+        </p>
+      </section>
 
-      <h3>Just a lil Colour Theory 🎨</h3>
-      <p>
-        You already know, colour is... <strong>EVERYWHERE</strong>! — in nature,
-        art, design, and everyday objects.
-        <br />
-        It shapes how we feel and how we communicate without words. In that
-        sense, it is another language and avenue for us to better connect with
-        each other and express ourselves. <br />
-      </p>
-      <div className="colorInfo">
-        <h6>Categorising Colour 📁</h6>
+      <section>
+        <h3>Just a lil Colour Theory 🎨</h3>
         <p>
-          Colours are described by their hue (the colour itself), saturation
-          (intensity), and value (lightness or darkness). They are also grouped
-          as warm (reds, oranges) or cool (blues, greens), helping us understand
-          and use them better. Some methods include their colour proportions
-          (e.g. RGB, RYB, CMY), HSL (Hue, Saturation, Lightness), and Hex
-          (hexademical) colour.
+          You already know, colour is... <strong>EVERYWHERE</strong>! — in
+          nature, art, design, and everyday objects.
+          <br />
+          It shapes how we feel and how we communicate without words. In that
+          sense, it is another language and avenue for us to better connect with
+          each other and express ourselves. <br />
         </p>
-      </div>
-      <div className="colorInfo">
-        <h6>Colour & Emotions 😮‍💨</h6>
-        <p>
-          Our biology, culture, and nature affects how we perceive and 'feel'
-          colour. You already know this from the usual 'blue → sky → calm' &
-          'red → fire → anger'. Different cultures may assign unique meanings
-          too and Designers often use these emotional connections to create the
-          right mood and impact. <br />
-          Fun Fact: As a culture develops more colour terms, they tend to follow
-          the sequence of (i) Black/White, (ii) Red, (iii) Green/Yellow, (iv)
-          Blue, (v) Brown, etc. (Berlin and Kay's Theory of Basic Colour Terms,
-          1969)
-        </p>
-      </div>
-      <div className="colorInfo">
-        <h6>Colour Schemes ⚖️</h6>
-        <p>
-          Colour schemes arrange colours in ways that look balanced and
-          pleasing—like complementary colours that contrast or analogous colours
-          that blend smoothly. Good schemes create harmony, making designs feel
-          unified and easy on the eyes. Without balance, colours can clash,
-          causing confusion or discomfort.
-        </p>
-      </div>
+        <div className="colorInfo">
+          <h6>Categorising Colour 📁</h6>
+          <p>
+            Colours are described by their hue (the colour itself), saturation
+            (intensity), and value (lightness or darkness). They are also
+            grouped as warm (reds, oranges) or cool (blues, greens), helping us
+            understand and use them better. Some methods include their colour
+            proportions (e.g. RGB, RYB, CMY), HSL (Hue, Saturation, Lightness),
+            and Hex (hexademical) colour.
+          </p>
+        </div>
+        <div className="colorInfo">
+          <h6>Colour & Emotions 😮‍💨</h6>
+          <p>
+            Our biology, culture, and nature affects how we perceive and 'feel'
+            colour. You already know this from the usual 'blue → sky → calm' &
+            'red → fire → anger'. Different cultures may assign unique meanings
+            too and Designers often use these emotional connections to create
+            the right mood and impact. <br />
+            Fun Fact: As a culture develops more colour terms, they tend to
+            follow the sequence of (i) Black/White, (ii) Red, (iii)
+            Green/Yellow, (iv) Blue, (v) Brown, etc. (Berlin and Kay's Theory of
+            Basic Colour Terms, 1969)
+          </p>
+        </div>
+        <div className="colorInfo">
+          <h6>Colour Schemes ⚖️</h6>
+          <p>
+            Colour schemes arrange colours in ways that look balanced and
+            pleasing—like complementary colours that contrast or analogous
+            colours that blend smoothly. Good schemes create harmony, making
+            designs feel unified and easy on the eyes. Without balance, colours
+            can clash, causing confusion or discomfort.
+          </p>
+        </div>
+      </section>
 
       <section>
         <h4>More on a Specific Colour</h4>
@@ -123,7 +127,7 @@ const ColourStartPage = () => {
       </section>
 
       <section>
-        <h4>Colour Match</h4>
+        <h4>Colour Match Game</h4>
         <p>
           Colours are created by combining a few basic, base colours. By mixing
           your primary colours, you get your secondary and tertiary colours.{" "}

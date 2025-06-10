@@ -23,6 +23,19 @@ import ColourEmotionsCmpnt from "../../../components/colour/ColourEmotionsCmpnt"
 import { chooseTextColour } from "../../../styles/colour/colourStyles";
 import ColourSchemeCardCmpnt from "../../../components/colour/ColourSchemeCardCmpnt";
 
+// ----------- Functions
+
+const cleanToColourSchemeCore = (scheme: ColourSchemeAPI): ColourSchemeCore => {
+  const cleanedColourScheme: ColourSchemeCore = {
+    label: colourSchemeList[scheme.mode],
+    mode: scheme.mode,
+    hexColours: scheme.colors.map((color) => color.hex.value),
+  };
+  return cleanedColourScheme;
+};
+
+// ----------- Component
+
 const ColourProfile = () => {
   // get details of site
   const { colourId } = useParams();
@@ -37,11 +50,7 @@ const ColourProfile = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const handleSelectedColourScheme = (scheme: ColourSchemeAPI) => {
-    const cleanedColourScheme: ColourSchemeCore = {
-      label: colourSchemeList[scheme.mode],
-      mode: scheme.mode,
-      hexColours: scheme.colors.map((color) => color.hex.value),
-    };
+    const cleanedColourScheme = cleanToColourSchemeCore(scheme);
     setColourScheme(cleanedColourScheme);
     log(cleanedColourScheme);
   };

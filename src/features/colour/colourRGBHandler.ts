@@ -24,7 +24,6 @@ const stringifyRGB = (rgb: RGB) => {
   return RGBString;
 };
 
-// TODO figure out how to catch errors without ruining website
 const convertRGBtoHEX = (rgb: RGB): string => {
   // 16 million types of colours
   if (
@@ -61,7 +60,7 @@ const convertHEXtoRGB = (hex: string): RGB => {
 const getClosestEmotionsData = (rgb: RGB): ColourEmotionsData => {
   // requires colourEmotionsVariationsData.json with .rgb values
   // efficient for now... for ~100 variations
-  // calculate Euclidean distance
+  // calculate Euclidean distance, not a good human perception evaluator
   let minEuDist = Infinity;
   let result: ColourEmotionsData | null = null;
 

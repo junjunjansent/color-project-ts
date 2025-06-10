@@ -12,7 +12,6 @@ interface ColourSchemeCardCmpntProp {
   scheme: ColourSchemeAPI;
   selected: boolean;
   handleSelectedColourScheme: (scheme: ColourSchemeAPI) => void;
-  // handleRemoveFromList: (savedColour: AirtableColourListFieldWithID) => void;
 }
 
 const ColourSchemeCardCmpnt = ({

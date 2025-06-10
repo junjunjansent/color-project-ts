@@ -70,7 +70,7 @@ const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
   return (
     <>
       <div className={styles["about"]}>
-        {/* about left */}
+        {/* about-left */}
         <div>
           <h2>
             <strong>Name: </strong>
@@ -133,7 +133,7 @@ const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
           )}
         </div>
 
-        {/* about right */}
+        {/* about-right */}
         <div>
           <h4>Colour Specs</h4>
           <ul>

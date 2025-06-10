@@ -54,6 +54,20 @@ type ModeToProportion = {
 
 // ---------- Typing State & Action
 
+// interface ColourGameModelState<Base extends ColourMatchBase = ColourMatchBase> {
+//   status: GameStatus;
+//   mode: "Random" | "Levelled" | null;
+//   base: Base;
+//   correctColourProportion: ModeToProportion[Base];
+//   currentColourProportion: ModeToProportion[Base];
+// }
+
+// interface ColourGameViewState {
+//   showColourSelectors: boolean;
+//   showHints: boolean;
+//   showAnswer: boolean;
+// }
+
 export interface ColourGameState<
   Base extends ColourMatchBase = ColourMatchBase
 > {

@@ -8,7 +8,7 @@ import {
   randomiseRGB,
   urlifyRGB,
   convertHEXtoRGB,
-} from "../../../features/colour/colourRGBHandler";
+} from "../../../features/colour/colourRGBUtils";
 
 // import "../../../styles/game.module.css";
 
@@ -25,13 +25,13 @@ const ColourStartPage = () => {
     const data = Object.fromEntries(formData);
 
     log("Analysing Colour: ", data.colourToAnalyse);
-    const rgb = convertHEXtoRGB(data.colourToAnalyse as string); //TODO type guard
+    const rgb = convertHEXtoRGB(data.colourToAnalyse.toString());
     const rgbUrl = urlifyRGB(rgb);
     navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
   };
 
   const handleRandomiseColourDetailsPage = () => {
-    log("Randomising Colour for Aanlysis");
+    log("Randomising Colour for Analysis");
     const rgb = randomiseRGB();
     const rgbUrl = urlifyRGB(rgb);
     navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));

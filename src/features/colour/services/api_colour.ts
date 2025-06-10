@@ -1,5 +1,5 @@
 import type { RGB, ColourSchemeList, ColourData } from "../colourConstants";
-import { stringifyRGB } from "../colourRGBHandler";
+import { stringifyRGB } from "../colourRGBUtils";
 
 const BASE_COLOUR_URL = "https://www.thecolorapi.com/";
 

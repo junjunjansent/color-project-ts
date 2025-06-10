@@ -13,7 +13,7 @@ import {
   type ColourSchemeCore,
   type ColourSchemeAPI,
 } from "../../../features/colour/colourConstants";
-import { RGBifyUrl } from "../../../features/colour/colourRGBHandler";
+import { RGBifyUrl } from "../../../features/colour/colourRGBUtils";
 import * as api_colour from "../../../features/colour/services/api_colour";
 
 import ErrorPage from "../../../components/ErrorPage";

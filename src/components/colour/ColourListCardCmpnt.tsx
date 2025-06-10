@@ -2,10 +2,7 @@ import { useMemo } from "react";
 import { useNavigate } from "react-router";
 
 import { type AirtableColourListFieldWithID } from "../../features/colour/colourConstants";
-import {
-  RGBifyUrl,
-  stringifyRGB,
-} from "../../features/colour/colourRGBHandler";
+import { RGBifyUrl, stringifyRGB } from "../../features/colour/colourRGBUtils";
 import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
 
 import styles from "../../styles/colour/colourDiv.module.css";

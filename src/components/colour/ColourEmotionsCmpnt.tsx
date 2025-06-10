@@ -14,7 +14,7 @@ import {
   convertRGBtoHEX,
   getClosestEmotionsData,
   stringifyRGB,
-} from "../../features/colour/colourRGBHandler";
+} from "../../features/colour/colourRGBUtils";
 import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
 import { chooseTextColour } from "../../styles/colour/colourStyles";
 

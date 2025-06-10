@@ -1,4 +1,4 @@
-import { convertHEXtoRGB } from "../../features/colour/colourRGBHandler";
+import { convertHEXtoRGB } from "../../features/colour/colourRGBUtils";
 import { type RGB } from "../../features/colour/colourConstants";
 
 const getContrastRatio = (lumiA: number, lumiB: number) => {

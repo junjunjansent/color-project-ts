@@ -4,7 +4,7 @@
 
 //   | "initialisePlay"
 // game will randomly generate objective - each input can be [0,4])
-// game will show the objective & buttons & command bar
+// game will show the objective & buttons & command bar (control (resets), stats (hints), timer)
 
 //   | "ongoing"
 // player makes first button click
@@ -34,103 +34,180 @@
 //   };
 
 import type { GameStatus } from "../../gameConstants";
-import { ColourMatchBaseCore } from "./colourMatchConstants";
+import {
+  type ColourMatchBasesFull,
+  type ColourMatchBase,
+  // ColourLevelDetails,
+} from "./colourMatchConstants";
 
 // ---------- Googled this
 // Idea was to restrict typing to ensure proportions would have desired keys
-// "in" is used to loop and create a new object type if a property exists in an object
-type ColourMatchBase = keyof (typeof ColourMatchBaseCore)["base"];
 
 // "`rgbBase${string}` ? K : never" ==> used to filter keys in indicated format
-type ProportionOfExtractedKeysOfColourBase<T> = {
+// "in" is used to loop and create a new object type if a property exists in an object
+type KeysRGBBase<T> = {
   [K in keyof T as K extends `rgbBase${string}` ? K : never]: number;
+  // {"rgbBase1": number; "rgbBase2": number; ... }
 };
 
-type ModeToProportion = {
-  [K in ColourMatchBase]: ProportionOfExtractedKeysOfColourBase<
-    (typeof ColourMatchBaseCore)["base"][K]
-  >;
+type BaseToProportion = {
+  [K in ColourMatchBase]: KeysRGBBase<ColourMatchBasesFull[K]>;
+  // ["rgbBase1", "rgbBase2", ... ]["RGBW" | "RYBW" | "CMYK" ]
 };
 
-// ---------- Typing State & Action
+// ---------- Type: Additional
 
-// interface ColourGameModelState<Base extends ColourMatchBase = ColourMatchBase> {
-//   status: GameStatus;
-//   mode: "Random" | "Levelled" | null;
-//   base: Base;
-//   correctColourProportion: ModeToProportion[Base];
-//   currentColourProportion: ModeToProportion[Base];
-// }
-
-// interface ColourGameViewState {
-//   showColourSelectors: boolean;
-//   showHints: boolean;
-//   showAnswer: boolean;
-// }
-
-export interface ColourGameState<
+interface ColourGameLevelTracker<
   Base extends ColourMatchBase = ColourMatchBase
 > {
-  status: GameStatus;
-  mode: "Random" | "Levelled" | null;
-  base: Base;
-  correctColourProportion: ModeToProportion[Base];
-  currentColourProportion: ModeToProportion[Base];
-  showColourSelectors: boolean;
-  showHints: boolean;
-  showAnswer: boolean;
-  timer: number;
-  timerRunning: boolean;
-  showWinPopup: boolean;
-  showLosePopup: boolean;
+  currentLevel: number;
+  currentRound: number;
+  memory: {
+    level: number;
+    round: number;
+    colorProportion: BaseToProportion[Base];
+  }[];
 }
 
-type ColourGameAction =
+// ---------- Typing State
+
+interface ColourGameModelState<Base extends ColourMatchBase = ColourMatchBase> {
+  status: GameStatus;
+  playStyle: "Random" | "Levelled" | null;
+  base: Base | undefined;
+  correctColourProportion: BaseToProportion[Base] | undefined;
+  currentColourProportion: BaseToProportion[Base] | undefined;
+  progress: ColourGameLevelTracker | undefined;
+  timer: {
+    timerCount: number;
+    timerIsRunning: boolean;
+  };
+  hintsModeIsOn: boolean; // RGB of 4 Colour Bases, RGB of Current Proportion, RGB of Correct Proportion
+}
+
+// To be Calculated:
+// - RGB of Current Proportion
+// - RGB of Correct Proportion
+
+// interface ColourGameViewState {
+//   showHints: boolean;
+//   showBaseSelector: boolean;
+//   showCommandSection: boolean;
+//   showColourSelectors: boolean;
+//   showColourProportions: boolean;
+//   showAnswer: boolean;
+//   showWinPopup: boolean;
+//   showLosePopup: boolean;
+// }
+
+type ColourGameState = ColourGameModelState;
+
+type ColourGameViewState = {
+  showBaseSelector: boolean;
+  showCommandSection: boolean;
+  showColourSelectors: boolean;
+  showColourProportions: boolean;
+  showAnswer: boolean;
+  showWinPopup: boolean;
+  showLosePopup: boolean;
+};
+
+const initialColourGameState: ColourGameState = {
+  status: "pendingMode",
+  playStyle: null,
+  base: undefined,
+  correctColourProportion: undefined,
+  currentColourProportion: undefined,
+  progress: undefined,
+  timer: {
+    timerCount: 0,
+    timerIsRunning: false,
+  },
+  hintsModeIsOn: false,
+};
+
+const getViewStateFromGameStatus = (
+  status: GameStatus
+): ColourGameViewState => ({
+  showBaseSelector: status === "pendingMode",
+  showCommandSection: status !== "pendingMode",
+  showColourSelectors: status === "initialisePlay" || status === "ongoing",
+  showColourProportions: status !== "pendingMode",
+  showAnswer: status === "finishedWin" || status === "finishedLose",
+  showWinPopup: status === "finishedWin",
+  showLosePopup: status === "finishedLose",
+});
+
+// ---------- Typing Action
+
+type ColourGameModelAction<Base extends ColourMatchBase = ColourMatchBase> =
+  // | {
+  //     type: "INITIALISE_PLAY";
+  //     payload: {
+  //       newGameStatus: GameStatus;
+  //       newPlayStyle: "Random" | "Levelled";
+  //     };
+  //   }
   | {
-      type: "SET_MODE";
-      payload: { newStatus: GameStatus; newMode: "Random" | "Levelled" | null };
+      type: "SET_GAME_STATUS";
+      payload: { newGameStatus: GameStatus };
+    }
+  | {
+      type: "SET_PLAYSTYLE";
+      payload: { newPlayStyle: "Random" | "Levelled" | null };
     }
   | {
       type: "SET_BASE";
-      payload: { newStatus: GameStatus; newBase: "RGBW" | "RYBW" | "CMYK" };
+      payload: { newBase: Base };
     }
   | {
       type: "SET_CORRECT_PROPORTION";
       payload: {
-        newStatus: GameStatus;
-        newCorrectProportion: number;
-        newCurrentProportion: number;
-        setShowColourSelectors: boolean;
+        newCorrectProportion: BaseToProportion[Base];
       };
     }
   | {
       type: "SET_CURRENT_PROPORTION";
       payload: {
-        newStatus: GameStatus;
-        changeCurrentProportion: number;
-        setShowHint?: boolean;
-        setTimerRunning?: boolean;
+        changeCurrentProportion: BaseToProportion[Base];
       };
     }
   | {
+      type: "SET_PROGRESS_CURRENT";
+    }
+  | {
+      type: "SET_PROGRESS_MEMORY";
+    }
+  | {
       type: "SUBMIT_ANSWER";
-      payload: {
-        newStatus: GameStatus;
-        setTimerRunning: boolean;
-        setShowAnswer: boolean;
-        setShowWinPopup?: boolean;
-        setShowLosePopup?: boolean;
-      };
-    };
+    }
+  | { type: "RESET" };
 
-// initialise game
-// start game
-// Reset Game
-// update current Colour Proportion
-// Submit Attempt
-// Win Game
-// Lose Game
-// Toggle Hint Mode
+type ColourGameViewAction = {
+  type: "SET_VIEW_HINTS";
+  payload: { isHintsShown: boolean };
+};
+// | {
+//     type: "SET_VIEW_BASE_SELECTOR";
+//     payload: { isBaseSelectorShown: boolean };
+//   }
+// | {
+//     type: "SET_VIEW_COMMAND_SECTION";
+//     payload: { isCommandSectionShown: boolean };
+//   }
+// | {
+//     type: "SET_VIEW_COLOUR_SELECTORS";
+//     payload: { isColourSelectorsShown: boolean };
+//   }
+// | {
+//     type: "SET_VIEW_COLOUR_PROPORTIONS";
+//     payload: { isColourSelectorsShown: boolean };
+//   }
+// | { type: "SET_VIEW_ANSWER"; payload: { isAnswerShown: boolean } }
+// | { type: "SET_VIEW_WIN_POPUP"; payload: { isWinPopupShown: boolean } }
+// | { type: "SET_VIEW_LOSE_POPUP"; payload: { isLosePopupShown: boolean } };
+
+type ColourGameAction = ColourGameModelAction | ColourGameViewAction;
 
 // ---------- Defining Reducer
 
@@ -139,12 +216,61 @@ const colourGameReducer = (
   action: ColourGameAction
 ) => {
   switch (action.type) {
-    case "SET_MODE":
-      break;
+    case "RESET":
+      // Model GameStatus set to pendingMode
+      // may not be an option, might force back to start page
+      return state;
+    case "SET_PLAYSTYLE":
+      // Model playStyle changes
+      // Model GameStatus remains at pendingMode
+      return { ...state, playStyle: action.payload.newPlayStyle };
+    case "SET_BASE":
+      // Model base changes
+      // Model GameStatus set to initialisePlay
+      return { ...state, base: action.payload.newBase };
+    case "SET_CORRECT_PROPORTION":
+      // Model correctColourProportion is calculated/randomised
+      return state;
+    case "SET_CURRENT_PROPORTION":
+      return state;
+    case "SUBMIT_ANSWER":
+      return state;
+
+    // --- View Action.types
+    case "SET_VIEW_HINTS":
+      return { ...state, showHints: action.payload.isHintsShown };
+    // case "SET_VIEW_BASE_SELECTOR":
+    //   return { ...state, showBaseSelector: action.payload.isBaseSelectorShown };
+    // case "SET_VIEW_COMMAND_SECTION":
+    //   return {
+    //     ...state,
+    //     showCommandSection: action.payload.isCommandSectionShown,
+    //   };
+    // case "SET_VIEW_COLOUR_SELECTORS":
+    //   return {
+    //     ...state,
+    //     showColourSelectors: action.payload.isColourSelectorsShown,
+    //   };
+    // case "SET_VIEW_COLOUR_PROPORTIONS":
+    //   return {
+    //     ...state,
+    //     showColourProportions: action.payload.isColourSelectorsShown,
+    //   };
+    // case "SET_VIEW_ANSWER":
+    //   return { ...state, showAnswer: action.payload.isAnswerShown };
+    // case "SET_VIEW_WIN_POPUP":
+    //   return { ...state, showWinPopup: action.payload.isWinPopupShown };
+    // case "SET_VIEW_LOSE_POPUP":
+    //   return { ...state, showLosePopup: action.payload.isLosePopupShown };
+
     default:
-      state = state; //TODO to remove
-      break;
+      return state;
   }
 };
 
-export { colourGameReducer };
+export {
+  colourGameReducer,
+  initialColourGameState,
+  getViewStateFromGameStatus,
+  type ColourGameViewState,
+};

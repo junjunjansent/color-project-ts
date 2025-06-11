@@ -35,10 +35,13 @@
 
 import type { GameStatus } from "../../gameConstants";
 import {
-  type ColourMatchBaseNames,
   type ColourGamePlayStyle,
+  type ColourMatchBase,
 } from "./colourMatchConstants";
-import { randomiseColourProportions } from "./colourMatchUtils";
+import {
+  randomiseColourProportions,
+  getColourMatchBase,
+} from "./colourMatchUtils";
 
 // ---------- Type: Additional
 
@@ -48,7 +51,7 @@ interface ColourGameLevelTracker {
   memory: {
     level: number;
     round: number;
-    colorProportion: Record<string, number>;
+    colorProportion: Record<`rgbBase${string}`, number>;
   }[];
 }
 
@@ -58,9 +61,9 @@ interface ColourGameLevelTracker {
 interface ColourGameModelState {
   gameStatus: GameStatus;
   playStyle: ColourGamePlayStyle | undefined;
-  base: ColourMatchBaseNames | undefined;
-  correctColourProportion: Record<string, number> | undefined;
-  currentColourProportion: Record<string, number> | undefined;
+  base: ColourMatchBase | undefined;
+  correctColourProportion: Record<`rgbBase${string}`, number> | undefined;
+  currentColourProportion: Record<`rgbBase${string}`, number> | undefined;
   progress: ColourGameLevelTracker | undefined;
   timer:
     | {
@@ -75,7 +78,7 @@ type ColourGameState = ColourGameModelState;
 
 type ColourGameViewState = {
   showBaseSelector: boolean;
-  showCommandSection: boolean;
+  showCommandBar: boolean;
   showColourSelectors: boolean;
   showColourProportions: boolean;
   showAnswer: boolean;
@@ -98,7 +101,7 @@ const getViewStateFromGameStatus = (
   status: GameStatus
 ): ColourGameViewState => ({
   showBaseSelector: status === "pendingMode",
-  showCommandSection: status !== "pendingMode",
+  showCommandBar: status !== "pendingMode",
   showColourSelectors: status === "initialisePlay" || status === "ongoing",
   showColourProportions: status !== "pendingMode",
   showAnswer: status === "finishedWin" || status === "finishedLose",
@@ -114,7 +117,7 @@ type ColourGameModelAction =
     }
   | {
       type: "INITIALISE_PLAY";
-      payload: { newBase: ColourMatchBaseNames };
+      payload: { newBaseName: string };
     }
   // | {
   //     type: "INITIALISE_PLAY";
@@ -136,18 +139,18 @@ type ColourGameModelAction =
     }
   | {
       type: "SET_BASE";
-      payload: { newBase: ColourMatchBaseNames };
+      payload: { newBase: string };
     }
   | {
       type: "SET_CORRECT_PROPORTION";
       payload: {
-        newCorrectProportion: Record<string, number>;
+        newCorrectProportion: Record<`rgbBase${string}`, number>;
       };
     }
   | {
       type: "SET_CURRENT_PROPORTION";
       payload: {
-        changeCurrentProportion: Record<string, number>;
+        changeCurrentProportion: Record<`rgbBase${string}`, number>;
       };
     }
   | {
@@ -207,14 +210,14 @@ const colourGameReducer = (
       return {
         ...state,
         gameStatus: "initialisePlay",
-        base: action.payload.newBase,
+        base: getColourMatchBase(action.payload.newBaseName),
         correctColourProportion: randomiseColourProportions(
           state.playStyle,
-          action.payload.newBase
+          action.payload.newBaseName
         ),
       };
-    case "SET_BASE":
-      return { ...state, base: action.payload.newBase };
+    // case "SET_BASE":
+    //   return { ...state, base: action.payload.newBase };
     // case "INITIALISE":
     //   return { initialColourGameState };
     case "RESET":
@@ -241,7 +244,7 @@ const colourGameReducer = (
     // case "SET_VIEW_COMMAND_SECTION":
     //   return {
     //     ...state,
-    //     showCommandSection: action.payload.isCommandSectionShown,
+    //     showCommandBar: action.payload.isCommandSectionShown,
     //   };
     // case "SET_VIEW_COLOUR_SELECTORS":
     //   return {

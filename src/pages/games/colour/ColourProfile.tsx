@@ -129,10 +129,6 @@ const ColourProfile = () => {
       </section>
 
       <section>
-        <ColourEmotionsCmpnt rgb={rgb} />
-      </section>
-
-      <section>
         <h3>Schemes</h3>
         <h6>Current Scheme: {colourScheme?.label ?? "No label found"}</h6>
         <p>
@@ -155,6 +151,9 @@ const ColourProfile = () => {
         </div>
       </section>
 
+      <section>
+        <ColourEmotionsCmpnt rgb={rgb} />
+      </section>
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}
     </div>
   );

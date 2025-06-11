@@ -51,6 +51,12 @@ HomePage
 
 ## Pages of the Game
 
+Image of Colour Profile Page
+![Colour Profile](./src/assets/colour_profile.png)
+
+Image of Saved List of Colours
+![Colour Saved List](./src/assets/colour_list.png)
+
 ## User Stories
 
 - Home Page
@@ -136,6 +142,7 @@ Theory adopted from:
 
 - [Luminance Calculation](https://www.w3.org/TR/WCAG20/relative-luminance.xml)
 - [Contrast Calculation](https://www.w3.org/TR/WCAG20/#contrast-ratiodef)
+- [Additive Colour Mixing](https://pages.cs.wisc.edu/~dyer/ah336/papers/07_additive-color.pdf)
 
 Features adopted from:
 

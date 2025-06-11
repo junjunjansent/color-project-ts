@@ -1,42 +1,40 @@
-// import { type RGB } from "../colourConstants";
+import { type RGB } from "../colourConstants";
 
 // ---------- Colour Base
 
+interface ColourMatchBase {
+  baseName: string;
+  baseType: "Additive" | "Subtractive";
+  [key: `rgbBase${string}`]: { label: string; rgb: RGB };
+}
+
 // I included baseName for easier UI rendering
-const colourMatchBases = {
+const colourMatchBases: Record<string, ColourMatchBase> = {
   RGBW: {
     baseName: "RGBW",
     baseType: "Additive",
-    rgbBaseR: { R: 255, G: 0, B: 0 },
-    rgbBaseG: { R: 0, G: 255, B: 0 },
-    rgbBaseB: { R: 0, G: 0, B: 255 },
-    rgbBaseW: { R: 255, G: 255, B: 255 },
+    rgbBaseR: { label: "Red", rgb: { R: 255, G: 0, B: 0 } },
+    rgbBaseG: { label: "Green", rgb: { R: 0, G: 255, B: 0 } },
+    rgbBaseB: { label: "Blue", rgb: { R: 0, G: 0, B: 255 } },
+    rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
   },
   RYBW: {
     baseName: "RYBW",
     baseType: "Subtractive",
-    rgbBaseR: { R: 255, G: 0, B: 0 },
-    rgbBaseY: { R: 255, G: 255, B: 0 },
-    rgbBaseB: { R: 0, G: 0, B: 255 },
-    rgbBaseW: { R: 255, G: 255, B: 255 },
+    rgbBaseR: { label: "Red", rgb: { R: 255, G: 0, B: 0 } },
+    rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
+    rgbBaseB: { label: "Blue", rgb: { R: 0, G: 0, B: 255 } },
+    rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
   },
   CMYK: {
     baseName: "CMYK",
     baseType: "Subtractive",
-    rgbBaseC: { R: 0, G: 255, B: 255 },
-    rgbBaseM: { R: 255, G: 0, B: 255 },
-    rgbBaseY: { R: 255, G: 255, B: 0 },
-    rgbBaseK: { R: 255, G: 255, B: 255 },
+    rgbBaseC: { label: "Cyan / Aqua", rgb: { R: 0, G: 255, B: 255 } },
+    rgbBaseM: { label: "Magenta / Fuchsia", rgb: { R: 255, G: 0, B: 255 } },
+    rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
+    rgbBaseK: { label: "Black", rgb: { R: 255, G: 255, B: 255 } },
   },
 } as const;
-
-type ColourMatchBasesFull = typeof colourMatchBases;
-type ColourMatchBaseNames = keyof ColourMatchBasesFull;
-
-// specific function for type checking via type predicate
-const isColourMatchBase = (value: string): value is ColourMatchBaseNames => {
-  return value in colourMatchBases; // use in operator to check Boolean
-};
 
 // ---------- Colour Play Style
 
@@ -92,8 +90,6 @@ const colourLevelDetails = {
 export {
   colourMatchBases,
   colourLevelDetails,
-  type ColourMatchBasesFull,
-  type ColourMatchBaseNames,
+  type ColourMatchBase,
   type ColourGamePlayStyle,
-  isColourMatchBase,
 };

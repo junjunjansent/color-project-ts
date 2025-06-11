@@ -11,7 +11,7 @@ import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 import debug from "debug";
 const log = debug("colours:ColourMatchRandom:");
 
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useMemo } from "react";
 
 import {
   colourGameReducer,
@@ -21,11 +21,12 @@ import {
 } from "../../../features/colour/match/colourGameReducer";
 import {
   colourMatchBases,
-  isColourMatchBase,
   // type ColourMatchBase,
 } from "../../../features/colour/match/colourMatchConstants";
 
 import "../../../styles/game.module.css";
+import { rgbMixFromColourProportions } from "../../../features/colour/match/colourMatchUtils";
+import { convertRGBtoHEX } from "../../../features/colour/colourRGBUtils";
 
 const ColourMatchRandom = () => {
   // define Hooks
@@ -34,48 +35,85 @@ const ColourMatchRandom = () => {
     initialColourGameState
   );
 
+  // deconstruct
+  const { gameStatus, base, correctColourProportion } = colourGameModelState;
+
   useEffect(() => {
     dispatch({ type: "PENDING_RANDOM_PLAY" });
   }, []);
 
   // --------- handlers
-  const handleChangeBaseColours = (): void => {
+  const handleResetBaseColours = (): void => {
     dispatch({ type: "PENDING_RANDOM_PLAY" });
   };
 
   const handleBaseSelector = (baseName: string): void => {
-    if (isColourMatchBase(baseName)) {
-      dispatch({
-        type: "INITIALISE_PLAY",
-        payload: { newBase: baseName },
-      });
-    }
+    dispatch({
+      type: "INITIALISE_PLAY",
+      payload: { newBaseName: baseName },
+    });
+    // log(colourGameModelState.correctColourProportion);
+    // log(colourGameModelState.base);
+    // log(
+    //   rgbMixFromColourProportions(
+    //     colourGameModelState.correctColourProportion,
+    //     colourGameModelState.base
+    //   )
+    // );
   };
 
+  // ----------- expensive calculations
+  const correctHEX = useMemo(() => {
+    if (!correctColourProportion || !base) {
+      throw new Error("No Correct Colour Propoirtion or Base");
+    }
+    const rgbMix = rgbMixFromColourProportions(correctColourProportion, base);
+    return convertRGBtoHEX(rgbMix);
+  }, [correctColourProportion]);
+
+  log(correctHEX);
+
   // ----------- cleanup every render
-  const colourGameViewState: ColourGameViewState = getViewStateFromGameStatus(
-    colourGameModelState.gameStatus
-  );
+  const colourGameViewState: ColourGameViewState =
+    getViewStateFromGameStatus(gameStatus);
   log(colourGameModelState);
-  log(colourGameViewState);
+  // log(colourGameViewState);
 
   return (
     <>
       <h1>Colour Match Random</h1>
 
-      <section className="command-section">
-        <div className="control">
-          <h2 id="message"></h2>
-          <Link to={PATHS.GAME.COLOUR.START}>
-            <button>Return to Start Page</button>
-          </Link>
-          <button onClick={handleChangeBaseColours}>
-            Change Base Colours <FontAwesomeIcon icon={faArrowsRotate} />
-          </button>
-        </div>
-        <div className="stats">
-          <h4 className="stats-progress"></h4>
-          {/* <div className="toggle-switch">
+      {colourGameViewState.showBaseSelector && (
+        <section id="difficulty-section">
+          <h2>Begin by choosing your set of Base Colours to Mix:</h2>
+          {Object.keys(colourMatchBases).map((baseName) => (
+            <button key={baseName} onClick={() => handleBaseSelector(baseName)}>
+              {baseName} <br />
+              <small>Mix Type: {colourMatchBases[baseName].baseType}</small>
+            </button>
+          ))}
+          {/* <!-- <button class="btn-difficulty" data-label="baby">
+          👶<br />
+          <p>5x5 grid (3 bombs)</p>
+          Baby
+        </button> --> */}
+        </section>
+      )}
+
+      {colourGameViewState.showCommandBar && (
+        <section className="command-section">
+          <div className="control">
+            <h2 id="message"></h2>
+            <Link to={PATHS.GAME.COLOUR.START}>
+              <button>Return to Start Page</button>
+            </Link>
+            <button onClick={handleResetBaseColours}>
+              Change Base Colours <FontAwesomeIcon icon={faArrowsRotate} />
+            </button>
+          </div>
+          <div className="stats">
+            <h4 className="stats-progress"></h4>
+            {/* <div className="toggle-switch">
             <input
               type="checkbox"
               id="flag-state"
@@ -88,29 +126,23 @@ const ColourMatchRandom = () => {
               </div>
             </label>
           </div> */}
-          <h4 className="stats-flagged"></h4>
-        </div>
-        <div className="timer">
-          {/* <h5 className="stats-time">Timer: 00:00</h5> */}
-          {/* <FontAwesomeIcon icon={faClock} /> */}
-        </div>
-      </section>
-      {/* <ColourCommandBar /> */}
-
-      {colourGameViewState.showBaseSelector && (
-        <section id="difficulty-section">
-          {Object.keys(colourMatchBases).map((baseName) => (
-            <button key={baseName} onClick={() => handleBaseSelector(baseName)}>
-              {baseName}
-            </button>
-          ))}
-          {/* <!-- <button class="btn-difficulty" data-label="baby">
-          👶<br />
-          <p>5x5 grid (3 bombs)</p>
-          Baby
-        </button> --> */}
+            <h4 className="stats-flagged"></h4>
+          </div>
+          <div className="timer">
+            {/* <h5 className="stats-time">Timer: 00:00</h5> */}
+            {/* <FontAwesomeIcon icon={faClock} /> */}
+          </div>
         </section>
       )}
+      {/* <ColourCommandBar /> */}
+
+      {colourGameViewState.showColourSelectors && <section></section>}
+
+      {/* showColourSelectors: boolean;
+  showColourProportions: boolean;
+  showAnswer: boolean;
+  showWinPopup: boolean;
+  showLosePopup: boolean; */}
 
       <pre>{JSON.stringify(colourGameModelState, null, 2)}</pre>
       <pre>{JSON.stringify(colourGameViewState, null, 2)}</pre>

@@ -15,16 +15,16 @@ const getRGBBaseKeys = (baseObject: ColourMatchBase): `rgbBase${string}`[] => {
   );
 };
 
-const clamp = (val: number) => Math.max(0, Math.min(255, Math.round(val)));
+// const clamp = (val: number) => Math.max(0, Math.min(255, Math.round(val)));
 
 const additiveRGBColourMixingProportions = (
   proportions: Record<`rgbBase${string}`, number>,
   baseObject: ColourMatchBase
 ): RGB => {
-  let R = 0,
-    G = 0,
-    B = 0;
-  let total = 0;
+  let sumR = 0,
+    sumG = 0,
+    sumB = 0,
+    total = 0;
 
   const rgbBaseKeys = getRGBBaseKeys(baseObject);
 
@@ -32,17 +32,19 @@ const additiveRGBColourMixingProportions = (
     const proportion = proportions[rgbBaseKey];
     const rgbBase = baseObject[rgbBaseKey];
     if (rgbBase) {
-      R += rgbBase.rgb.R * proportion;
-      G += rgbBase.rgb.G * proportion;
-      B += rgbBase.rgb.B * proportion;
+      sumR += rgbBase.rgb.R * proportion;
+      sumG += rgbBase.rgb.G * proportion;
+      sumB += rgbBase.rgb.B * proportion;
       total += proportion;
     }
   }
+
+  // quick return
   if (total === 0) return { R: 0, G: 0, B: 0 };
   return {
-    R: clamp(R),
-    G: clamp(G),
-    B: clamp(B),
+    R: Math.round(sumR / total),
+    G: Math.round(sumG / total),
+    B: Math.round(sumB / total),
   };
 };
 
@@ -71,9 +73,10 @@ const getColourMatchBase = (baseName: string): ColourMatchBase => {
   return baseObject;
 };
 
-const randomiseColourProportions = (
+const setColourProportions = (
   playStyle: ColourGamePlayStyle,
-  baseName: string
+  baseName: string,
+  setValue: "random" | number = "random"
 ): Record<`rgbBase${string}`, number> => {
   let maxClicksToGenerate = 0;
   let coloursToGenerate = 0;
@@ -100,10 +103,14 @@ const randomiseColourProportions = (
 
   // Note Object.keys() will give array of keys in order of when they were added
   for (let i = 0; i < coloursToGenerate; i++) {
-    const randomiseClicks = Math.floor(
-      Math.random() * (maxClicksToGenerate + 1)
-    );
-    result[rgbBaseKeys[i]] = randomiseClicks;
+    if (setValue === "random") {
+      const randomiseClicks = Math.floor(
+        Math.random() * (maxClicksToGenerate + 1)
+      );
+      result[rgbBaseKeys[i]] = randomiseClicks;
+    } else {
+      result[rgbBaseKeys[i]] = setValue;
+    }
   }
 
   return result;
@@ -148,6 +155,6 @@ const randomiseColourProportions = (
 export {
   getRGBBaseKeys,
   rgbMixFromColourProportions,
-  randomiseColourProportions,
+  setColourProportions,
   getColourMatchBase,
 };

@@ -25,8 +25,12 @@ import {
 } from "../../../features/colour/match/colourMatchConstants";
 
 import "../../../styles/game.module.css";
-import { rgbMixFromColourProportions } from "../../../features/colour/match/colourMatchUtils";
+import {
+  getRGBBaseKeys,
+  rgbMixFromColourProportions,
+} from "../../../features/colour/match/colourMatchUtils";
 import { convertRGBtoHEX } from "../../../features/colour/colourRGBUtils";
+import { chooseTextColour } from "../../../styles/colour/colourStyles";
 
 const ColourMatchRandom = () => {
   // define Hooks
@@ -35,12 +39,42 @@ const ColourMatchRandom = () => {
     initialColourGameState
   );
 
-  // deconstruct
-  const { gameStatus, base, correctColourProportion } = colourGameModelState;
-
   useEffect(() => {
     dispatch({ type: "PENDING_RANDOM_PLAY" });
   }, []);
+
+  // ----------- expensive calculations
+  // deconstruct
+  const { gameStatus, base, correctColourProportion, currentColourProportion } =
+    colourGameModelState;
+
+  // name of base colours
+  const extractedBaseDetails = useMemo(() => {
+    if (base) {
+      return getRGBBaseKeys(base).map((rgbBase) => ({
+        label: base[rgbBase].label,
+        rgbBase: rgbBase,
+        hex: convertRGBtoHEX(base[rgbBase].rgb),
+      }));
+    }
+  }, [base]);
+
+  const currentHEX = useMemo(() => {
+    if (currentColourProportion && base) {
+      const rgbMix = rgbMixFromColourProportions(currentColourProportion, base);
+      return convertRGBtoHEX(rgbMix);
+    }
+  }, [currentColourProportion]);
+
+  const correctHEX = useMemo(() => {
+    if (correctColourProportion && base) {
+      const rgbMix = rgbMixFromColourProportions(correctColourProportion, base);
+      return convertRGBtoHEX(rgbMix);
+    }
+  }, [correctColourProportion]);
+
+  log(currentHEX, correctHEX);
+  log(extractedBaseDetails);
 
   // --------- handlers
   const handleResetBaseColours = (): void => {
@@ -52,26 +86,24 @@ const ColourMatchRandom = () => {
       type: "INITIALISE_PLAY",
       payload: { newBaseName: baseName },
     });
-    // log(colourGameModelState.correctColourProportion);
-    // log(colourGameModelState.base);
-    // log(
-    //   rgbMixFromColourProportions(
-    //     colourGameModelState.correctColourProportion,
-    //     colourGameModelState.base
-    //   )
-    // );
   };
 
-  // ----------- expensive calculations
-  const correctHEX = useMemo(() => {
-    if (!correctColourProportion || !base) {
-      return null;
-    }
-    const rgbMix = rgbMixFromColourProportions(correctColourProportion, base);
-    return convertRGBtoHEX(rgbMix);
-  }, [correctColourProportion]);
+  const handleMinusColour = (rgbBaseName: `rgbBase${string}`) => {
+    dispatch({
+      type: "CHANGE_COLOUR_PROPORTION",
+      payload: { rgbBaseName: rgbBaseName, changeType: "minus" },
+    });
+  };
 
-  log(correctHEX);
+  const handlePlusColour = (rgbBaseName: `rgbBase${string}`) => {
+    dispatch({
+      type: "CHANGE_COLOUR_PROPORTION",
+      payload: { rgbBaseName: rgbBaseName, changeType: "plus" },
+    });
+  };
+  const handleResetColour = () => {
+    dispatch({ type: "RESET_COLOUR_PROPORTION" });
+  };
 
   // ----------- cleanup every render
   const colourGameViewState: ColourGameViewState =
@@ -113,6 +145,8 @@ const ColourMatchRandom = () => {
           </div>
           <div className="stats">
             <h4 className="stats-progress"></h4>
+            <p>Total Clicks: </p>
+            <button onClick={handleResetColour}>Reset</button>
             {/* <div className="toggle-switch">
             <input
               type="checkbox"
@@ -136,9 +170,51 @@ const ColourMatchRandom = () => {
       )}
       {/* <ColourCommandBar /> */}
 
-      {colourGameViewState.showColourSelectors && <section></section>}
+      {colourGameViewState.showColourSelectors && (
+        <section>
+          <main>
+            <div
+              style={{
+                backgroundColor: currentHEX,
+                color: chooseTextColour(currentHEX),
+              }}
+            >
+              Your Colour
+            </div>
+            <div
+              style={{
+                backgroundColor: correctHEX,
+                color: chooseTextColour(correctHEX),
+              }}
+            >
+              Desired Colour
+            </div>
+          </main>
+          <br />
 
-      {/* showColourSelectors: boolean;
+          {extractedBaseDetails?.map((detail) => {
+            return (
+              <div
+                style={{
+                  backgroundColor: detail.hex,
+                  color: chooseTextColour(detail.hex),
+                }}
+              >
+                <button onClick={() => handleMinusColour(detail.rgbBase)}>
+                  -
+                </button>
+                <p>{detail.label}</p>
+                <button onClick={() => handlePlusColour(detail.rgbBase)}>
+                  +
+                </button>
+                <p>proportion here</p>
+              </div>
+            );
+          })}
+        </section>
+      )}
+
+      {/* 
   showColourProportions: boolean;
   showAnswer: boolean;
   showWinPopup: boolean;

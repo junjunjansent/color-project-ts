@@ -38,10 +38,7 @@ import {
   type ColourGamePlayStyle,
   type ColourMatchBase,
 } from "./colourMatchConstants";
-import {
-  randomiseColourProportions,
-  getColourMatchBase,
-} from "./colourMatchUtils";
+import { setColourProportions, getColourMatchBase } from "./colourMatchUtils";
 
 // ---------- Type: Additional
 
@@ -112,13 +109,19 @@ const getViewStateFromGameStatus = (
 // ---------- Typing Action
 
 type ColourGameModelAction =
-  | {
-      type: "PENDING_RANDOM_PLAY";
-    }
+  | { type: "PENDING_RANDOM_PLAY" }
   | {
       type: "INITIALISE_PLAY";
       payload: { newBaseName: string };
     }
+  | {
+      type: "CHANGE_COLOUR_PROPORTION";
+      payload: {
+        rgbBaseName: `rgbBase${string}`;
+        changeType: "plus" | "minus";
+      };
+    }
+  | { type: "RESET_COLOUR_PROPORTION" }
   // | {
   //     type: "INITIALISE_PLAY";
   //     payload: {
@@ -211,9 +214,63 @@ const colourGameReducer = (
         ...state,
         gameStatus: "initialisePlay",
         base: getColourMatchBase(action.payload.newBaseName),
-        correctColourProportion: randomiseColourProportions(
+        correctColourProportion: setColourProportions(
           state.playStyle,
-          action.payload.newBaseName
+          action.payload.newBaseName,
+          "random"
+        ),
+        currentColourProportion: setColourProportions(
+          state.playStyle,
+          action.payload.newBaseName,
+          0
+        ),
+      };
+    case "CHANGE_COLOUR_PROPORTION":
+      const { rgbBaseName, changeType } = action.payload;
+
+      if (changeType === "plus") {
+        return {
+          ...state,
+          gameStatus: "ongoing",
+          currentColourProportion: {
+            ...state.currentColourProportion,
+            [rgbBaseName]:
+              (state.currentColourProportion?.[rgbBaseName] ?? 0) + 1,
+          },
+        };
+      } else if (changeType === "minus") {
+        if ((state.currentColourProportion?.[rgbBaseName] ?? 0) === 0) {
+          return {
+            ...state,
+            gameStatus: "ongoing",
+          };
+        }
+
+        return {
+          ...state,
+          gameStatus: "ongoing",
+          currentColourProportion: {
+            ...state.currentColourProportion,
+            [rgbBaseName]:
+              (state.currentColourProportion?.[rgbBaseName] ?? 0) - 1,
+          },
+        };
+      }
+
+      return {
+        ...state,
+        // payload: { rgbBaseLabel: rgbBaseLabel, changeType: "Minus" },
+      };
+    case "RESET_COLOUR_PROPORTION":
+      if (!state.playStyle || !state.base) {
+        throw new Error("No Play Style or Base to continue Colour Game!");
+      }
+      return {
+        ...state,
+        currentColourProportion: setColourProportions(
+          state.playStyle,
+          state.base.baseName,
+          0
         ),
       };
     // case "SET_BASE":

@@ -65,7 +65,7 @@ const ColourMatchRandom = () => {
   // ----------- expensive calculations
   const correctHEX = useMemo(() => {
     if (!correctColourProportion || !base) {
-      throw new Error("No Correct Colour Propoirtion or Base");
+      return null;
     }
     const rgbMix = rgbMixFromColourProportions(correctColourProportion, base);
     return convertRGBtoHEX(rgbMix);

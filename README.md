@@ -142,6 +142,7 @@ Theory adopted from:
 
 - [Luminance Calculation](https://www.w3.org/TR/WCAG20/relative-luminance.xml)
 - [Contrast Calculation](https://www.w3.org/TR/WCAG20/#contrast-ratiodef)
+- [Colour Mixing in Javascript](https://dev.to/bytebodger/color-mixing-with-javascript-1llh)
 - [Additive Colour Mixing](https://pages.cs.wisc.edu/~dyer/ah336/papers/07_additive-color.pdf)
 
 Features adopted from:

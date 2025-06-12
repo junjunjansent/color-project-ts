@@ -38,7 +38,10 @@ import {
   type ColourGamePlayStyle,
   type ColourMatchBase,
 } from "./colourMatchConstants";
-import { setColourProportions, getColourMatchBase } from "./colourMatchUtils";
+import {
+  setColourProportions,
+  getColourMatchBase,
+} from "./colourMatchStateUtils";
 
 // ---------- Type: Additional
 
@@ -57,17 +60,15 @@ interface ColourGameLevelTracker {
 // TODO - TOLEARN: a bit difficult to type ColourProportion exactly :\
 interface ColourGameModelState {
   gameStatus: GameStatus;
-  playStyle: ColourGamePlayStyle | undefined;
-  base: ColourMatchBase | undefined;
-  correctColourProportion: Record<`rgbBase${string}`, number> | undefined;
-  currentColourProportion: Record<`rgbBase${string}`, number> | undefined;
-  progress: ColourGameLevelTracker | undefined;
-  timer:
-    | {
-        timerCount: number;
-        timerIsRunning: boolean;
-      }
-    | undefined;
+  playStyle?: ColourGamePlayStyle;
+  base?: ColourMatchBase;
+  correctColourProportion?: Record<`rgbBase${string}`, number>;
+  currentColourProportion?: Record<`rgbBase${string}`, number>;
+  progress?: ColourGameLevelTracker;
+  timer?: {
+    timerCount: number | "Hint was Turned On";
+    timerIsRunning: boolean;
+  };
   hintsModeIsOn: boolean; // RGB of 4 Colour Bases, RGB of Current Proportion, RGB of Correct Proportion
 }
 
@@ -76,9 +77,9 @@ type ColourGameState = ColourGameModelState;
 type ColourGameViewState = {
   showBaseSelector: boolean;
   showCommandBar: boolean;
+  showIntro: boolean;
+  showColourLabels: boolean;
   showColourSelectors: boolean;
-  showColourProportions: boolean;
-  showAnswer: boolean;
   showWinPopup: boolean;
   showLosePopup: boolean;
 };
@@ -99,9 +100,9 @@ const getViewStateFromGameStatus = (
 ): ColourGameViewState => ({
   showBaseSelector: status === "pendingMode",
   showCommandBar: status !== "pendingMode",
+  showIntro: status === "initialisePlay",
+  showColourLabels: status !== "pendingMode",
   showColourSelectors: status === "initialisePlay" || status === "ongoing",
-  showColourProportions: status !== "pendingMode",
-  showAnswer: status === "finishedWin" || status === "finishedLose",
   showWinPopup: status === "finishedWin",
   showLosePopup: status === "finishedLose",
 });
@@ -110,10 +111,12 @@ const getViewStateFromGameStatus = (
 
 type ColourGameModelAction =
   | { type: "PENDING_RANDOM_PLAY" }
+  | { type: "PENDING_LEVELLED_PLAY" }
   | {
       type: "INITIALISE_PLAY";
       payload: { newBaseName: string };
     }
+  | { type: "ONGOING_PLAY" }
   | {
       type: "CHANGE_COLOUR_PROPORTION";
       payload: {
@@ -121,7 +124,10 @@ type ColourGameModelAction =
         changeType: "plus" | "minus";
       };
     }
-  | { type: "RESET_COLOUR_PROPORTION" }
+  | { type: "RESET_CURRENT_PROPORTION" }
+  | { type: "FINISH_GAME_WITH_WIN" }
+  | { type: "FINISH_GAME_WITH_LOSE" }
+
   // | {
   //     type: "INITIALISE_PLAY";
   //     payload: {
@@ -169,7 +175,7 @@ type ColourGameModelAction =
 
 type ColourGameViewAction = {
   type: "SET_VIEW_HINTS";
-  payload: { isHintsShown: boolean };
+  payload: { hintsChecked: boolean };
 };
 // | {
 //     type: "SET_VIEW_BASE_SELECTOR";
@@ -206,6 +212,12 @@ const colourGameReducer = (
         gameStatus: "pendingMode",
         playStyle: "random",
       };
+    case "PENDING_LEVELLED_PLAY":
+      return {
+        ...initialColourGameState,
+        gameStatus: "pendingMode",
+        playStyle: "levelled",
+      };
     case "INITIALISE_PLAY":
       if (!state.playStyle) {
         throw new Error("No Play Style Selected to initialise Colour Game!");
@@ -224,6 +236,11 @@ const colourGameReducer = (
           action.payload.newBaseName,
           0
         ),
+      };
+    case "ONGOING_PLAY":
+      return {
+        ...state,
+        gameStatus: "ongoing",
       };
     case "CHANGE_COLOUR_PROPORTION":
       const { rgbBaseName, changeType } = action.payload;
@@ -255,24 +272,28 @@ const colourGameReducer = (
               (state.currentColourProportion?.[rgbBaseName] ?? 0) - 1,
           },
         };
+      } else {
+        return {
+          ...state,
+        };
       }
-
-      return {
-        ...state,
-        // payload: { rgbBaseLabel: rgbBaseLabel, changeType: "Minus" },
-      };
-    case "RESET_COLOUR_PROPORTION":
+    case "RESET_CURRENT_PROPORTION":
       if (!state.playStyle || !state.base) {
         throw new Error("No Play Style or Base to continue Colour Game!");
       }
       return {
         ...state,
+        gameStatus: "ongoing",
         currentColourProportion: setColourProportions(
           state.playStyle,
           state.base.baseName,
           0
         ),
       };
+    case "FINISH_GAME_WITH_WIN":
+      return { ...state, gameStatus: "finishedWin" };
+    case "FINISH_GAME_WITH_LOSE":
+      return { ...state, gameStatus: "finishedLose" };
     // case "SET_BASE":
     //   return { ...state, base: action.payload.newBase };
     // case "INITIALISE":
@@ -295,7 +316,11 @@ const colourGameReducer = (
 
     // --- View Action.types
     case "SET_VIEW_HINTS":
-      return { ...state, hintsModeIsOn: action.payload.isHintsShown };
+      return {
+        ...state,
+        gameStatus: "ongoing",
+        hintsModeIsOn: action.payload.hintsChecked,
+      };
     // case "SET_VIEW_BASE_SELECTOR":
     //   return { ...state, showBaseSelector: action.payload.isBaseSelectorShown };
     // case "SET_VIEW_COMMAND_SECTION":

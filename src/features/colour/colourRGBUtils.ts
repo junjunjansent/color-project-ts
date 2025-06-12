@@ -52,6 +52,9 @@ const convertHEXtoRGB = (hex: string): RGB => {
   // RR = intensity of red (00 to FF).
   // GG = intensity of green (00 to FF).
   // BB = intensity of blue (00 to FF).
+  if (hex[0] !== "#" || hex.length !== 7) {
+    console.warn("invalid hex value");
+  }
 
   const RValue = parseInt(hex.slice(1, 3), 16);
   const GValue = parseInt(hex.slice(3, 5), 16);

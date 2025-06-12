@@ -24,6 +24,7 @@ interface ColourAboutCmpntProp {
 const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
   // define State
   const [loading, setLoading] = useState<boolean>(true);
+  const [savedLoading, setSavedLoading] = useState<boolean>(true);
   const [isSavedColour, setIsSavedColour] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
     //TODO: explore react-toastify
     // saved - navigate function & ignore
     // show a notification
+    setSavedLoading(true);
     log("Saving Colour");
 
     const cleanedColourData = {
@@ -43,6 +45,7 @@ const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
 
     await api_airtableColour.create(cleanedColourData);
     setIsSavedColour(true);
+    setSavedLoading(false);
   };
 
   useEffect(() => {
@@ -56,6 +59,7 @@ const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
         )
       );
       setLoading(false);
+      setSavedLoading(false);
     };
     checkSavedColour();
   }, []);
@@ -118,18 +122,24 @@ const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
             }
             alt=""
           />
-          {isSavedColour ? (
-            <Link to={PATHS.GAME.COLOUR.LIST}>
-              {" "}
-              <button>
-                Saved already <FontAwesomeIcon icon={faBookmark} /> <br /> See
-                the saved list here!
-              </button>
-            </Link>
+          {savedLoading ? (
+            <Loader />
           ) : (
-            <button onClick={handleSaveToList}>
-              Save Colour <FontAwesomeIcon icon={faFloppyDisk} />
-            </button>
+            <>
+              {isSavedColour ? (
+                <Link to={PATHS.GAME.COLOUR.LIST}>
+                  {" "}
+                  <button>
+                    Saved already <FontAwesomeIcon icon={faBookmark} /> <br />{" "}
+                    See the saved list here!
+                  </button>
+                </Link>
+              ) : (
+                <button onClick={handleSaveToList}>
+                  Save Colour <FontAwesomeIcon icon={faFloppyDisk} />
+                </button>
+              )}
+            </>
           )}
         </div>
 

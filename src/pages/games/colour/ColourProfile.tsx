@@ -57,6 +57,7 @@ const ColourProfile = () => {
 
   useEffect(() => {
     const loadColourData = async () => {
+      const controller = new AbortController();
       // using try/catch block to setColourData properly
       try {
         setLoading(true);
@@ -73,6 +74,11 @@ const ColourProfile = () => {
       } finally {
         setLoading(false);
       }
+
+      return () => {
+        // Cleanup on unmount
+        controller.abort();
+      };
     };
 
     loadColourData();

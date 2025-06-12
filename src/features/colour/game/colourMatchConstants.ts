@@ -18,12 +18,20 @@ const colourMatchBases: Record<string, ColourMatchBase> = {
     rgbBaseB: { label: "Blue", rgb: { R: 0, G: 0, B: 255 } },
     rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
   },
+  // RYBW: {
+  //   baseName: "RYBW",
+  //   baseType: "Subtractive",
+  //   rgbBaseR: { label: "Red", rgb: { R: 255, G: 0, B: 0 } },
+  //   rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
+  //   rgbBaseB: { label: "Blue", rgb: { R: 0, G: 0, B: 255 } },
+  //   rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
+  // },
   RYBW: {
     baseName: "RYBW",
     baseType: "Subtractive",
-    rgbBaseR: { label: "Red", rgb: { R: 255, G: 0, B: 0 } },
-    rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
-    rgbBaseB: { label: "Blue", rgb: { R: 0, G: 0, B: 255 } },
+    rgbBaseR: { label: "Cardinal Red", rgb: { R: 196, G: 30, B: 58 } },
+    rgbBaseY: { label: "School Bus Yellow", rgb: { R: 255, G: 216, B: 0 } },
+    rgbBaseB: { label: "Dark Blue", rgb: { R: 0, G: 0, B: 200 } },
     rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
   },
   CMYK: {
@@ -32,7 +40,7 @@ const colourMatchBases: Record<string, ColourMatchBase> = {
     rgbBaseC: { label: "Cyan / Aqua", rgb: { R: 0, G: 255, B: 255 } },
     rgbBaseM: { label: "Magenta / Fuchsia", rgb: { R: 255, G: 0, B: 255 } },
     rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
-    rgbBaseK: { label: "Black", rgb: { R: 255, G: 255, B: 255 } },
+    rgbBaseK: { label: "Black", rgb: { R: 0, G: 0, B: 0 } },
   },
 } as const;
 

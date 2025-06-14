@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router";
 import { PATHS } from "../../routes/paths";
 
-import styles from "../../styles/colour/colourProfileAbout.module.css";
+import styles from "../../styles/colour/colourProfileAboutCmpnt.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 

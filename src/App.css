@@ -1,6 +1,8 @@
 /* #root {
   padding: 1rem;
 } 
+
+
   
 .logo {
   height: 6em;
@@ -22,9 +24,31 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+button {
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.4);
+  height: fit-content;
+  background-color: steelblue;
+  background-image: linear-gradient(
+    -12deg,
+    #00000080 2%,
+    transparent 90%,
+    #ffffff38 100%
+  );
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+button:hover {
+  background-color: darkgray;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }

@@ -37,18 +37,21 @@ import type { GameStatus } from "../../gameConstants";
 import {
   type ColourGamePlayStyle,
   type ColourMatchBase,
+  type ColourLevelDetail,
 } from "./colourMatchConstants";
 import {
   setColourProportions,
   getColourMatchBase,
+  getColourLevelDetails,
 } from "./colourMatchStateUtils";
 
 // ---------- Type: Additional
 
 interface ColourGameLevelTracker {
-  currentLevel: number;
   currentRound: number;
-  memory: {
+  currentLevel: number | "random";
+  currentLevelDetails: ColourLevelDetail;
+  memory?: {
     level: number;
     round: number;
     colorProportion: Record<`rgbBase${string}`, number>;
@@ -65,10 +68,7 @@ interface ColourGameModelState {
   correctColourProportion?: Record<`rgbBase${string}`, number>;
   currentColourProportion?: Record<`rgbBase${string}`, number>;
   progress?: ColourGameLevelTracker;
-  timer?: {
-    timerCount: number | "Hint was Turned On";
-    timerIsRunning: boolean;
-  };
+  timerCount?: number | "Hint was Turned On";
   hintsModeIsOn: boolean; // RGB of 4 Colour Bases, RGB of Current Proportion, RGB of Correct Proportion
 }
 
@@ -91,7 +91,7 @@ const initialColourGameState: ColourGameState = {
   correctColourProportion: undefined,
   currentColourProportion: undefined,
   progress: undefined,
-  timer: undefined,
+  timerCount: undefined,
   hintsModeIsOn: false,
 };
 
@@ -102,7 +102,7 @@ const getViewStateFromGameStatus = (
   showCommandBar: status !== "pendingMode",
   showIntro: status === "initialisePlay",
   showColourLabels: status !== "pendingMode",
-  showColourSelectors: status === "initialisePlay" || status === "ongoing",
+  showColourSelectors: status === "initialisePlay" || status === "ongoing_play",
   showWinPopup: status === "finishedWin",
   showLosePopup: status === "finishedLose",
 });
@@ -117,6 +117,7 @@ type ColourGameModelAction =
       payload: { newBaseName: string };
     }
   | { type: "ONGOING_PLAY" }
+  | { type: "ONGOING_PAUSE" }
   | {
       type: "CHANGE_COLOUR_PROPORTION";
       payload: {
@@ -126,76 +127,12 @@ type ColourGameModelAction =
     }
   | { type: "RESET_CURRENT_PROPORTION" }
   | { type: "FINISH_GAME_WITH_WIN" }
-  | { type: "FINISH_GAME_WITH_LOSE" }
-
-  // | {
-  //     type: "INITIALISE_PLAY";
-  //     payload: {
-  //       newGameStatus: GameStatus;
-  //       newPlayStyle: "Random" | "Levelled";
-  //     };
-  //   }
-  // | {
-  //     type: "INITIALISE";
-  //   }
-  | {
-      type: "SET_GAME_STATUS";
-      payload: { newGameStatus: GameStatus };
-    }
-  | {
-      type: "SET_PLAYSTYLE";
-      payload: { newPlayStyle: ColourGamePlayStyle };
-    }
-  | {
-      type: "SET_BASE";
-      payload: { newBase: string };
-    }
-  | {
-      type: "SET_CORRECT_PROPORTION";
-      payload: {
-        newCorrectProportion: Record<`rgbBase${string}`, number>;
-      };
-    }
-  | {
-      type: "SET_CURRENT_PROPORTION";
-      payload: {
-        changeCurrentProportion: Record<`rgbBase${string}`, number>;
-      };
-    }
-  | {
-      type: "SET_PROGRESS_CURRENT";
-    }
-  | {
-      type: "SET_PROGRESS_MEMORY";
-    }
-  | {
-      type: "SUBMIT_ANSWER";
-    }
-  | { type: "RESET" };
+  | { type: "FINISH_GAME_WITH_LOSE" };
 
 type ColourGameViewAction = {
   type: "SET_VIEW_HINTS";
   payload: { hintsChecked: boolean };
 };
-// | {
-//     type: "SET_VIEW_BASE_SELECTOR";
-//     payload: { isBaseSelectorShown: boolean };
-//   }
-// | {
-//     type: "SET_VIEW_COMMAND_SECTION";
-//     payload: { isCommandSectionShown: boolean };
-//   }
-// | {
-//     type: "SET_VIEW_COLOUR_SELECTORS";
-//     payload: { isColourSelectorsShown: boolean };
-//   }
-// | {
-//     type: "SET_VIEW_COLOUR_PROPORTIONS";
-//     payload: { isColourSelectorsShown: boolean };
-//   }
-// | { type: "SET_VIEW_ANSWER"; payload: { isAnswerShown: boolean } }
-// | { type: "SET_VIEW_WIN_POPUP"; payload: { isWinPopupShown: boolean } }
-// | { type: "SET_VIEW_LOSE_POPUP"; payload: { isLosePopupShown: boolean } };
 
 type ColourGameAction = ColourGameModelAction | ColourGameViewAction;
 
@@ -222,6 +159,9 @@ const colourGameReducer = (
       if (!state.playStyle) {
         throw new Error("No Play Style Selected to initialise Colour Game!");
       }
+
+      const playLevel = state.playStyle === "random" ? "random" : 1;
+
       return {
         ...state,
         gameStatus: "initialisePlay",
@@ -236,11 +176,21 @@ const colourGameReducer = (
           action.payload.newBaseName,
           0
         ),
+        progress: {
+          currentRound: 1,
+          currentLevel: playLevel,
+          currentLevelDetails: getColourLevelDetails(playLevel),
+        },
       };
     case "ONGOING_PLAY":
       return {
         ...state,
-        gameStatus: "ongoing",
+        gameStatus: "ongoing_play",
+      };
+    case "ONGOING_PAUSE":
+      return {
+        ...state,
+        gameStatus: "ongoing_pause",
       };
     case "CHANGE_COLOUR_PROPORTION":
       const { rgbBaseName, changeType } = action.payload;
@@ -248,7 +198,7 @@ const colourGameReducer = (
       if (changeType === "plus") {
         return {
           ...state,
-          gameStatus: "ongoing",
+          gameStatus: "ongoing_play",
           currentColourProportion: {
             ...state.currentColourProportion,
             [rgbBaseName]:
@@ -259,13 +209,13 @@ const colourGameReducer = (
         if ((state.currentColourProportion?.[rgbBaseName] ?? 0) === 0) {
           return {
             ...state,
-            gameStatus: "ongoing",
+            gameStatus: "ongoing_play",
           };
         }
 
         return {
           ...state,
-          gameStatus: "ongoing",
+          gameStatus: "ongoing_play",
           currentColourProportion: {
             ...state.currentColourProportion,
             [rgbBaseName]:
@@ -283,7 +233,7 @@ const colourGameReducer = (
       }
       return {
         ...state,
-        gameStatus: "ongoing",
+        gameStatus: "ongoing_play",
         currentColourProportion: setColourProportions(
           state.playStyle,
           state.base.baseName,
@@ -294,56 +244,14 @@ const colourGameReducer = (
       return { ...state, gameStatus: "finishedWin" };
     case "FINISH_GAME_WITH_LOSE":
       return { ...state, gameStatus: "finishedLose" };
-    // case "SET_BASE":
-    //   return { ...state, base: action.payload.newBase };
-    // case "INITIALISE":
-    //   return { initialColourGameState };
-    case "RESET":
-      // Model GameStatus set to pendingMode
-      // may not be an option, might force back to start page
-      return state;
-    case "SET_PLAYSTYLE":
-      // Model playStyle changes
-      // Model GameStatus remains at pendingMode
-      return { ...state, playStyle: action.payload.newPlayStyle };
-    case "SET_CORRECT_PROPORTION":
-      // Model correctColourProportion is calculated/randomised
-      return state;
-    case "SET_CURRENT_PROPORTION":
-      return state;
-    case "SUBMIT_ANSWER":
-      return state;
 
     // --- View Action.types
     case "SET_VIEW_HINTS":
       return {
         ...state,
-        gameStatus: "ongoing",
+        gameStatus: "ongoing_play",
         hintsModeIsOn: action.payload.hintsChecked,
       };
-    // case "SET_VIEW_BASE_SELECTOR":
-    //   return { ...state, showBaseSelector: action.payload.isBaseSelectorShown };
-    // case "SET_VIEW_COMMAND_SECTION":
-    //   return {
-    //     ...state,
-    //     showCommandBar: action.payload.isCommandSectionShown,
-    //   };
-    // case "SET_VIEW_COLOUR_SELECTORS":
-    //   return {
-    //     ...state,
-    //     showColourSelectors: action.payload.isColourSelectorsShown,
-    //   };
-    // case "SET_VIEW_COLOUR_PROPORTIONS":
-    //   return {
-    //     ...state,
-    //     showColourProportions: action.payload.isColourSelectorsShown,
-    //   };
-    // case "SET_VIEW_ANSWER":
-    //   return { ...state, showAnswer: action.payload.isAnswerShown };
-    // case "SET_VIEW_WIN_POPUP":
-    //   return { ...state, showWinPopup: action.payload.isWinPopupShown };
-    // case "SET_VIEW_LOSE_POPUP":
-    //   return { ...state, showLosePopup: action.payload.isLosePopupShown };
 
     default:
       return state;

@@ -10,6 +10,7 @@
 export type GameStatus =
   | "pendingMode"
   | "initialisePlay"
-  | "ongoing"
+  | "ongoing_play"
+  | "ongoing_pause"
   | "finishedWin"
   | "finishedLose";

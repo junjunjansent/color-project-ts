@@ -12,7 +12,6 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   DialogActions,
   Button,
 } from "@mui/material";
@@ -60,7 +59,9 @@ const ColourMatchRandom = () => {
   // deconstruct
   const {
     gameStatus,
+    playStyle,
     base,
+    progress,
     correctColourProportion,
     currentColourProportion,
     hintsModeIsOn,
@@ -165,6 +166,11 @@ const ColourMatchRandom = () => {
   log(colourGameModelState);
   // log(colourGameViewState);
 
+  const maxClicks =
+    progress &&
+    progress.currentLevelDetails.maxClicksPerColour *
+      progress.currentLevelDetails.coloursAvail;
+
   return (
     <>
       <h1>Colour Match: Random</h1>
@@ -181,6 +187,33 @@ const ColourMatchRandom = () => {
               <small>Mix Type: {colourMatchBases[baseName].baseType}</small>
             </button>
           ))}
+          <article>
+            <p>
+              The two main ways of mixing colours are Additive and Subtractive.{" "}
+            </p>
+
+            <ul>
+              <li>
+                Additive mixing adds light from different wavelengths to create
+                colours. (e.g. TVs, computer screens)
+              </li>
+              <li>
+                Subtractive mixing usually refer to mixing of physical materials
+                and how they absorb light and reflect others, resulting in
+                different color. (e.g. paint, ink)
+              </li>
+            </ul>
+
+            <p>
+              Do note that for Subtractive Mixes, they may not be entirely
+              releaistic. This is because real-life pigments absorb and scatter
+              light differently depending on their chemical composition. It is
+              complex to approximate how light interacts with paint layers and
+              the linear models used here would not be realistic enough. One
+              would need spectral reflectance curves and tuning for each
+              pigment.
+            </p>
+          </article>
           {/* <!-- <button class="btn-difficulty" data-label="baby">
           👶<br />
           <p>5x5 grid (3 bombs)</p>
@@ -192,7 +225,7 @@ const ColourMatchRandom = () => {
       {colourGameViewState.showCommandBar && (
         <section className="command-section">
           <div className="control">
-            <h2 id="message"></h2>
+            {/* <h2 id="message"></h2> */}
             <Link to={PATHS.GAME.COLOUR.START}>
               <button>Return to Start Page</button>
             </Link>
@@ -202,12 +235,20 @@ const ColourMatchRandom = () => {
           </div>
           <div className="stats">
             <h4 className="stats-progress">
+              Current Level: {progress?.currentLevel}{" "}
+              {playStyle === "levelled" && <>out of 6</>}
+            </h4>
+            <h4 className="stats-progress">
+              Current Round: {progress?.currentRound} out of{" "}
+              {progress?.currentLevelDetails.maxRounds}
+            </h4>
+            <h4 className="stats-progress">
               Chosen Base: "{base?.baseName}", {base?.baseType}
             </h4>
             <h4 className="stats-progress">Current Clicks: {currentTotal}</h4>
             {hintsModeIsOn && <h4>Desired No. of Clicks: {correctTotal}</h4>}
             <h4 className="stats-flagged">
-              You should be able to obtain the results by less than:
+              {`You should be able to obtain the results by less than: ${maxClicks}`}
             </h4>
             {/* <div className="toggle-switch">
             <input
@@ -245,54 +286,38 @@ const ColourMatchRandom = () => {
       )}
       {/* <ColourCommandBar /> */}
 
-      <Dialog
-        open={colourGameViewState.showIntro}
-        onClose={handleClose}
-        aria-labelledby="winPopUp"
-      >
-        <DialogTitle>
-          <h4>
+      {colourGameViewState.showIntro && (
+        <Dialog open={colourGameViewState.showIntro} aria-labelledby="winPopUp">
+          <DialogTitle>
             You selected: "<u>{base?.baseName}</u>"
-          </h4>
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
+          </DialogTitle>
+          <DialogContent>
             <h6>
               Note that this typically is a colour model that uses the{" "}
-              <u>{base?.baseType}</u> mix type:
+              <u>{base?.baseType}</u> mix type. Your aim is to mix the Desired
+              Colour.
             </h6>
-            <ul>
-              <li>
-                Additive [Recommended] mixing adds light from different
-                wavelengths to create colours. (e.g. TVs, computer screens)
-              </li>
-              <li>
-                Subtractive mixing usually refer to mixing of physical materials
-                and how they absorb light and reflect others, resulting in
-                different color. (e.g. paint, ink)
-                <ul>
-                  <li>
-                    Pigments absorb and scatter light differently depending on
-                    their chemical composition. It is complex to approximate how
-                    light interacts with paint layers and the linear models used
-                    here would not be realistic enough. One would need spectral
-                    reflectance curves and tuning for each pigment.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleCloseIntro}>
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
+            <div
+              style={{
+                backgroundColor: correctHEX,
+                color: chooseTextColour(correctHEX),
+              }}
+            >
+              Desired Colour: {correctHEX}
+            </div>
+            <p>Good Luck!</p>
+          </DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={handleCloseIntro}>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+      )}
 
       {colourGameViewState.showColourLabels && (
         <section>
-          <main>
+          <article>
             <div
               style={{
                 backgroundColor: currentHEX,
@@ -320,7 +345,7 @@ const ColourMatchRandom = () => {
                 </small>
               )}
             </div>
-          </main>
+          </article>
           <br />
 
           {extractedBaseDetails?.map((detail) => {
@@ -360,105 +385,96 @@ const ColourMatchRandom = () => {
         </section>
       )}
 
-      <Dialog
-        open={colourGameViewState.showWinPopup}
-        onClose={handleClose}
-        aria-labelledby="winPopUp"
-      >
-        <ConfettiCmpnt />
-        <DialogTitle>
-          <h4>🤩!!You WON!!🤩</h4>
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            You achieved a 100% accuracy! Congratulations! :)
-            <main>
-              <div
-                style={{
-                  backgroundColor: currentHEX,
-                  color: chooseTextColour(currentHEX),
-                }}
-              >
-                {" "}
-                <h5>You obtained this Colour:</h5>
-                <small>
-                  RGB Colour: {currentRGB} HEX Colour: {currentHEX}
-                </small>
-              </div>
-              <div
-                style={{
-                  backgroundColor: correctHEX,
-                  color: chooseTextColour(correctHEX),
-                }}
-              >
-                <h5>This was the Desired Colour:</h5>
-                <small>
-                  RGB Colour: {correctRGB} HEX Colour: {correctHEX}
-                </small>
-              </div>
-            </main>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleResetBaseColours}>
-            Restart Game
-          </Button>
-          <Button onClick={handleResetBaseColours}>Restart Game</Button>
-        </DialogActions>
-      </Dialog>
+      {colourGameViewState.showWinPopup && (
+        <Dialog
+          open={colourGameViewState.showWinPopup}
+          onClose={handleClose}
+          aria-labelledby="winPopUp"
+        >
+          <ConfettiCmpnt />
+          <DialogTitle>🤩!!You WON!!🤩</DialogTitle>
+          <DialogContent>
+            <h4>You achieved a 100% accuracy! Congratulations! :)</h4>
+            <div
+              style={{
+                backgroundColor: currentHEX,
+                color: chooseTextColour(currentHEX),
+              }}
+            >
+              {" "}
+              <p>You obtained this Colour:</p>
+              <small>
+                RGB Colour: {currentRGB} HEX Colour: {currentHEX}
+              </small>
+            </div>
+            <div
+              style={{
+                backgroundColor: correctHEX,
+                color: chooseTextColour(correctHEX),
+              }}
+            >
+              <p>This was the Desired Colour:</p>
+              <small>
+                RGB Colour: {correctRGB} HEX Colour: {correctHEX}
+              </small>
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={handleResetBaseColours}>
+              Restart Game
+            </Button>
+            <Button onClick={handleResetBaseColours}>Restart Game</Button>
+          </DialogActions>
+        </Dialog>
+      )}
 
-      <Dialog
-        open={colourGameViewState.showLosePopup}
-        onClose={handleClose}
-        aria-labelledby="winPopUp"
-      >
-        <DialogTitle>
-          <h4>You Lost! 😔</h4>
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            You achieved a {checkColourWinCondition(currentHEX, correctHEX)}%
-            accuracy... close.. <small>I guess...</small>
-            <main>
-              <div
-                style={{
-                  backgroundColor: currentHEX,
-                  color: chooseTextColour(currentHEX),
-                }}
-              >
-                {" "}
-                <h5>You obtained this Colour:</h5>
-                <small>
-                  RGB Colour: {currentRGB} HEX Colour: {currentHEX}
-                </small>
-                <button></button>
-              </div>
-              <div
-                style={{
-                  backgroundColor: correctHEX,
-                  color: chooseTextColour(correctHEX),
-                }}
-              >
-                <h5>This was the Desired Colour:</h5>
-                <small>
-                  RGB Colour: {correctRGB} HEX Colour: {correctHEX}
-                </small>
-                <button></button>
-              </div>
-            </main>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleResetBaseColours}>
-            Restart Game
-          </Button>
-          <Button onClick={handleResetBaseColours}>Restart Game</Button>
-        </DialogActions>
-      </Dialog>
-
-      {/* 
-  showWinPopup: boolean;
-  showLosePopup: boolean; */}
+      {colourGameViewState.showLosePopup && (
+        <Dialog
+          open={colourGameViewState.showLosePopup}
+          onClose={handleClose}
+          aria-labelledby="winPopUp"
+        >
+          <DialogTitle>You Lost! 😔</DialogTitle>
+          <DialogContent>
+            <h4>
+              {" "}
+              You achieved a {checkColourWinCondition(currentHEX, correctHEX)}%
+              accuracy... close.. <small>I guess...</small>
+            </h4>
+            <div
+              style={{
+                backgroundColor: currentHEX,
+                color: chooseTextColour(currentHEX),
+              }}
+            >
+              {" "}
+              <h5>You obtained this Colour:</h5>
+              <small>
+                RGB Colour: {currentRGB} HEX Colour: {currentHEX}
+              </small>
+              <button></button>
+            </div>
+            <div
+              style={{
+                backgroundColor: correctHEX,
+                color: chooseTextColour(correctHEX),
+              }}
+            >
+              <h5>This was the Desired Colour:</h5>
+              <small>
+                RGB Colour: {correctRGB} HEX Colour: {correctHEX}
+              </small>
+              <button></button>
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={handleResetBaseColours}>
+              Restart Game
+            </Button>
+            <Button onClick={handleResetBaseColours}>Restart Game</Button>
+          </DialogActions>
+        </Dialog>
+      )}
 
       <pre>{JSON.stringify(colourGameModelState, null, 2)}</pre>
       <pre>{JSON.stringify(colourGameViewState, null, 2)}</pre>

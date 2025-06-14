@@ -25,6 +25,11 @@ const getColourMatchBase = (baseName: string): ColourMatchBase => {
   return baseObject;
 };
 
+const getColourLevelDetails = (currentLevel: number | "random") => {
+  const key = currentLevel === "random" ? "random" : `level${currentLevel}`;
+  return colourLevelDetails[key];
+};
+
 const setColourProportions = (
   playStyle: ColourGamePlayStyle,
   baseName: string,
@@ -44,8 +49,6 @@ const setColourProportions = (
       maxClicksToGenerate = colourLevelDetails.level1.maxClicksPerColour;
       coloursToGenerate = colourLevelDetails.level1.coloursAvail;
       break;
-    default:
-      throw new Error("No Play Style Selected to initialise Colour Game!");
   }
   //   console.log(maxClicksToGenerate, coloursToGenerate);
 
@@ -68,4 +71,9 @@ const setColourProportions = (
   return result;
 };
 
-export { getRGBBaseKeys, setColourProportions, getColourMatchBase };
+export {
+  getRGBBaseKeys,
+  setColourProportions,
+  getColourLevelDetails,
+  getColourMatchBase,
+};

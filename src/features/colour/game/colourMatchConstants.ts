@@ -18,39 +18,48 @@ const colourMatchBases: Record<string, ColourMatchBase> = {
     rgbBaseB: { label: "Blue", rgb: { R: 0, G: 0, B: 255 } },
     rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
   },
-  // RYBW: {
-  //   baseName: "RYBW",
-  //   baseType: "Subtractive",
-  //   rgbBaseR: { label: "Red", rgb: { R: 255, G: 0, B: 0 } },
-  //   rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
-  //   rgbBaseB: { label: "Blue", rgb: { R: 0, G: 0, B: 255 } },
-  //   rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
-  // },
   RYBW: {
     baseName: "RYBW",
     baseType: "Subtractive",
-    rgbBaseR: { label: "Cardinal Red", rgb: { R: 196, G: 30, B: 58 } },
-    rgbBaseY: { label: "School Bus Yellow", rgb: { R: 255, G: 216, B: 0 } },
-    rgbBaseB: { label: "Dark Blue", rgb: { R: 0, G: 0, B: 200 } },
+    rgbBaseR: { label: "Red", rgb: { R: 255, G: 0, B: 0 } },
+    rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
+    rgbBaseB: { label: "Blue", rgb: { R: 0, G: 0, B: 255 } },
     rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
   },
-  CMYK: {
-    baseName: "CMYK",
-    baseType: "Subtractive",
-    rgbBaseC: { label: "Cyan / Aqua", rgb: { R: 0, G: 255, B: 255 } },
-    rgbBaseM: { label: "Magenta / Fuchsia", rgb: { R: 255, G: 0, B: 255 } },
-    rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
-    rgbBaseK: { label: "Black", rgb: { R: 0, G: 0, B: 0 } },
-  },
+  // RYBW2: {
+  //   baseName: "RYBW2",
+  //   baseType: "Subtractive",
+  //   rgbBaseR: { label: "Cardinal Red", rgb: { R: 196, G: 30, B: 58 } },
+  //   rgbBaseY: { label: "School Bus Yellow", rgb: { R: 255, G: 216, B: 0 } },
+  //   rgbBaseB: { label: "Dark Blue", rgb: { R: 0, G: 0, B: 200 } },
+  //   rgbBaseW: { label: "White", rgb: { R: 255, G: 255, B: 255 } },
+  // },
+  // CMYK: {
+  //   baseName: "CMYK",
+  //   baseType: "Subtractive",
+  //   rgbBaseC: { label: "Cyan / Aqua", rgb: { R: 0, G: 255, B: 255 } },
+  //   rgbBaseM: { label: "Magenta / Fuchsia", rgb: { R: 255, G: 0, B: 255 } },
+  //   rgbBaseY: { label: "Yellow", rgb: { R: 255, G: 255, B: 0 } },
+  //   rgbBaseK: { label: "Black", rgb: { R: 0, G: 0, B: 0 } },
+  // },
 } as const;
 
 // ---------- Colour Play Style
 
 type ColourGamePlayStyle = "random" | "levelled";
 
+type ColourLevelDetail = {
+  level: number | string;
+  coloursAvail: number;
+  maxRounds: number;
+  maxClicksPerColour: number;
+};
+
 // ---------- Colour Level
 
-const colourLevelDetails = {
+const colourLevelDetails: {
+  [key: string]: ColourLevelDetail;
+} = {
   level1: {
     level: 1,
     coloursAvail: 2,
@@ -100,4 +109,5 @@ export {
   colourLevelDetails,
   type ColourMatchBase,
   type ColourGamePlayStyle,
+  type ColourLevelDetail,
 };

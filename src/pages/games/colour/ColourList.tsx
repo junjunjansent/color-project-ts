@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from "react";
 
-import styles from "../../../styles/colour/colourList.module.css";
-
+import styles from "../../../styles/colour/colourListPage.module.css";
 import Loader from "../../../components/Loader";
+
 import * as api_airtableColour from "../../../features/colour/services/api_airtableColour";
 import { type AirtableColourListFieldWithID } from "../../../features/colour/colourConstants";
 import ColourListCardCmpnt from "../../../components/colour/ColourListCardCmpnt";
@@ -16,7 +16,7 @@ const ColourList = () => {
     useState<AirtableColourListFieldWithID[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  const handleRemoveFromList = async (
+  const onRemoveFromList = async (
     savedColour: AirtableColourListFieldWithID
   ) => {
     //TODO: explore react-toastify
@@ -57,13 +57,14 @@ const ColourList = () => {
   return (
     <>
       <h1>List of Saved Colours</h1>
+      <h2>Total Number of Saved Colours: {savedColourList?.length}</h2>
       <section className={styles["list-saved-colours"]}>
         {savedColourList?.map((savedColour) => {
           return (
             <ColourListCardCmpnt
               key={savedColour.colourId}
               savedColour={savedColour}
-              handleRemoveFromList={handleRemoveFromList}
+              onRemoveFromList={onRemoveFromList}
             />
           );
         })}

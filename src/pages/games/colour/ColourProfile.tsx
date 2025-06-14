@@ -4,7 +4,7 @@ const log = debug("colours:ColourProfile");
 import { useParams } from "react-router";
 import { useEffect, useMemo, useState } from "react";
 
-import styles from "../../../styles/colour/colourProfile.module.css";
+import styles from "../../../styles/colour/colourProfilePage.module.css";
 
 import {
   RGBUrlRegex,

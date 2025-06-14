@@ -10,12 +10,22 @@ import {
   convertHEXtoRGB,
 } from "../../../features/colour/colourRGBUtils";
 
-// import "../../../styles/game.module.css";
+import styles from "../../../styles/colour/colourStartPage.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPersonDigging,
+  faShuffle,
+  faDice,
+  faBookmark,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
+import FlipInfoCard from "../../../components/FlipInfoCardCmpnt";
 
 const ColourStartPage = () => {
-  // define state
+  // ----- define state
   const navigate = useNavigate();
 
+  // ----- handlers
   const handleInputColourDetails = (
     event: React.FormEvent<HTMLFormElement>
   ) => {
@@ -37,8 +47,48 @@ const ColourStartPage = () => {
     navigate(PATHS.GAME.COLOUR.COLOUR_ID(rgbUrl));
   };
 
+  // ----- text definer
+
+  const colourInfoCards = {
+    categorising: {
+      title: `Categorising Colour 📁`,
+      paras: [
+        `Colours are described by their hue (the colour itself), saturation
+            (intensity), and value (lightness or darkness). They are also
+            grouped as warm (reds, oranges) or cool (blues, greens), helping us
+            understand and use them better. Some methods include their colour
+            proportions (e.g. RGB, RYB, CMY), HSL (Hue, Saturation, Lightness),
+            and Hex (hexademical) colour.`,
+      ],
+    },
+    emotions: {
+      title: `Colour & Emotions 😮‍💨`,
+      paras: [
+        `Our biology, culture, and nature affects how we perceive and 'feel'
+            colour. You already know this from the usual 'blue → sky → calm' &
+            'red → fire → anger'. Different cultures may assign unique meanings
+            too and Designers often use these emotional connections to create
+            the right mood and impact.`,
+        `Fun Fact: As a culture develops more colour terms, they tend to
+            follow the sequence of (i) Black/White, (ii) Red, (iii)
+            Green/Yellow, (iv) Blue, (v) Brown, etc. (Berlin and Kay's Theory of
+            Basic Colour Terms, 1969)`,
+      ],
+    },
+    schemes: {
+      title: `Colour Schemes ⚖️`,
+      paras: [
+        `Colour schemes arrange colours in ways that look balanced and
+            pleasing—like complementary colours that contrast or analogous
+            colours that blend smoothly. Good schemes create harmony, making
+            designs feel unified and easy on the eyes. Without balance, colours
+            can clash, causing confusion or discomfort.`,
+      ],
+    },
+  };
+
   return (
-    <>
+    <main className={styles["start-main"]}>
       <section>
         <h1>Colour Game</h1>
         <h3>Background</h3>
@@ -60,40 +110,19 @@ const ColourStartPage = () => {
           sense, it is another language and avenue for us to better connect with
           each other and express ourselves. <br />
         </p>
-        <div className="colorInfo">
-          <h6>Categorising Colour 📁</h6>
-          <p>
-            Colours are described by their hue (the colour itself), saturation
-            (intensity), and value (lightness or darkness). They are also
-            grouped as warm (reds, oranges) or cool (blues, greens), helping us
-            understand and use them better. Some methods include their colour
-            proportions (e.g. RGB, RYB, CMY), HSL (Hue, Saturation, Lightness),
-            and Hex (hexademical) colour.
-          </p>
-        </div>
-        <div className="colorInfo">
-          <h6>Colour & Emotions 😮‍💨</h6>
-          <p>
-            Our biology, culture, and nature affects how we perceive and 'feel'
-            colour. You already know this from the usual 'blue → sky → calm' &
-            'red → fire → anger'. Different cultures may assign unique meanings
-            too and Designers often use these emotional connections to create
-            the right mood and impact. <br />
-            Fun Fact: As a culture develops more colour terms, they tend to
-            follow the sequence of (i) Black/White, (ii) Red, (iii)
-            Green/Yellow, (iv) Blue, (v) Brown, etc. (Berlin and Kay's Theory of
-            Basic Colour Terms, 1969)
-          </p>
-        </div>
-        <div className="colorInfo">
-          <h6>Colour Schemes ⚖️</h6>
-          <p>
-            Colour schemes arrange colours in ways that look balanced and
-            pleasing—like complementary colours that contrast or analogous
-            colours that blend smoothly. Good schemes create harmony, making
-            designs feel unified and easy on the eyes. Without balance, colours
-            can clash, causing confusion or discomfort.
-          </p>
+        <div className={styles["colour-info-cards"]}>
+          <FlipInfoCard
+            title={colourInfoCards.categorising.title}
+            paras={colourInfoCards.categorising.paras}
+          />
+          <FlipInfoCard
+            title={colourInfoCards.emotions.title}
+            paras={colourInfoCards.emotions.paras}
+          />
+          <FlipInfoCard
+            title={colourInfoCards.schemes.title}
+            paras={colourInfoCards.schemes.paras}
+          />
         </div>
       </section>
 
@@ -104,15 +133,27 @@ const ColourStartPage = () => {
           closely linked to, and some of their colour schemes you could try out
           in designs :)
         </p>
-        <button onClick={handleRandomiseColourDetailsPage}>Randomise</button>
-        <Link to={PATHS.GAME.COLOUR.LIST}>
-          <button>See Saved Colours</button>
-        </Link>
-        <button>
-          {/* TODO Explore this feature */}
-          Search Emotion (Not Built)
-        </button>
+
         <form onSubmit={handleInputColourDetails}>
+          <div className={styles["button-group"]}>
+            <button type="submit">
+              Let's Go&nbsp; <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+            <button type="button" onClick={handleRandomiseColourDetailsPage}>
+              Randomise&nbsp; <FontAwesomeIcon icon={faShuffle} />
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate(PATHS.GAME.COLOUR.LIST)}
+            >
+              See Saved Colours&nbsp; <FontAwesomeIcon icon={faBookmark} />
+            </button>
+            <button type="button">
+              {/* TODO Explore this feature */}
+              Search Emotion (Not Built)&nbsp;
+              <FontAwesomeIcon icon={faPersonDigging} />
+            </button>
+          </div>
           <label>
             <input
               type="color"
@@ -122,7 +163,6 @@ const ColourStartPage = () => {
               // onChange={handleColourInput}
             />
           </label>
-          <button type="submit">Let's go</button>
         </form>
       </section>
 
@@ -154,17 +194,22 @@ const ColourStartPage = () => {
           mixing (i.e. RYB and CMY) all gives black or dark brown.
         </p>
         <Link to={PATHS.GAME.COLOUR.MATCH_RANDOM}>
-          <button>Randomise</button>
+          <button>
+            Random <FontAwesomeIcon icon={faDice} />
+          </button>
         </Link>
         <Link to={PATHS.GAME.COLOUR.MATCH_LEVELLED}>
-          <button>Level (Not Built)</button>
+          <button>
+            Level (Not Built) <FontAwesomeIcon icon={faPersonDigging} />
+          </button>
         </Link>
         <button>
           {/* TODO Explore this feature */}
-          Create Own Colour (Not Built)
+          Create Own Colour (Not Built){" "}
+          <FontAwesomeIcon icon={faPersonDigging} />
         </button>
       </section>
-    </>
+    </main>
   );
 };
 

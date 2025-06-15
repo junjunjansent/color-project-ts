@@ -1,7 +1,7 @@
 import debug from "debug";
 const log = debug("colours:pages/game/colour/ColourStartPage");
 
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { PATHS } from "../../../routes/paths";
 
 import {
@@ -193,21 +193,19 @@ const ColourStartPage = () => {
           absorb light as it bounces off the objects and entering our eyes, so
           mixing (i.e. RYB and CMY) all gives black or dark brown.
         </p>
-        <Link to={PATHS.GAME.COLOUR.MATCH_RANDOM}>
-          <button>
+        <div className={styles["button-group"]}>
+          <button onClick={() => navigate(PATHS.GAME.COLOUR.MATCH_RANDOM)}>
             Random <FontAwesomeIcon icon={faDice} />
           </button>
-        </Link>
-        <Link to={PATHS.GAME.COLOUR.MATCH_LEVELLED}>
-          <button>
+          <button onClick={() => navigate(PATHS.GAME.COLOUR.MATCH_LEVELLED)}>
             Level (Not Built) <FontAwesomeIcon icon={faPersonDigging} />
           </button>
-        </Link>
-        <button>
-          {/* TODO Explore this feature */}
-          Create Own Colour (Not Built){" "}
-          <FontAwesomeIcon icon={faPersonDigging} />
-        </button>
+          <button>
+            {/* TODO Explore this feature */}
+            Create Own Colour (Not Built){" "}
+            <FontAwesomeIcon icon={faPersonDigging} />
+          </button>
+        </div>
       </section>
     </main>
   );

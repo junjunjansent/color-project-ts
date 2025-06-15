@@ -85,7 +85,7 @@ const ColourMatchRandom = () => {
       return [totalProportions, stringifyRGB(rgb), convertRGBtoHEX(rgb)];
     }
     return [0, "", "#000000"];
-  }, [currentColourProportion]);
+  }, [currentColourProportion, base]);
 
   const [correctTotal, correctRGB, correctHEX] = useMemo(() => {
     if (correctColourProportion && base) {
@@ -95,8 +95,8 @@ const ColourMatchRandom = () => {
       );
       return [totalProportions, stringifyRGB(rgb), convertRGBtoHEX(rgb)];
     }
-    return [0, , "", "#000000"];
-  }, [correctColourProportion]);
+    return [0, "", "#000000"];
+  }, [correctColourProportion, base]);
 
   // log(currentHEX, correctHEX);
   // log(extractedBaseDetails);

@@ -35,7 +35,7 @@ const ColourProfileEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
     const newEmotionsData = getClosestEmotionsData(rgb);
     setEmotionsData(newEmotionsData);
     setLoading(false);
-  }, []);
+  }, [rgb]);
 
   // Loader & Error
   if (loading) {

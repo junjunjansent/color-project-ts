@@ -18,10 +18,10 @@ import * as api_colour from "../../../../features/colour/api_colour";
 
 import ErrorPage from "../../../../components/ErrorPage";
 import Loader from "../../../../components/Loader";
-import ColourProfileAboutCmpnt from "../views/ColourProfileAboutCmpnt";
-import ColourProfileEmotionsCmpnt from "../views/ColourProfileEmotionsCmpnt";
+import ColourProfileAboutCmpnt from "./ColourProfileAboutCmpnt";
+import ColourProfileEmotionsCmpnt from "./ColourProfileEmotionsCmpnt";
 import { chooseTextColour } from "../styles/colourStyles";
-import ColourProfileSchemeCardCmpnt from "../views/ColourProfileSchemeCardCmpnt";
+import ColourProfileSchemeCardCmpnt from "./ColourProfileSchemeCardCmpnt";
 
 // ----------- Functions
 
@@ -37,30 +37,24 @@ const cleanToColourSchemeCore = (scheme: ColourSchemeAPI): ColourSchemeCore => {
 // ----------- Component
 
 const ColourProfile = () => {
-  // get details of site
-  const { colourId } = useParams();
-  if (!colourId || !RGBUrlRegex.test(colourId)) {
-    return <ErrorPage />;
-  }
-  const rgb = RGBifyUrl(colourId);
-
-  // define states
+  // define hooks
   const [colourData, setColourData] = useState<ColourData>();
   const [colourScheme, setColourScheme] = useState<ColourSchemeCore>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  const handleSelectedColourScheme = (scheme: ColourSchemeAPI) => {
-    const cleanedColourScheme = cleanToColourSchemeCore(scheme);
-    setColourScheme(cleanedColourScheme);
-    log(cleanedColourScheme);
-  };
+  const { colourId } = useParams();
 
   useEffect(() => {
     const loadColourData = async () => {
+      if (!colourId) {
+        return;
+      }
+
       const controller = new AbortController();
       // using try/catch block to setColourData properly
       try {
         setLoading(true);
+        const rgb = RGBifyUrl(colourId);
         const newColourData = await api_colour.show(rgb, colourSchemeList);
         setColourData(newColourData);
 
@@ -114,6 +108,17 @@ const ColourProfile = () => {
     };
   }, [colourScheme]);
 
+  // get details of site
+  if (!colourId || !RGBUrlRegex.test(colourId)) {
+    return <ErrorPage />;
+  }
+
+  const handleSelectedColourScheme = (scheme: ColourSchemeAPI) => {
+    const cleanedColourScheme = cleanToColourSchemeCore(scheme);
+    setColourScheme(cleanedColourScheme);
+    log(cleanedColourScheme);
+  };
+
   // Loader
   if (loading) {
     return <Loader />;
@@ -158,7 +163,7 @@ const ColourProfile = () => {
       </section>
 
       <section>
-        <ColourProfileEmotionsCmpnt rgb={rgb} />
+        <ColourProfileEmotionsCmpnt rgb={RGBifyUrl(colourId)} />
       </section>
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}
     </div>

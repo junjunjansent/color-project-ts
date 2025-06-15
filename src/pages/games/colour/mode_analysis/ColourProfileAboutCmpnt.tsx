@@ -65,7 +65,7 @@ const ColourProfileAboutCmpnt = ({
       setSavedLoading(false);
     };
     checkSavedColour();
-  }, []);
+  }, [colourId]);
 
   // Loader & Error
   if (loading) {

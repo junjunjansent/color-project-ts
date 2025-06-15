@@ -58,6 +58,7 @@ const ColourList = () => {
     <>
       <h1>List of Saved Colours</h1>
       <h2>Total Number of Saved Colours: {savedColourList?.length}</h2>
+      {/* TODO: Scroll Pagination */}
       <section className={styles["list-saved-colours"]}>
         {savedColourList?.map((savedColour) => {
           return (

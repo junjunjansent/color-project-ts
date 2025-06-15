@@ -11,7 +11,7 @@ import { faBookmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 
 import { handleSelectedColourToNavigate } from "../../../../routes/navigateHandlers";
 import { type ColourData } from "../../../../constants/colour/colourConstants";
-import { type AirtableColourListFieldWithID } from "../../../../constants/colour/colourConstants";
+// import { type AirtableColourListFieldWithID } from "../../../../constants/colour/colourConstants";
 import * as api_airtableColour from "../../../../features/colour/api_airtableColour";
 import Loader from "../../../../components/Loader";
 import ErrorPage from "../../../../components/ErrorPage";
@@ -54,13 +54,11 @@ const ColourProfileAboutCmpnt = ({
   useEffect(() => {
     const checkSavedColour = async () => {
       setLoading(true);
-      const savedColourList = await api_airtableColour.index();
-      setIsSavedColour(
-        savedColourList.some(
-          (savedColour: AirtableColourListFieldWithID) =>
-            savedColour.colourId === colourId
-        )
+      const isSavedColourFetch = await api_airtableColour.indexCheckSavedColour(
+        colourId
       );
+      setIsSavedColour(isSavedColourFetch);
+
       setLoading(false);
       setSavedLoading(false);
     };

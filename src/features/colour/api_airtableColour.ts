@@ -69,6 +69,23 @@ const index = async (
 const result = await index();
 console.log(result);
 
+const indexCheckSavedColour = async (colourId: string): Promise<boolean> => {
+  const url = `${BASE_AIRTABLE_COLOUR_URL}?view=Grid view&filterByFormula={colourId}="${colourId}"`;
+
+  try {
+    const json = await fetchJson(url, "GET");
+
+    if (json.records.length >= 1) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
 const create = async (data: { fields: AirtableColourListField }) => {
   const url = `${BASE_AIRTABLE_COLOUR_URL}`;
 
@@ -103,4 +120,4 @@ const destroy = async (idStr: string) => {
 // const result = await destroy("recAqs20OP06EDiFN");
 // console.log(result);
 
-export { index, create, destroy };
+export { index, indexCheckSavedColour, create, destroy };

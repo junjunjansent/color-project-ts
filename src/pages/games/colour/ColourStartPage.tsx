@@ -8,9 +8,9 @@ import {
   randomiseRGB,
   urlifyRGB,
   convertHEXtoRGB,
-} from "../../../features/colour/colourRGBUtils";
+} from "./utils/colourRGBUtils";
 
-import styles from "../../../styles/colour/colourStartPage.module.css";
+import styles from "./styles/colourStartPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPersonDigging,

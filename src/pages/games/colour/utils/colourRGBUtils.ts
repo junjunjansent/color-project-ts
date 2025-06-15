@@ -1,6 +1,9 @@
-import colourEmotionsVariationDataArr from "./colourEmotionsVariationDataArr.json";
-import colourEmotionsMainDataArr from "./colourEmotionsMainDataArr.json";
-import { type RGB, type ColourEmotionsData } from "./colourConstants";
+import colourEmotionsVariationDataArr from "../../../../constants/colour/colourEmotionsVariationDataArr.json";
+import colourEmotionsMainDataArr from "../../../../constants/colour/colourEmotionsMainDataArr.json";
+import {
+  type RGB,
+  type ColourEmotionsData,
+} from "../../../../constants/colour/colourConstants";
 
 // ----------- Pure functions
 

@@ -1,6 +1,6 @@
 // not used
 
-import CommandBar from "../../../components/CommandBar";
+import CommandBar from "../../../../components/GameCommandBar";
 
 const ColourMatchLevelled = () => {
   return (

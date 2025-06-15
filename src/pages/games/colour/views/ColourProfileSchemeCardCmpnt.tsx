@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
-import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
+import { handleSelectedColourToNavigate } from "../../../../routes/navigateHandlers";
 
-import { type ColourSchemeAPI } from "../../features/colour/colourConstants";
-import { colourSchemeList } from "../../features/colour/colourConstants";
+import { type ColourSchemeAPI } from "../../../../constants/colour/colourConstants";
+import { colourSchemeList } from "../../../../constants/colour/colourConstants";
 
-import { chooseTextColour } from "../../styles/colour/colourStyles";
+import { chooseTextColour } from "../styles/colourStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,7 +14,7 @@ interface ColourSchemeCardCmpntProp {
   handleSelectedColourScheme: (scheme: ColourSchemeAPI) => void;
 }
 
-const ColourSchemeCardCmpnt = ({
+const ColourProfileSchemeCardCmpnt = ({
   scheme,
   selected,
   handleSelectedColourScheme,
@@ -62,4 +62,4 @@ const ColourSchemeCardCmpnt = ({
   );
 };
 
-export default ColourSchemeCardCmpnt;
+export default ColourProfileSchemeCardCmpnt;

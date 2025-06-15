@@ -1,5 +1,5 @@
-import type { RGB } from "../colourConstants";
-import { type ColourMatchBase } from "./colourMatchConstants";
+import type { RGB } from "../../../../constants/colour/colourConstants";
+import { type ColourMatchBase } from "../../../../constants/colour/colourMatchConstants";
 import { getRGBBaseKeys } from "./colourMatchStateUtils";
 
 // had to rely on ChatGPT to breakdown subtractive mix color-mixing (trying to emulate CSS function color-mix)

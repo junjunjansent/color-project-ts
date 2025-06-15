@@ -33,12 +33,12 @@
 //     FinishedLose: "finishedLose",        --> timer stops, maybe calculation of how far off?
 //   };
 
-import type { GameStatus } from "../../gameConstants";
+import type { GameStatus } from "../../../../constants/gameConstants";
 import {
   type ColourGamePlayStyle,
   type ColourMatchBase,
   type ColourLevelDetail,
-} from "./colourMatchConstants";
+} from "../../../../constants/colour/colourMatchConstants";
 import {
   setColourProportions,
   getColourMatchBase,

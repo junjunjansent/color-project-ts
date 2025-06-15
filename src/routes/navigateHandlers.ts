@@ -1,5 +1,8 @@
 import { PATHS } from "./paths";
-import { convertHEXtoRGB, urlifyRGB } from "../features/colour/colourRGBUtils";
+import {
+  convertHEXtoRGB,
+  urlifyRGB,
+} from "../pages/games/colour/utils/colourRGBUtils";
 
 // note, cannot use Hooks outside of React
 

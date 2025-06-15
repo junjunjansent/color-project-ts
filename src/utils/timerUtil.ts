@@ -1,4 +1,4 @@
-import { type GameStatus } from "../features/gameConstants";
+import { type GameStatus } from "../constants/gameConstants";
 
 type TimerState = {
   timerIsRunning: boolean;

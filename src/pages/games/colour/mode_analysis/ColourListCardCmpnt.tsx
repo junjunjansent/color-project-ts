@@ -1,18 +1,18 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router";
 
-import { type AirtableColourListFieldWithID } from "../../features/colour/colourConstants";
-import { RGBifyUrl, stringifyRGB } from "../../features/colour/colourRGBUtils";
-import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
+import { type AirtableColourListFieldWithID } from "../../../../constants/colour/colourConstants";
+import { RGBifyUrl, stringifyRGB } from "../utils/colourRGBUtils";
+import { handleSelectedColourToNavigate } from "../../../../routes/navigateHandlers";
 
-import styles from "../../styles/colour/colourDiv.module.css";
-import { chooseTextColour } from "../../styles/colour/colourStyles";
+import styles from "../styles/colourDiv.module.css";
+import { chooseTextColour } from "../styles/colourStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrashCan,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import Loader from "../Loader";
+import Loader from "../../../../components/Loader";
 
 interface ColourListCardCmpntProp {
   savedColour: AirtableColourListFieldWithID;

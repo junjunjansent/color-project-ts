@@ -1,6 +1,6 @@
 // Command Bar
 import { Link } from "react-router";
-import { PATHS } from "../../../routes/paths";
+import { PATHS } from "../../../../routes/paths";
 
 // import styles from "../../styles/commandBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,22 +27,19 @@ import {
   initialColourGameState,
   type ColourGameViewState,
   getViewStateFromGameStatus,
-} from "../../../features/colour/game/colourGameReducer";
-import { getRGBBaseKeys } from "../../../features/colour/game/colourMatchStateUtils";
-import { colourMatchBases } from "../../../features/colour/game/colourMatchConstants";
+} from "../utils/colourGameReducer";
+import { getRGBBaseKeys } from "../utils/colourMatchStateUtils";
+import { colourMatchBases } from "../../../../constants/colour/colourMatchConstants";
 
 import {
   checkColourWinCondition,
   rgbMixFromColourProportions,
-} from "../../../features/colour/game/colourMatchGameUtils";
-import {
-  convertRGBtoHEX,
-  stringifyRGB,
-} from "../../../features/colour/colourRGBUtils";
+} from "../utils/colourMatchGameUtils";
+import { convertRGBtoHEX, stringifyRGB } from "../utils/colourRGBUtils";
 
-import "../../../styles/game.module.css";
-import { chooseTextColour } from "../../../styles/colour/colourStyles";
-import ConfettiCmpnt from "../../../components/ConfettiCmpnt";
+import "../styles/colourMatchPage.module.css";
+import { chooseTextColour } from "../styles/colourStyles";
+import ConfettiCmpnt from "../../../../components/ConfettiCmpnt";
 
 const ColourMatchRandom = () => {
   // define Hooks

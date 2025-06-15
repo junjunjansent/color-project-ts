@@ -1,4 +1,4 @@
-import { type RGB } from "../colourConstants";
+import { type RGB } from "./colourConstants";
 
 // ---------- Colour Base
 

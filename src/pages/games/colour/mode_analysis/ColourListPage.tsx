@@ -3,12 +3,12 @@
 
 import { useEffect, useState } from "react";
 
-import styles from "../../../styles/colour/colourListPage.module.css";
-import Loader from "../../../components/Loader";
+import styles from "../styles/colourListPage.module.css";
+import Loader from "../../../../components/Loader";
 
-import * as api_airtableColour from "../../../features/colour/services/api_airtableColour";
-import { type AirtableColourListFieldWithID } from "../../../features/colour/colourConstants";
-import ColourListCardCmpnt from "../../../components/colour/ColourListCardCmpnt";
+import * as api_airtableColour from "../../../../features/colour/api_airtableColour";
+import { type AirtableColourListFieldWithID } from "../../../../constants/colour/colourConstants";
+import ColourListCardCmpnt from "./ColourListCardCmpnt";
 
 const ColourList = () => {
   // declare hooks

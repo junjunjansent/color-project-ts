@@ -4,7 +4,7 @@ const log = debug("colours:ColourProfile");
 import { useParams } from "react-router";
 import { useEffect, useMemo, useState } from "react";
 
-import styles from "../../../styles/colour/colourProfilePage.module.css";
+import styles from "../styles/colourProfilePage.module.css";
 
 import {
   RGBUrlRegex,
@@ -12,16 +12,16 @@ import {
   type ColourData,
   type ColourSchemeCore,
   type ColourSchemeAPI,
-} from "../../../features/colour/colourConstants";
-import { RGBifyUrl } from "../../../features/colour/colourRGBUtils";
-import * as api_colour from "../../../features/colour/services/api_colour";
+} from "../../../../constants/colour/colourConstants";
+import { RGBifyUrl } from "../utils/colourRGBUtils";
+import * as api_colour from "../../../../features/colour/api_colour";
 
-import ErrorPage from "../../../components/ErrorPage";
-import Loader from "../../../components/Loader";
-import ColourAboutCmpnt from "../../../components/colour/ColourAboutCmpnt";
-import ColourEmotionsCmpnt from "../../../components/colour/ColourEmotionsCmpnt";
-import { chooseTextColour } from "../../../styles/colour/colourStyles";
-import ColourSchemeCardCmpnt from "../../../components/colour/ColourSchemeCardCmpnt";
+import ErrorPage from "../../../../components/ErrorPage";
+import Loader from "../../../../components/Loader";
+import ColourProfileAboutCmpnt from "../views/ColourProfileAboutCmpnt";
+import ColourProfileEmotionsCmpnt from "../views/ColourProfileEmotionsCmpnt";
+import { chooseTextColour } from "../styles/colourStyles";
+import ColourProfileSchemeCardCmpnt from "../views/ColourProfileSchemeCardCmpnt";
 
 // ----------- Functions
 
@@ -131,7 +131,7 @@ const ColourProfile = () => {
       style={cssVariables}
     >
       <section className={styles["about"]}>
-        <ColourAboutCmpnt colourId={colourId} colourData={colourData} />
+        <ColourProfileAboutCmpnt colourId={colourId} colourData={colourData} />
       </section>
 
       <section>
@@ -146,7 +146,7 @@ const ColourProfile = () => {
           {colourData?.schemes.map((scheme) => {
             return (
               <article key={scheme.mode}>
-                <ColourSchemeCardCmpnt
+                <ColourProfileSchemeCardCmpnt
                   scheme={scheme}
                   handleSelectedColourScheme={handleSelectedColourScheme}
                   selected={colourScheme?.mode === scheme.mode}
@@ -158,7 +158,7 @@ const ColourProfile = () => {
       </section>
 
       <section>
-        <ColourEmotionsCmpnt rgb={rgb} />
+        <ColourProfileEmotionsCmpnt rgb={rgb} />
       </section>
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}
     </div>

@@ -3,7 +3,7 @@ import {
   type ColourGamePlayStyle,
   colourMatchBases,
   colourLevelDetails,
-} from "./colourMatchConstants";
+} from "../../../../constants/colour/colourMatchConstants";
 
 // ----------- Pure functions
 

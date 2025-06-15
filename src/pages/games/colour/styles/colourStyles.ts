@@ -1,5 +1,5 @@
-import { convertHEXtoRGB } from "../../features/colour/colourRGBUtils";
-import { type RGB } from "../../features/colour/colourConstants";
+import { convertHEXtoRGB } from "../utils/colourRGBUtils";
+import { type RGB } from "../../../../constants/colour/colourConstants";
 
 const getContrastRatio = (lumiA: number, lumiB: number) => {
   // Contrast ratio is calculated as (L1 + 0.05) / (L2 + 0.05), to adjust for human perception

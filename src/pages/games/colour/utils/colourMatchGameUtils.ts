@@ -1,6 +1,6 @@
-import type { RGB } from "../colourConstants";
-import { type ColourMatchBase } from "./colourMatchConstants";
-import { convertHEXtoRGB } from "../colourRGBUtils";
+import type { RGB } from "../../../../constants/colour/colourConstants";
+import { type ColourMatchBase } from "../../../../constants/colour/colourMatchConstants";
+import { convertHEXtoRGB } from "./colourRGBUtils";
 import { getRGBBaseKeys } from "./colourMatchStateUtils";
 import { subtractiveRGBColourMixingProportions } from "./colourMatchSubtractiveUtil";
 

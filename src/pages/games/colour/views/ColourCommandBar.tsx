@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { PATHS } from "../../routes/paths";
+import { PATHS } from "../../../../routes/paths";
 
 // import styles from "../../styles/commandBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

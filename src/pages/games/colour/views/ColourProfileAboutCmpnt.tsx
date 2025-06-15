@@ -3,25 +3,28 @@ const log = debug("colours:Component:ColourNameCompt");
 
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router";
-import { PATHS } from "../../routes/paths";
+import { PATHS } from "../../../../routes/paths";
 
-import styles from "../../styles/colour/colourProfileAboutCmpnt.module.css";
+import styles from "../styles/colourProfileAboutCmpnt.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 
-import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
-import { type ColourData } from "../../features/colour/colourConstants";
-import { type AirtableColourListFieldWithID } from "../../features/colour/colourConstants";
-import * as api_airtableColour from "../../features/colour/services/api_airtableColour";
-import Loader from "../Loader";
-import ErrorPage from "../ErrorPage";
+import { handleSelectedColourToNavigate } from "../../../../routes/navigateHandlers";
+import { type ColourData } from "../../../../constants/colour/colourConstants";
+import { type AirtableColourListFieldWithID } from "../../../../constants/colour/colourConstants";
+import * as api_airtableColour from "../../../../features/colour/api_airtableColour";
+import Loader from "../../../../components/Loader";
+import ErrorPage from "../../../../components/ErrorPage";
 
 interface ColourAboutCmpntProp {
   colourId: string;
   colourData: ColourData | undefined;
 }
 
-const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
+const ColourProfileAboutCmpnt = ({
+  colourId,
+  colourData,
+}: ColourAboutCmpntProp) => {
   // define State
   const [loading, setLoading] = useState<boolean>(true);
   const [savedLoading, setSavedLoading] = useState<boolean>(true);
@@ -174,4 +177,4 @@ const ColourAboutCmpnt = ({ colourId, colourData }: ColourAboutCmpntProp) => {
   );
 };
 
-export default ColourAboutCmpnt;
+export default ColourProfileAboutCmpnt;

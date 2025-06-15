@@ -1,5 +1,5 @@
 import "@picocss/pico/css/pico.css";
-import "./App.css";
+import "./styles/App.css";
 import NavBar from "./components/NavBar";
 import AppRoutes from "./routes/AppRoutes";
 

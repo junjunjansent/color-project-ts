@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./flipInfoCardCmpnt.module.css";
+import styles from "../styles/flipInfoCardCmpnt.module.css";
 
 interface FlipInfoCardProp {
   title: string;

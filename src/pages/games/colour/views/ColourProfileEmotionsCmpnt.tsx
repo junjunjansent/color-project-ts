@@ -7,22 +7,22 @@ import { useNavigate } from "react-router";
 import {
   type RGB,
   type ColourEmotionsData,
-} from "../../features/colour/colourConstants";
-import ErrorPage from "../ErrorPage";
-import Loader from "../Loader";
+} from "../../../../constants/colour/colourConstants";
+import ErrorPage from "../../../../components/ErrorPage";
+import Loader from "../../../../components/Loader";
 import {
   convertRGBtoHEX,
   getClosestEmotionsData,
   stringifyRGB,
-} from "../../features/colour/colourRGBUtils";
-import { handleSelectedColourToNavigate } from "../../routes/navigateHandlers";
-import { chooseTextColour } from "../../styles/colour/colourStyles";
+} from "../utils/colourRGBUtils";
+import { handleSelectedColourToNavigate } from "../../../../routes/navigateHandlers";
+import { chooseTextColour } from "../styles/colourStyles";
 
 interface ColourEmotionsCmpntProp {
   rgb: RGB;
 }
 
-const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
+const ColourProfileEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
   // define Hooks
   const [emotionsData, setEmotionsData] = useState<ColourEmotionsData>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -206,4 +206,4 @@ const ColourEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
   );
 };
 
-export default ColourEmotionsCmpnt;
+export default ColourProfileEmotionsCmpnt;

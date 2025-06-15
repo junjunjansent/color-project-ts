@@ -139,6 +139,7 @@ export {
   type ColourEmotionsVariationData,
   type ColourEmotionsMainData,
   type ColourData,
+  type ColourAPI,
   type ColourSchemeCore,
   type ColourSchemeAPI,
   type AirtableColourListField,

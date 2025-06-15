@@ -96,6 +96,416 @@
     "colourVar": true
   },
   {
+    "name": "Maroon",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Burgundy",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Crimson",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Scarlet",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Peach",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Golden Orange",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Amber",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Burnt Orange",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Dark Orange",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Light Clear Yellow",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Lemon Yellow",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Citrine Yellow",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Golden Yellow",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Cream",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Dark Yellow",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Pale Green",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Emerald",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Jade",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Lime Green",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Dark Green",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Aquamarine",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Olive",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Yellow Green",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Grass (Lawn) Green",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Pale Blue",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Sky Blue",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Navy Blue",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Azure Blue",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Royal Blue",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Powder Blue",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Dark Blue",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Dark Indigo",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Indigo Blue",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Lavender",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Lilac",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Mauve",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Amethyst",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Plum",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Deep Purple",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Aqua",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Teal",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Blush",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Salmon Pink",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Baby Pink",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Hot Pink",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Rose",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Orchid",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Light Brown",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Dark Brown",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Beige",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Tan",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Chocolate",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Umber",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Light Gray",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Slate Gray",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Charcoal Gray",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Jet Black",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Charcoal Black",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Snow",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Pearl",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Ivory",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Alabaster",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Light Silver",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Dark Silver",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+
+  {
+    "name": "Light Gold",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
+    "name": "Dark Gold",
+    "hex": "#",
+    "rgbURL": "",
+    "colourVar": true
+  },
+  {
     "name": "Alice Blue",
     "hex": "#f0f8ff",
     "rgbURL": "240-248-255",

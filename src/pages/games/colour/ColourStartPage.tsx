@@ -135,6 +135,15 @@ const ColourStartPage = () => {
         </p>
 
         <form onSubmit={handleInputColourDetails}>
+          <label>
+            <input
+              type="color"
+              name="colourToAnalyse"
+              defaultValue="#000000"
+              // ={colourHexToAnalyse}
+              // onChange={handleColourInput}
+            />
+          </label>
           <div className={styles["button-group"]}>
             <button type="submit">
               Let's Go&nbsp; <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -154,15 +163,6 @@ const ColourStartPage = () => {
               <FontAwesomeIcon icon={faPersonDigging} />
             </button>
           </div>
-          <label>
-            <input
-              type="color"
-              name="colourToAnalyse"
-              defaultValue="#000000"
-              // ={colourHexToAnalyse}
-              // onChange={handleColourInput}
-            />
-          </label>
         </form>
       </section>
 

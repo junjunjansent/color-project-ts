@@ -4,25 +4,24 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import {
-  type RGB,
-  type ColourEmotionsData,
-} from "../../../../constants/colour/colourConstants";
+import { type ColourEmotionsData } from "../../../../constants/colour/colourConstants";
 import ErrorPage from "../../../../components/ErrorPage";
 import Loader from "../../../../components/Loader";
 import {
   convertRGBtoHEX,
   getClosestEmotionsData,
+  RGBifyUrl,
   stringifyRGB,
+  urlifyRGB,
 } from "../utils/colourRGBUtils";
 import { handleSelectedColourToNavigate } from "../../../../routes/navigateHandlers";
 import { chooseTextColour } from "../styles/colourStyles";
 
 interface ColourEmotionsCmpntProp {
-  rgb: RGB;
+  colourId: string;
 }
 
-const ColourProfileEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
+const ColourProfileEmotionsCmpnt = ({ colourId }: ColourEmotionsCmpntProp) => {
   // define Hooks
   const [emotionsData, setEmotionsData] = useState<ColourEmotionsData>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -32,10 +31,10 @@ const ColourProfileEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
   useEffect(() => {
     setLoading(true);
     // no need to use await because json is compiled (via import & loaded statically), so function would be synchronous
-    const newEmotionsData = getClosestEmotionsData(rgb);
+    const newEmotionsData = getClosestEmotionsData(RGBifyUrl(colourId));
     setEmotionsData(newEmotionsData);
     setLoading(false);
-  }, [rgb]);
+  }, [colourId]);
 
   // Loader & Error
   if (loading) {
@@ -45,10 +44,9 @@ const ColourProfileEmotionsCmpnt = ({ rgb }: ColourEmotionsCmpntProp) => {
   }
 
   // check is RGB values are the same
-  const isSameAsVariation =
-    stringifyRGB(rgb) === stringifyRGB(emotionsData.rgb);
+  const isSameAsVariation = colourId === urlifyRGB(emotionsData.rgb);
   const isSameAsMainColour =
-    stringifyRGB(rgb) === stringifyRGB(emotionsData.mainColour.rgb);
+    colourId === urlifyRGB(emotionsData.mainColour.rgb);
 
   return (
     <>

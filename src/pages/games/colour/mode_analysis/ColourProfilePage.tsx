@@ -13,7 +13,6 @@ import {
   type ColourSchemeCore,
   type ColourSchemeAPI,
 } from "../../../../constants/colour/colourConstants";
-import { RGBifyUrl } from "../utils/colourRGBUtils";
 import * as api_colour from "../../../../features/colour/api_colour";
 
 import ErrorPage from "../../../../components/ErrorPage";
@@ -54,8 +53,8 @@ const ColourProfile = () => {
       // using try/catch block to setColourData properly
       try {
         setLoading(true);
-        const rgb = RGBifyUrl(colourId);
-        const newColourData = await api_colour.show(rgb, colourSchemeList);
+
+        const newColourData = await api_colour.show(colourId, colourSchemeList);
         setColourData(newColourData);
 
         // initialise scheme if it exists
@@ -163,7 +162,7 @@ const ColourProfile = () => {
       </section>
 
       <section>
-        <ColourProfileEmotionsCmpnt rgb={RGBifyUrl(colourId)} />
+        <ColourProfileEmotionsCmpnt colourId={colourId} />
       </section>
       {/* <pre>{JSON.stringify(colourData, null, 2)}</pre> */}
     </div>

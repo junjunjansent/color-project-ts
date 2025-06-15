@@ -66,8 +66,8 @@ const index = async (
   }
 };
 
-const result = await index();
-console.log(result);
+// const result = await index();
+// console.log(result);
 
 const indexCheckSavedColour = async (colourId: string): Promise<boolean> => {
   const url = `${BASE_AIRTABLE_COLOUR_URL}?view=Grid view&filterByFormula={colourId}="${colourId}"`;

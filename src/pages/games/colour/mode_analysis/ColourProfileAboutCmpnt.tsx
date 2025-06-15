@@ -7,12 +7,17 @@ import { PATHS } from "../../../../routes/paths";
 
 import styles from "../styles/colourProfileAboutCmpnt.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBookmark,
+  faFloppyDisk,
+  faCode,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { handleSelectedColourToNavigate } from "../../../../routes/navigateHandlers";
 import { type ColourData } from "../../../../constants/colour/colourConstants";
 // import { type AirtableColourListFieldWithID } from "../../../../constants/colour/colourConstants";
 import * as api_airtableColour from "../../../../features/colour/api_airtableColour";
+import { showNextNamedColourHEX } from "../../../../features/colour/api_colour";
 import Loader from "../../../../components/Loader";
 import ErrorPage from "../../../../components/ErrorPage";
 
@@ -28,6 +33,7 @@ const ColourProfileAboutCmpnt = ({
   // define State
   const [loading, setLoading] = useState<boolean>(true);
   const [savedLoading, setSavedLoading] = useState<boolean>(true);
+  const [findLoading, setFindLoading] = useState<boolean>(false);
   const [isSavedColour, setIsSavedColour] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -49,6 +55,12 @@ const ColourProfileAboutCmpnt = ({
     await api_airtableColour.create(cleanedColourData);
     setIsSavedColour(true);
     setSavedLoading(false);
+  };
+
+  const handleFindNextColour = async () => {
+    setFindLoading(true);
+    const nearestHex = await showNextNamedColourHEX(colourId);
+    handleSelectedColourToNavigate(nearestHex, navigate);
   };
 
   useEffect(() => {
@@ -85,12 +97,26 @@ const ColourProfileAboutCmpnt = ({
               : "Unnamed"}
           </h2>
           {colourData.name.exact_match_name ? (
-            <p>
-              This colour's name was derived from database given by{" "}
-              <a href="https://thecolorapi.com">thecolourapi.com</a>. There are
-              only thousands of named colours out of the 16 million available
-              colours to select from! :)
-            </p>
+            <>
+              <p>
+                This colour's name was derived from database given by{" "}
+                <a href="https://thecolorapi.com">thecolourapi.com</a>. There
+                are only thousands of named colours out of the 16 million
+                available colours to select from! :)
+              </p>
+              {findLoading ? (
+                <>
+                  <Loader /> This will take a while... <br /> See console to see
+                  the colours being searched
+                </>
+              ) : (
+                <button onClick={handleFindNextColour}>
+                  Find Next Nearest Named Colour <br />
+                  (Developer Mode)
+                  <FontAwesomeIcon icon={faCode} />
+                </button>
+              )}
+            </>
           ) : (
             <>
               <p>
@@ -131,7 +157,7 @@ const ColourProfileAboutCmpnt = ({
                 <Link to={PATHS.GAME.COLOUR.LIST}>
                   {" "}
                   <button>
-                    Saved already <FontAwesomeIcon icon={faBookmark} /> <br />{" "}
+                    Saved already <FontAwesomeIcon icon={faBookmark} /> <br />
                     See the saved list here!
                   </button>
                 </Link>

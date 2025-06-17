@@ -170,29 +170,20 @@ const ColourStartPage = () => {
         <h4>Colour Match Game</h4>
         <p>
           Colours are created by combining a few basic, base colours. By mixing
-          your primary colours, you get your secondary and tertiary colours.{" "}
+          your primary colours, you get your secondary and tertiary colours.
+          Play this game to learn a bit more about the colour mixing
+          considerations!
         </p>
         <ul>
           <li>
-            In traditional art, the primary colours are Red, Yellow, and Blue
-            (RYB). Colours are mixed subtractively.
+            Levelled - Progressively learn about the different components when
+            mixing a colour.
           </li>
           <li>
-            In printers, colours used are Cyan, Magenta, Yellow, and Black
-            (CMYK) inks. Colours are mixed subtractively too!
-          </li>
-          <li>
-            In digital screens, colours are created from Red, Green, and Blue
-            (RGB) light. These colours mix additively, meaning adding light
-            creates white.
+            Random - Jump straight and see how fast you can mix the colour we
+            give you 💪
           </li>
         </ul>
-        <p>
-          Notice that additive colour mixing combines light (e.g. digital), so
-          adding all gives white. Subtractive mixing combines pigments, which
-          absorb light as it bounces off the objects and entering our eyes, so
-          mixing (i.e. RYB and CMY) all gives black or dark brown.
-        </p>
         <div className={styles["button-group"]}>
           <button onClick={() => navigate(PATHS.GAME.COLOUR.MATCH_RANDOM)}>
             Random <FontAwesomeIcon icon={faDice} />

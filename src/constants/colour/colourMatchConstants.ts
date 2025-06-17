@@ -46,9 +46,9 @@ const colourMatchBases: Record<string, ColourMatchBase> = {
 
 // ---------- Colour Play Style
 
-type ColourGamePlayStyle = "random" | "levelled";
+type ColourMatchMode = "random" | "levelled";
 
-type ColourLevelDetail = {
+type ColourMatchLevelDetail = {
   level: number | string;
   coloursAvail: number;
   maxRounds: number;
@@ -57,8 +57,8 @@ type ColourLevelDetail = {
 
 // ---------- Colour Level
 
-const colourLevelDetails: {
-  [key: string]: ColourLevelDetail;
+const colourMatchLevelDetails: {
+  [key: string]: ColourMatchLevelDetail;
 } = {
   level1: {
     level: 1,
@@ -106,8 +106,8 @@ const colourLevelDetails: {
 
 export {
   colourMatchBases,
-  colourLevelDetails,
+  colourMatchLevelDetails,
   type ColourMatchBase,
-  type ColourGamePlayStyle,
-  type ColourLevelDetail,
+  type ColourMatchMode,
+  type ColourMatchLevelDetail,
 };

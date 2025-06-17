@@ -40,6 +40,7 @@ import { convertRGBtoHEX, stringifyRGB } from "../utils/colourRGBUtils";
 import "../styles/colourMatchPage.module.css";
 import { chooseTextColour } from "../styles/colourStyles";
 import ConfettiCmpnt from "../../../../components/ConfettiCmpnt";
+// import CommandBar from "../../../../components/GameCommandBar";
 
 const ColourMatchRandom = () => {
   // define Hooks
@@ -49,19 +50,19 @@ const ColourMatchRandom = () => {
   );
 
   useEffect(() => {
-    dispatch({ type: "PENDING_RANDOM_PLAY" });
+    dispatch({ type: "PENDING_PLAYSTYLE_OF_RANDOM_PLAY" });
   }, []);
 
   // ----------- expensive calculations
   // deconstruct
   const {
     gameStatus,
-    playStyle,
+    matchMode,
     base,
     progress,
     correctColourProportion,
     currentColourProportion,
-    hintsModeIsOn,
+    hintsFeatureIsOn,
   } = colourGameModelState;
 
   // name of base colours
@@ -103,7 +104,7 @@ const ColourMatchRandom = () => {
 
   // --------- handlers
   const handleResetBaseColours = (): void => {
-    dispatch({ type: "PENDING_RANDOM_PLAY" });
+    dispatch({ type: "PENDING_PLAYSTYLE_OF_RANDOM_PLAY" });
   };
 
   const handleBaseSelector = (baseName: string): void => {
@@ -143,14 +144,14 @@ const ColourMatchRandom = () => {
   const handleMinusColour = (rgbBaseName: `rgbBase${string}`) => {
     dispatch({
       type: "CHANGE_COLOUR_PROPORTION",
-      payload: { rgbBaseName: rgbBaseName, changeType: "minus" },
+      payload: { rgbBaseName: rgbBaseName, delta: -1 },
     });
   };
 
   const handlePlusColour = (rgbBaseName: `rgbBase${string}`) => {
     dispatch({
       type: "CHANGE_COLOUR_PROPORTION",
-      payload: { rgbBaseName: rgbBaseName, changeType: "plus" },
+      payload: { rgbBaseName: rgbBaseName, delta: 1 },
     });
   };
 
@@ -174,10 +175,8 @@ const ColourMatchRandom = () => {
 
       {colourGameViewState.showBaseSelector && (
         <section id="difficulty-section">
-          <h2>
-            Begin by choosing your set of Base Colours to Mix: (Recommended
-            RGBW)
-          </h2>
+          <h2>Click a Colour Base to Begin Mixing!</h2>
+          <p>[Recommended RGBW]</p>
           {Object.keys(colourMatchBases).map((baseName) => (
             <button key={baseName} onClick={() => handleBaseSelector(baseName)}>
               {baseName} <br />
@@ -188,27 +187,27 @@ const ColourMatchRandom = () => {
             <p>
               The two main ways of mixing colours are Additive and Subtractive.{" "}
             </p>
-
             <ul>
               <li>
                 Additive mixing adds light from different wavelengths to create
-                colours. (e.g. TVs, computer screens)
+                colours (e.g. TVs, computer screens).
               </li>
               <li>
-                Subtractive mixing usually refer to mixing of physical materials
-                and how they absorb light and reflect others, resulting in
-                different color. (e.g. paint, ink)
+                Subtractive mixing usually refers to the mixing of physical
+                materials and how they absorb some components of light and
+                reflect others, before entering our eyes (e.g. traditional
+                paint, printing ink).
               </li>
             </ul>
 
             <p>
               Do note that for Subtractive Mixes, they may not be entirely
-              releaistic. This is because real-life pigments absorb and scatter
-              light differently depending on their chemical composition. It is
-              complex to approximate how light interacts with paint layers and
-              the linear models used here would not be realistic enough. One
-              would need spectral reflectance curves and tuning for each
-              pigment.
+              releaistic here. This is because real-life pigments absorb and
+              scatter light differently depending on their chemical composition.
+              It is complex to approximate how light interacts with paint layers
+              and the linear models used here would not be realistic enough. One
+              would need spectral reflectance curves and tuning for each pigment
+              [I'll need to work on getting the database for this 😅].
             </p>
           </article>
           {/* <!-- <button class="btn-difficulty" data-label="baby">
@@ -219,6 +218,7 @@ const ColourMatchRandom = () => {
         </section>
       )}
 
+      {/* <CommandBar /> */}
       {colourGameViewState.showCommandBar && (
         <section className="command-section">
           <div className="control">
@@ -233,7 +233,7 @@ const ColourMatchRandom = () => {
           <div className="stats">
             <h4 className="stats-progress">
               Current Level: {progress?.currentLevel}{" "}
-              {playStyle === "levelled" && <>out of 6</>}
+              {matchMode === "levelled" && <>out of 6</>}
             </h4>
             <h4 className="stats-progress">
               Current Round: {progress?.currentRound} out of{" "}
@@ -243,7 +243,7 @@ const ColourMatchRandom = () => {
               Chosen Base: "{base?.baseName}", {base?.baseType}
             </h4>
             <h4 className="stats-progress">Current Clicks: {currentTotal}</h4>
-            {hintsModeIsOn && <h4>Desired No. of Clicks: {correctTotal}</h4>}
+            {hintsFeatureIsOn && <h4>Desired No. of Clicks: {correctTotal}</h4>}
             <h4 className="stats-flagged">
               {`You should be able to obtain the results by less than: ${maxClicks}`}
             </h4>
@@ -323,7 +323,7 @@ const ColourMatchRandom = () => {
             >
               {" "}
               <h5>Your Colour</h5>
-              {hintsModeIsOn && (
+              {hintsFeatureIsOn && (
                 <small>
                   RGB Colour: {currentRGB} HEX Colour: {currentHEX}
                 </small>
@@ -336,7 +336,7 @@ const ColourMatchRandom = () => {
               }}
             >
               <h5>Desired Colour</h5>
-              {hintsModeIsOn && (
+              {hintsFeatureIsOn && (
                 <small>
                   RGB Colour: {correctRGB} HEX Colour: {correctHEX}
                 </small>
@@ -360,7 +360,7 @@ const ColourMatchRandom = () => {
                     ? currentColourProportion[detail.rgbBase]
                     : ""}
                 </h6>
-                {hintsModeIsOn && (
+                {hintsFeatureIsOn && (
                   <>
                     RGB Colour: {stringifyRGB(detail.rgb)} HEX Colour:{" "}
                     {detail.hex}

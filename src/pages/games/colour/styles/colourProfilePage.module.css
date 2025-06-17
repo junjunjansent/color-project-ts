@@ -37,6 +37,11 @@
   color: var(--colour-btn-text, #ffffff);
 }
 
+.colour-profile-default-scheme button:hover {
+  background-color: gray;
+  color: white;
+}
+
 .colour-profile-default-scheme article {
   background-color: var(--colour-article);
   color: var(--colour-article-text, #ffffff);

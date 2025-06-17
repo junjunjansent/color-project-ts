@@ -2,7 +2,11 @@
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   gap: 1rem;
-  margin: 1rem;
+  margin: 0rem 1rem;
+}
+
+.about div {
+  padding: 1rem 0rem;
 }
 
 .about-middle {

@@ -1,0 +1,6 @@
+h1 {
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  display: flex;
+  margin: 1.5rem 0rem;
+  justify-content: center;
+}

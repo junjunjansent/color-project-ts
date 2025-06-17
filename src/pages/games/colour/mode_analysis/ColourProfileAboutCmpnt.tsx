@@ -66,7 +66,7 @@ const ColourProfileAboutCmpnt = ({
   useEffect(() => {
     const checkSavedColour = async () => {
       setLoading(true);
-      const isSavedColourFetch = await api_airtableColour.indexCheckSavedColour(
+      const isSavedColourFetch = await api_airtableColour.showCheckSavedColour(
         colourId
       );
       setIsSavedColour(isSavedColourFetch);
@@ -100,9 +100,10 @@ const ColourProfileAboutCmpnt = ({
             <>
               <p>
                 This colour's name was derived from database given by{" "}
-                <a href="https://thecolorapi.com">thecolourapi.com</a>. There
-                are only thousands of named colours out of the 16 million
-                available colours to select from! :)
+                <a href="https://thecolorapi.com">thecolourapi.com</a> (which
+                may not be the most accurate...). There are only thousands of
+                named colours out of the 16 million available colours to select
+                from! :)
               </p>
               {findLoading ? (
                 <>

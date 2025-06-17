@@ -1,6 +1,9 @@
 // export type GameStatus =
 //   | "pendingMode"
-// player need to choose Mode type + Base type
+// player need to choose Mode type, either levelled or random
+
+//   | "pendingPlayStyle"
+// player need to choose Base type
 
 //   | "initialisePlay"
 // game will randomly generate objective - each input can be [0,4])
@@ -26,7 +29,7 @@
 // ---
 
 // export const GameStatus = {
-//     PendingMode: "pendingMode",          --> allow choosing base colours
+//     pendingPlayStyle: "pendingPlayStyle",          --> allow choosing base colours
 //     InitialisePlay: "initialisePlay",    --> final colour shown
 //     Ongoing: "ongoing",                  --> timer begins upon first interaction
 //     FinishedWin: "finishedWin",          --> option to see leaderboard, restart, analyse colour
@@ -35,22 +38,22 @@
 
 import type { GameStatus } from "../../../../constants/gameConstants";
 import {
-  type ColourGamePlayStyle,
+  type ColourMatchMode,
   type ColourMatchBase,
-  type ColourLevelDetail,
+  type ColourMatchLevelDetail,
 } from "../../../../constants/colour/colourMatchConstants";
 import {
   setColourProportions,
   getColourMatchBase,
-  getColourLevelDetails,
+  getColourMatchLevelDetails,
 } from "./colourMatchStateUtils";
 
 // ---------- Type: Additional
 
-interface ColourGameLevelTracker {
+interface ColourMatchLevelTracker {
   currentRound: number;
   currentLevel: number | "random";
-  currentLevelDetails: ColourLevelDetail;
+  currentLevelDetails: ColourMatchLevelDetail;
   memory?: {
     level: number;
     round: number;
@@ -63,13 +66,13 @@ interface ColourGameLevelTracker {
 // TODO - TOLEARN: a bit difficult to type ColourProportion exactly :\
 interface ColourGameModelState {
   gameStatus: GameStatus;
-  playStyle?: ColourGamePlayStyle;
-  base?: ColourMatchBase;
+  matchMode?: ColourMatchMode;
+  base?: ColourMatchBase; //i.e. playStyle
   correctColourProportion?: Record<`rgbBase${string}`, number>;
   currentColourProportion?: Record<`rgbBase${string}`, number>;
-  progress?: ColourGameLevelTracker;
+  progress?: ColourMatchLevelTracker;
   timerCount?: number | "Hint was Turned On";
-  hintsModeIsOn: boolean; // RGB of 4 Colour Bases, RGB of Current Proportion, RGB of Correct Proportion
+  hintsFeatureIsOn: boolean; // RGB of 4 Colour Bases, RGB of Current Proportion, RGB of Correct Proportion
 }
 
 type ColourGameState = ColourGameModelState;
@@ -86,22 +89,22 @@ type ColourGameViewState = {
 
 const initialColourGameState: ColourGameState = {
   gameStatus: "pendingMode",
-  playStyle: undefined,
+  matchMode: undefined,
   base: undefined,
   correctColourProportion: undefined,
   currentColourProportion: undefined,
   progress: undefined,
   timerCount: undefined,
-  hintsModeIsOn: false,
+  hintsFeatureIsOn: false,
 };
 
 const getViewStateFromGameStatus = (
   status: GameStatus
 ): ColourGameViewState => ({
-  showBaseSelector: status === "pendingMode",
-  showCommandBar: status !== "pendingMode",
+  showBaseSelector: status === "pendingPlayStyle",
+  showCommandBar: status !== "pendingMode" && status !== "pendingPlayStyle",
   showIntro: status === "initialisePlay",
-  showColourLabels: status !== "pendingMode",
+  showColourLabels: status !== "pendingMode" && status !== "pendingPlayStyle",
   showColourSelectors: status === "initialisePlay" || status === "ongoing_play",
   showWinPopup: status === "finishedWin",
   showLosePopup: status === "finishedLose",
@@ -110,8 +113,8 @@ const getViewStateFromGameStatus = (
 // ---------- Typing Action
 
 type ColourGameModelAction =
-  | { type: "PENDING_RANDOM_PLAY" }
-  | { type: "PENDING_LEVELLED_PLAY" }
+  | { type: "PENDING_PLAYSTYLE_OF_RANDOM_PLAY" }
+  | { type: "PENDING_PLAYSTYLE_OF_LEVELLED_PLAY" }
   | {
       type: "INITIALISE_PLAY";
       payload: { newBaseName: string };
@@ -122,7 +125,7 @@ type ColourGameModelAction =
       type: "CHANGE_COLOUR_PROPORTION";
       payload: {
         rgbBaseName: `rgbBase${string}`;
-        changeType: "plus" | "minus";
+        delta: number;
       };
     }
   | { type: "RESET_CURRENT_PROPORTION" }
@@ -143,45 +146,47 @@ const colourGameReducer = (
   action: ColourGameAction
 ): ColourGameState => {
   switch (action.type) {
-    case "PENDING_RANDOM_PLAY":
+    case "PENDING_PLAYSTYLE_OF_RANDOM_PLAY":
       return {
         ...initialColourGameState,
-        gameStatus: "pendingMode",
-        playStyle: "random",
+        gameStatus: "pendingPlayStyle",
+        matchMode: "random",
       };
-    case "PENDING_LEVELLED_PLAY":
+    case "PENDING_PLAYSTYLE_OF_LEVELLED_PLAY":
       return {
         ...initialColourGameState,
-        gameStatus: "pendingMode",
-        playStyle: "levelled",
+        gameStatus: "pendingPlayStyle",
+        matchMode: "levelled",
       };
-    case "INITIALISE_PLAY":
-      if (!state.playStyle) {
+    case "INITIALISE_PLAY": {
+      if (!state.matchMode) {
         throw new Error("No Play Style Selected to initialise Colour Game!");
       }
 
-      const playLevel = state.playStyle === "random" ? "random" : 1;
+      //such declarations need to be scoped in {} within a case block
+      const initialLevel = state.matchMode === "random" ? "random" : 1;
 
       return {
         ...state,
         gameStatus: "initialisePlay",
         base: getColourMatchBase(action.payload.newBaseName),
         correctColourProportion: setColourProportions(
-          state.playStyle,
+          state.matchMode,
           action.payload.newBaseName,
           "random"
         ),
         currentColourProportion: setColourProportions(
-          state.playStyle,
+          state.matchMode,
           action.payload.newBaseName,
           0
         ),
         progress: {
           currentRound: 1,
-          currentLevel: playLevel,
-          currentLevelDetails: getColourLevelDetails(playLevel),
+          currentLevel: initialLevel,
+          currentLevelDetails: getColourMatchLevelDetails(initialLevel),
         },
       };
+    }
     case "ONGOING_PLAY":
       return {
         ...state,
@@ -192,20 +197,20 @@ const colourGameReducer = (
         ...state,
         gameStatus: "ongoing_pause",
       };
-    case "CHANGE_COLOUR_PROPORTION":
-      const { rgbBaseName, changeType } = action.payload;
+    case "CHANGE_COLOUR_PROPORTION": {
+      const { rgbBaseName, delta } = action.payload;
 
-      if (changeType === "plus") {
+      if (delta > 0) {
         return {
           ...state,
           gameStatus: "ongoing_play",
           currentColourProportion: {
             ...state.currentColourProportion,
             [rgbBaseName]:
-              (state.currentColourProportion?.[rgbBaseName] ?? 0) + 1,
+              (state.currentColourProportion?.[rgbBaseName] ?? 0) + delta,
           },
         };
-      } else if (changeType === "minus") {
+      } else if (delta < 0) {
         if ((state.currentColourProportion?.[rgbBaseName] ?? 0) === 0) {
           return {
             ...state,
@@ -227,15 +232,16 @@ const colourGameReducer = (
           ...state,
         };
       }
+    }
     case "RESET_CURRENT_PROPORTION":
-      if (!state.playStyle || !state.base) {
+      if (!state.matchMode || !state.base) {
         throw new Error("No Play Style or Base to continue Colour Game!");
       }
       return {
         ...state,
         gameStatus: "ongoing_play",
         currentColourProportion: setColourProportions(
-          state.playStyle,
+          state.matchMode,
           state.base.baseName,
           0
         ),
@@ -250,7 +256,7 @@ const colourGameReducer = (
       return {
         ...state,
         gameStatus: "ongoing_play",
-        hintsModeIsOn: action.payload.hintsChecked,
+        hintsFeatureIsOn: action.payload.hintsChecked,
       };
 
     default:

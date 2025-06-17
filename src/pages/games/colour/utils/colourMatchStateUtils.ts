@@ -1,8 +1,8 @@
 import {
   type ColourMatchBase,
-  type ColourGamePlayStyle,
+  type ColourMatchMode,
   colourMatchBases,
-  colourLevelDetails,
+  colourMatchLevelDetails,
 } from "../../../../constants/colour/colourMatchConstants";
 
 // ----------- Pure functions
@@ -14,7 +14,7 @@ const getRGBBaseKeys = (baseObject: ColourMatchBase): `rgbBase${string}`[] => {
   );
 };
 
-// ----------- Impure functions - Read Values from colourMatchBases & colourLevelDetails
+// ----------- Impure functions - Read Values from colourMatchBases & colourMatchLevelDetails
 
 const getColourMatchBase = (baseName: string): ColourMatchBase => {
   // extract base Object via colourMatchBases
@@ -25,13 +25,13 @@ const getColourMatchBase = (baseName: string): ColourMatchBase => {
   return baseObject;
 };
 
-const getColourLevelDetails = (currentLevel: number | "random") => {
+const getColourMatchLevelDetails = (currentLevel: number | "random") => {
   const key = currentLevel === "random" ? "random" : `level${currentLevel}`;
-  return colourLevelDetails[key];
+  return colourMatchLevelDetails[key];
 };
 
 const setColourProportions = (
-  playStyle: ColourGamePlayStyle,
+  matchMode: ColourMatchMode,
   baseName: string,
   setValue: "random" | number = "random"
 ): Record<`rgbBase${string}`, number> => {
@@ -39,15 +39,15 @@ const setColourProportions = (
   let coloursToGenerate = 0;
   const result: Record<`rgbBase${string}`, number> = {};
 
-  // --- check maxClicksPerColour & coloursToGenerate via colourLevelDetails
-  switch (playStyle) {
+  // --- check maxClicksPerColour & coloursToGenerate via colourMatchLevelDetails
+  switch (matchMode) {
     case "random":
-      maxClicksToGenerate = colourLevelDetails.random.maxClicksPerColour;
-      coloursToGenerate = colourLevelDetails.random.coloursAvail;
+      maxClicksToGenerate = colourMatchLevelDetails.random.maxClicksPerColour;
+      coloursToGenerate = colourMatchLevelDetails.random.coloursAvail;
       break;
     case "levelled":
-      maxClicksToGenerate = colourLevelDetails.level1.maxClicksPerColour;
-      coloursToGenerate = colourLevelDetails.level1.coloursAvail;
+      maxClicksToGenerate = colourMatchLevelDetails.level1.maxClicksPerColour;
+      coloursToGenerate = colourMatchLevelDetails.level1.coloursAvail;
       break;
   }
   //   console.log(maxClicksToGenerate, coloursToGenerate);
@@ -74,6 +74,6 @@ const setColourProportions = (
 export {
   getRGBBaseKeys,
   setColourProportions,
-  getColourLevelDetails,
+  getColourMatchLevelDetails,
   getColourMatchBase,
 };

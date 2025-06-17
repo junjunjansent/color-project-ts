@@ -69,7 +69,7 @@ const index = async (
 // const result = await index();
 // console.log(result);
 
-const indexCheckSavedColour = async (colourId: string): Promise<boolean> => {
+const showCheckSavedColour = async (colourId: string): Promise<boolean> => {
   const url = `${BASE_AIRTABLE_COLOUR_URL}?view=Grid view&filterByFormula={colourId}="${colourId}"`;
 
   try {
@@ -120,4 +120,4 @@ const destroy = async (idStr: string) => {
 // const result = await destroy("recAqs20OP06EDiFN");
 // console.log(result);
 
-export { index, indexCheckSavedColour, create, destroy };
+export { index, showCheckSavedColour, create, destroy };

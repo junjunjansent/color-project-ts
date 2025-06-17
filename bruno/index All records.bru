@@ -5,15 +5,16 @@ meta {
 }
 
 get {
-  url: https://api.airtable.com/v0/appbkUvuOT2Hs1VEv/Table%201?view=Grid view&offset=itrXOb2BXmgUKSGyH/rec79U8fZPdG4ZATb&pageSize=50
+  url: https://api.airtable.com/v0/appbkUvuOT2Hs1VEv/Table%201?view=Grid view&filterByFormula={colourId} ="132-222-2"
   body: none
   auth: inherit
 }
 
 params:query {
   view: Grid view
-  offset: itrXOb2BXmgUKSGyH/rec79U8fZPdG4ZATb
-  pageSize: 50
+  filterByFormula: {colourId} ="132-222-2"
+  ~offset: itrXOb2BXmgUKSGyH/rec79U8fZPdG4ZATb
+  ~pageSize: 50
 }
 
 headers {
